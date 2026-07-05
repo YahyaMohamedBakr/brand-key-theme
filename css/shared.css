@@ -4790,10 +4790,11 @@ a.contact-item:hover .contact-ic {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-lg);
-  padding: 56px 32px;
+  padding: 40px 32px;
   text-align: center;
   color: #fff;
-  min-height: 240px;
+  /* مستطيل أفقي — aspect ratio ~3:1 */
+  aspect-ratio: 3 / 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -4812,65 +4813,44 @@ a.contact-item:hover .contact-ic {
 .about-explore-card[data-card="2"].revealed { transition-delay: 300ms; }
 .about-explore-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 30px 60px rgba(14, 35, 63, 0.25);
+  box-shadow: 0 30px 60px rgba(14, 35, 63, 0.3);
 }
-/* التدرج الكحلي لكل عمود — من فاتح (يمين) لغامق (شمال) */
+/* ألوان أزرق متدرجة من اليمين (غامق) للشمال (فاتح) */
 .about-explore-card--1 {
-  background: linear-gradient(135deg, #2A4768 0%, #1A3556 100%);
+  background: #153D72;
 }
 .about-explore-card--2 {
-  background: linear-gradient(135deg, #1A3556 0%, #142B47 100%);
+  background: #2B578F;
 }
 .about-explore-card--3 {
-  background: linear-gradient(135deg, #142B47 0%, #0E233F 100%);
+  background: #5073A0;
 }
-/* keyhole زخرفي على جنب كل عمود */
-.about-explore-card-keyhole {
+/* فيكتور زخرفي أبيض شبه شفاف على الطرف الشمال لكل كارت */
+.about-explore-card-vector {
   position: absolute;
   top: 50%;
-  left: -30px;
+  left: 0;
   transform: translateY(-50%);
-  width: 180px;
-  height: 180px;
-  background: radial-gradient(circle, rgba(242, 201, 76, 0.08) 0%, transparent 70%);
-  border-radius: 50%;
+  height: 90%;
+  width: auto;
+  opacity: 0.5;
   pointer-events: none;
-}
-.about-explore-card-keyhole::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 90px;
-  border: 2px solid rgba(242, 201, 76, 0.12);
-  border-radius: 30px 30px 0 0;
-}
-.about-explore-card-keyhole::after {
-  content: '';
-  position: absolute;
-  top: calc(50% + 35px);
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 24px;
-  height: 24px;
-  border: 2px solid rgba(242, 201, 76, 0.12);
-  border-radius: 50%;
+  object-fit: contain;
+  z-index: 0;
 }
 .about-explore-card-num {
-  font-size: clamp(36px, 4.5vw, 52px);
+  font-size: clamp(30px, 3.5vw, 44px);
   font-weight: 900;
   color: #fff;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   line-height: 1;
   position: relative;
   z-index: 1;
 }
 .about-explore-card-label {
-  font-size: clamp(15px, 1.4vw, 18px);
+  font-size: clamp(13px, 1.2vw, 16px);
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.92);
   position: relative;
   z-index: 1;
 }
@@ -5249,11 +5229,11 @@ a.contact-item:hover .contact-ic {
 
 /* ---------- ريسبونسف للسيكشنات الجديدة ---------- */
 @media (max-width: 900px) {
-  /* استكشف النجاح */
+  /* منظومة التكامل */
   .about-explore { padding: 64px 20px 60px; }
   .about-explore-head { margin-bottom: 40px; }
   .about-explore-grid { grid-template-columns: 1fr; gap: 20px; }
-  .about-explore-card { padding: 40px 28px; min-height: 200px; }
+  .about-explore-card { padding: 32px 24px; aspect-ratio: auto; min-height: 130px; }
 
   /* نحن */
   .about-us { padding: 60px 20px; }
@@ -5276,11 +5256,13 @@ a.contact-item:hover .contact-ic {
 }
 
 @media (max-width: 600px) {
-  /* استكشف النجاح */
+  /* منظومة التكامل */
   .about-explore { padding: 48px 16px 40px; }
   .about-explore-head { margin-bottom: 32px; }
-  .about-explore-card { padding: 32px 20px; min-height: 180px; }
-  .about-explore-card-num { font-size: 38px; }
+  .about-explore-card { padding: 26px 18px; min-height: 110px; }
+  .about-explore-card-num { font-size: 30px; }
+  .about-explore-card-label { font-size: 13px; }
+  .about-explore-card-vector { height: 80%; }
 
   /* نحن */
   .about-us { padding: 44px 16px; }
