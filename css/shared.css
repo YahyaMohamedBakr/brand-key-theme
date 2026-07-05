@@ -4825,17 +4825,18 @@ a.contact-item:hover .contact-ic {
 .about-explore-card--3 {
   background: #5073A0;
 }
-/* فيكتور زخرفي أبيض شبه شفاف على الطرف الشمال لكل كارت */
+/* فيكتور زخرفي أبيض شبه شفاف على الطرف الشمال لكل كارت
+   — أكبر من الكارت عشان القطع الداخلي ميبانش، والكارت بقى overflow:hidden بقصه من فوق وتحت */
 .about-explore-card-vector {
   position: absolute;
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  height: 90%;
+  height: 165%;
   width: auto;
   opacity: 0.5;
   pointer-events: none;
-  object-fit: contain;
+  object-fit: cover;
   z-index: 0;
 }
 .about-explore-card-num {
@@ -4873,6 +4874,9 @@ a.contact-item:hover .contact-ic {
 /* الصورة على الشمال */
 .about-us-visual {
   order: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   transform: translateX(-40px);
   transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
@@ -4883,61 +4887,31 @@ a.contact-item:hover .contact-ic {
 }
 .about-us-image-wrap {
   position: relative;
-  border-radius: var(--radius-lg);
+  /* شكل بيضاوي: 550x287 مع border-radius 136 على كل الأطراف */
+  width: 550px;
+  max-width: 100%;
+  aspect-ratio: 550 / 287;
+  border-radius: 136px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(14, 35, 63, 0.15);
 }
 .about-us-image {
   width: 100%;
   height: 100%;
-  min-height: 360px;
-  max-height: 460px;
   object-fit: cover;
   display: block;
 }
-/* تراكب لوگو BK + keyhole */
-.about-us-logo-overlay {
+/* علامة مائية في وسط الصورة */
+.about-us-watermark {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 140px;
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 50%;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
-.about-us-logo-text {
-  font-size: 56px;
-  font-weight: 900;
-  color: var(--navy);
-  letter-spacing: -2px;
-  position: relative;
-}
-.about-us-logo-keyhole {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, 8px);
-  width: 28px;
-  height: 28px;
-  border: 3px solid var(--gold);
-  border-radius: 50%;
-}
-.about-us-logo-keyhole::before {
-  content: '';
-  position: absolute;
-  top: -22px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 18px;
-  height: 26px;
-  border: 3px solid var(--gold);
-  border-bottom: none;
-  border-radius: 18px 18px 0 0;
+  width: 30%;
+  height: auto;
+  opacity: 0.45;
+  pointer-events: none;
+  object-fit: contain;
 }
 /* النص على اليمين */
 .about-us-content {
@@ -5011,6 +4985,9 @@ a.contact-item:hover .contact-ic {
 /* الصورة تانية في source، في RTL بتظهر شمال — بس عاوزينها يمين */
 .about-why-visual {
   order: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   transform: translateX(-40px);
   transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
@@ -5022,60 +4999,31 @@ a.contact-item:hover .contact-ic {
 }
 .about-why-image-wrap {
   position: relative;
-  border-radius: var(--radius-lg);
+  /* شكل بيضاوي: 550x287 مع border-radius 136 على كل الأطراف */
+  width: 550px;
+  max-width: 100%;
+  aspect-ratio: 550 / 287;
+  border-radius: 136px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(14, 35, 63, 0.15);
 }
 .about-why-image {
   width: 100%;
   height: 100%;
-  min-height: 360px;
-  max-height: 460px;
   object-fit: cover;
   display: block;
 }
-.about-why-logo-overlay {
+/* علامة مائية في وسط الصورة */
+.about-why-watermark {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 140px;
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 50%;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
-.about-why-logo-text {
-  font-size: 56px;
-  font-weight: 900;
-  color: var(--navy);
-  letter-spacing: -2px;
-  position: relative;
-}
-.about-why-logo-keyhole {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, 8px);
-  width: 28px;
-  height: 28px;
-  border: 3px solid var(--gold);
-  border-radius: 50%;
-}
-.about-why-logo-keyhole::before {
-  content: '';
-  position: absolute;
-  top: -22px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 18px;
-  height: 26px;
-  border: 3px solid var(--gold);
-  border-bottom: none;
-  border-radius: 18px 18px 0 0;
+  width: 30%;
+  height: auto;
+  opacity: 0.45;
+  pointer-events: none;
+  object-fit: contain;
 }
 
 /* ---------- سيكشن 4: لا تقلق بشأن الأمان ---------- */
@@ -5235,17 +5183,17 @@ a.contact-item:hover .contact-ic {
   .about-explore-grid { grid-template-columns: 1fr; gap: 20px; }
   .about-explore-card { padding: 32px 24px; aspect-ratio: auto; min-height: 130px; }
 
-  /* نحن */
+  /* رؤيتنا */
   .about-us { padding: 60px 20px; }
   .about-us-container { grid-template-columns: 1fr; gap: 36px; }
   .about-us-visual { order: -1; }
-  .about-us-image { min-height: 280px; max-height: 360px; }
+  .about-us-image-wrap { width: 100%; max-width: 450px; margin: 0 auto; }
 
-  /* لماذا */
+  /* رسالتنا */
   .about-why { padding: 60px 20px; }
   .about-why-container { grid-template-columns: 1fr; gap: 36px; }
   .about-why-visual { order: -1; }
-  .about-why-image { min-height: 280px; max-height: 360px; }
+  .about-why-image-wrap { width: 100%; max-width: 450px; margin: 0 auto; }
 
   /* الأمان */
   .about-security { padding: 64px 20px 0; }
@@ -5262,16 +5210,17 @@ a.contact-item:hover .contact-ic {
   .about-explore-card { padding: 26px 18px; min-height: 110px; }
   .about-explore-card-num { font-size: 30px; }
   .about-explore-card-label { font-size: 13px; }
-  .about-explore-card-vector { height: 80%; }
+  .about-explore-card-vector { height: 150%; }
 
-  /* نحن */
+  /* رؤيتنا */
   .about-us { padding: 44px 16px; }
   .about-us-title { font-size: 30px; }
   .about-us-desc { font-size: 14px; }
-  .about-us-logo-overlay, .about-why-logo-overlay { width: 100px; height: 100px; }
-  .about-us-logo-text, .about-why-logo-text { font-size: 40px; }
+  /* رؤيتنا / رسالتنا — صورة بيضاوية أعرض على الموبايل */
+  .about-us-image-wrap, .about-why-image-wrap { border-radius: 90px; }
+  .about-us-watermark, .about-why-watermark { width: 35%; }
 
-  /* لماذا */
+  /* رسالتنا */
   .about-why { padding: 44px 16px; }
   .about-why-title { font-size: 30px; }
   .about-why-desc { font-size: 14px; }
