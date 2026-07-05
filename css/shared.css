@@ -5082,6 +5082,9 @@ a.contact-item:hover .contact-ic {
   border: 1px solid #E5E7EB;
   border-radius: var(--radius-lg);
   box-sizing: border-box;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
   transition: box-shadow 0.45s var(--ease-out), transform 0.45s var(--ease-spring), border-color 0.35s var(--ease-out);
   opacity: 0;
   transform: translateY(40px);
@@ -5101,9 +5104,7 @@ a.contact-item:hover .contact-ic {
 }
 /* أيقونة في مربع 72×72 لونه #0E233F — أعلى اليمين (محاذية لأول الكلام) */
 .about-security-card-icon {
-  position: absolute;
-  top: 28px;
-  right: 32px;
+  flex-shrink: 0;
   width: 72px;
   height: 72px;
   display: inline-flex;
@@ -5112,12 +5113,14 @@ a.contact-item:hover .contact-ic {
   background: var(--navy);
   color: var(--gold);
   border-radius: var(--radius);
+  /* في RTL: أول عنصر flex بيبقى على اليمين — فهتكون أعلى اليمين */
+  order: 1;
 }
-/* جسم الكارت — الكلام بيمين المحتوى (عشان الأيقونة أعلى اليمين، الكلام يبدأ من نفس المستوى) */
+/* جسم الكارت — الكلام بياخد باقي المساحة جنب الأيقونة */
 .about-security-card-body {
-  width: calc(100% - 96px); /* خلي مساحة للأيقونة */
-  margin-right: 0;
-  margin-left: auto;
+  flex: 1;
+  min-width: 0;
+  order: 2;
 }
 .about-security-card-title {
   font-size: 22px;
@@ -5238,8 +5241,8 @@ a.contact-item:hover .contact-ic {
   .about-security-head { margin-bottom: 40px; }
   .about-security-grid { flex-direction: column; gap: 20px; }
   .about-security-card { flex: 0 0 auto; width: 100%; max-width: 100%; min-height: auto; padding: 24px 22px; }
-  .about-security-card-icon { width: 60px; height: 60px; top: 24px; right: 22px; }
-  .about-security-card-body { width: calc(100% - 80px); }
+  .about-security-card-icon { width: 60px; height: 60px; }
+  .about-security-card-body { }
   .about-security-cta { flex-direction: column; align-items: stretch; text-align: right; padding: 28px 22px; }
   .about-security-cta-text { text-align: right; }
   .about-security-cta-btn { align-self: flex-start; }
@@ -5272,9 +5275,9 @@ a.contact-item:hover .contact-ic {
   .about-security-title { font-size: 26px; }
   .about-security-sub { font-size: 14px; }
   .about-security-card { padding: 20px 16px; }
-  .about-security-card-icon { width: 52px; height: 52px; top: 20px; right: 16px; }
+  .about-security-card-icon { width: 52px; height: 52px; }
   .about-security-card-icon svg { width: 26px; height: 26px; }
-  .about-security-card-body { width: calc(100% - 68px); }
+  .about-security-card-body { }
   .about-security-card-title { font-size: 19px; }
   .about-security-card-desc { font-size: 13.5px; }
   .about-security-cta { padding: 24px 18px; }
