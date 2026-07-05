@@ -419,4 +419,465 @@ var f = document.getElementById("footer-include");
 if(h) h.innerHTML = HEADER_HTML;
 if(f) f.innerHTML = FOOTER_HTML;
 if(heroHolder) heroHolder.innerHTML = HERO_HTML;
+
+/* ============================================================
+   استدعاء الأقسام المكررة كـ components (template strings)
+   كل عنصر بـ data-include="component-name" بياخد المحتوى من المتغير المناسب
+   مثال: <div data-include="how"></div> → بياخد محتوى HOW_HTML
+   الأقسام بتتحقن بشكل متزامن (synchronous) عشان shared.js يلاقيها وقت init
+   ============================================================ */
+
+// قراءة محتوى كل component file وتضمينه كـ template string
+// ملاحظة: الملفات دي بتتعمل build من components/*.html (شوف build-includes.sh)
+// دلوقتي بنحط المحتوى inline عشان يشتغل على file:// و http://
+
+var HOW_HTML = `<section class="how" id="how">
+    <div class="how-container">
+
+      <!-- رأس السيكشن (عنوان + خط + وصف) فوق في النص -->
+      <header class="how-head" id="howHead">
+        <h2 class="how-title">طريقتنا في الشغل</h2>
+        <img src="icons/how-heading-line.png" alt="" class="heading-line how-heading-line" aria-hidden="true" />
+        <p class="how-desc">
+          4 خطوات واضحة من أول يوم لأول نتيجة — عارف دايماً إيه اللي بيحصل
+        </p>
+      </header>
+
+      <!-- العمودين: إطار (شمال) + خطوات (يمين) -->
+      <div class="how-grid">
+
+        <!-- الإطار الزخرفي (keyhole + لوگو BK) على الشمال -->
+        <div class="how-visual">
+          <img src="icons/how-frame.svg" alt="Brand Key" class="how-frame" />
+        </div>
+
+        <!-- الخطوات الـ 4 على اليمين -->
+        <div class="how-steps" id="howSteps">
+
+          <!-- خطوة 01 -->
+          <article class="how-step" data-step="0">
+            <div class="how-step-num">01</div>
+            <div class="how-step-body">
+              <h3 class="how-step-title">تحليل وتخطيط</h3>
+              <p class="how-step-desc">بندرس عملك، سوقك، ومنافسيك — ونبني استراتيجية واضحة بأهداف قابلة للقياس</p>
+            </div>
+          </article>
+
+          <!-- خطوة 02 -->
+          <article class="how-step" data-step="1">
+            <div class="how-step-num">02</div>
+            <div class="how-step-body">
+              <h3 class="how-step-title">تنفيذ الاستراتيجية</h3>
+              <p class="how-step-desc">فريقنا المتخصص ينفذ بدقة واحترافية — محتوى، إعلانات، ويب، بالكامل</p>
+            </div>
+          </article>
+
+          <!-- خطوة 03 -->
+          <article class="how-step" data-step="2">
+            <div class="how-step-num">03</div>
+            <div class="how-step-body">
+              <h3 class="how-step-title">قياس الأداء</h3>
+              <p class="how-step-desc">تقارير شفافة ودورية — بتشوف بالأرقام الحقيقية وين ميزانيتك بتحقق نتائج</p>
+            </div>
+          </article>
+
+          <!-- خطوة 04 -->
+          <article class="how-step" data-step="3">
+            <div class="how-step-num">04</div>
+            <div class="how-step-body">
+              <h3 class="how-step-title">تحسين مستمر</h3>
+              <p class="how-step-desc">بنحلل النتائج ونحسّن باستمرار — الهدف دايماً أعلى ROI وأقل تكلفة</p>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>`;
+
+var CLIENTS_HTML = `<section class="clients" id="clients">
+    <div class="clients-container">
+
+      <!-- رأس السيكشن (عنوان + خط + وصف) في النص -->
+      <header class="clients-head" id="clientsHead">
+        <h2 class="clients-title">عملاء وثقوا فينا</h2>
+        <img src="icons/heading-line.png" alt="" class="heading-line clients-heading-line" aria-hidden="true" />
+        <p class="clients-desc">
+          نفخر بشراكاتنا مع نخبة من العلامات التجارية في مختلف القطاعات — ثقتهم مصدر إلهامنا ونجاحهم هو نجاحنا.
+        </p>
+      </header>
+
+      <!-- شريط اللوجوهات المتحرك -->
+      <div class="clients-marquee" id="clientsMarquee">
+
+        <!-- المجموعة 1 -->
+        <div class="clients-track">
+          <div class="client-logo"><span>شركة النخبة</span></div>
+          <div class="client-logo"><span>مجموعة الأفق</span></div>
+          <div class="client-logo"><span>تك فيجن</span></div>
+          <div class="client-logo"><span>دار العمرة</span></div>
+          <div class="client-logo"><span>متاجر الجزيرة</span></div>
+          <div class="client-logo"><span>صحة بلس</span></div>
+          <div class="client-logo"><span>أكاديمية المستقبل</span></div>
+          <div class="client-logo"><span>البنك الذكي</span></div>
+        </div>
+
+        <!-- المجموعة 2 (نسخة للمسح المتواصل) -->
+        <div class="clients-track" aria-hidden="true">
+          <div class="client-logo"><span>شركة النخبة</span></div>
+          <div class="client-logo"><span>مجموعة الأفق</span></div>
+          <div class="client-logo"><span>تك فيجن</span></div>
+          <div class="client-logo"><span>دار العمرة</span></div>
+          <div class="client-logo"><span>متاجر الجزيرة</span></div>
+          <div class="client-logo"><span>صحة بلس</span></div>
+          <div class="client-logo"><span>أكاديمية المستقبل</span></div>
+          <div class="client-logo"><span>البنك الذكي</span></div>
+        </div>
+
+        <!-- المجموعة 3 (نسخة تانية للمسح المتواصل) -->
+        <div class="clients-track" aria-hidden="true">
+          <div class="client-logo"><span>شركة النخبة</span></div>
+          <div class="client-logo"><span>مجموعة الأفق</span></div>
+          <div class="client-logo"><span>تك فيجن</span></div>
+          <div class="client-logo"><span>دار العمرة</span></div>
+          <div class="client-logo"><span>متاجر الجزيرة</span></div>
+          <div class="client-logo"><span>صحة بلس</span></div>
+          <div class="client-logo"><span>أكاديمية المستقبل</span></div>
+          <div class="client-logo"><span>البنك الذكي</span></div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>`;
+
+var TESTIMONIALS_HTML = `<section class="testimonials" id="testimonials">
+    <div class="testimonials-container">
+
+      <!-- رأس السيكشن -->
+      <header class="testimonials-head" id="testimonialsHead">
+        <h2 class="testimonials-title">ماذا يقول عملاؤنا</h2>
+        <img src="icons/heading-line.png" alt="" class="heading-line testimonials-heading-line" aria-hidden="true" />
+        <p class="testimonials-desc">
+          آراء حقيقية من عملاء حقيقين — كل واحد منهم كان عنده تحدي مختلف، وكل واحد لقى حل معانا.
+        </p>
+      </header>
+
+      <!-- الكروت (3 آراء) -->
+      <div class="testimonials-grid" id="testimonialsGrid">
+
+        <!-- رأي 1 -->
+        <article class="testimonial-card" data-card="0">
+          <div class="testimonial-keys" aria-hidden="true">
+            <img src="icons/quote-keys.svg" alt="" />
+          </div>
+          <p class="testimonial-text">
+            فريق براند كي غيّر طريقة تفكيرنا في التسويق تماماً. خلال 6 شهور بس، ضاعفنا مبيعاتنا الأونلاين ووصلنا لجمهور جديد كنا فاكرينه صعب علينا.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="icons/client-1.png" alt="أحمد الشمري" />
+            </div>
+            <div class="testimonial-author-info">
+              <p class="testimonial-name">أحمد الشمري</p>
+              <p class="testimonial-role">الرئيس التنفيذي، شركة النخبة</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- رأي 2 -->
+        <article class="testimonial-card" data-card="1">
+          <div class="testimonial-keys" aria-hidden="true">
+            <img src="icons/quote-keys.svg" alt="" />
+          </div>
+          <p class="testimonial-text">
+            اللي ميز براند كي إنهم مش بيتكلموا كلام، بيشتغلوا. الاستراتيجية كانت واضحة، التنفيذ كان دقيق، والنتائج ظهرت بالأرقام. شراكة حقيقية مش مجرد تعاقد.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="icons/client-2.png" alt="سارة المطيري" />
+            </div>
+            <div class="testimonial-author-info">
+              <p class="testimonial-name">سارة المطيري</p>
+              <p class="testimonial-role">مديرة التسويق، مجموعة الأفق</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- رأي 3 -->
+        <article class="testimonial-card" data-card="2">
+          <div class="testimonial-keys" aria-hidden="true">
+            <img src="icons/quote-keys.svg" alt="" />
+          </div>
+          <p class="testimonial-text">
+            جربنا شركات كتير قبل كده، بس براند كي هم الوحيدين اللي فهموا فعلاً طبيعة قطاعنا. الهوية البصرية اللي صمموها لنا خلتنا نبان في سوق مزدحم.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="icons/client-3.png" alt="خالد العتيبي" />
+            </div>
+            <div class="testimonial-author-info">
+              <p class="testimonial-name">خالد العتيبي</p>
+              <p class="testimonial-role">مؤسس تك فيجن</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- أسهم التنقل -->
+      <div class="testimonials-nav" id="testimonialsNav">
+        <button class="testimonial-nav-btn" id="testPrev" aria-label="السابق">
+          <img src="icons/arrow-active.svg" alt="" />
+        </button>
+        <div class="testimonials-dots" id="testDots">
+          <span class="testimonial-dot active" data-dot="0"></span>
+          <span class="testimonial-dot" data-dot="1"></span>
+          <span class="testimonial-dot" data-dot="2"></span>
+        </div>
+        <button class="testimonial-nav-btn" id="testNext" aria-label="التالي">
+          <img src="icons/arrow-inactive.svg" alt="" />
+        </button>
+      </div>
+
+    </div>
+  </section>`;
+
+var CTA_FINAL_HTML = `<section class="cta-final" id="ctaFinal">
+    <!-- فيكتورات زخرفية: مفتاح يمين + keyhole شمال -->
+    <img src="icons/cta-vector-right.svg" alt="" class="cta-final-deco cta-final-deco--right" aria-hidden="true" />
+    <img src="icons/cta-vector-left.svg" alt="" class="cta-final-deco cta-final-deco--left" aria-hidden="true" />
+
+    <div class="cta-final-container">
+
+      <!-- النص (يمين) -->
+      <div class="cta-final-text" id="ctaFinalText">
+        <h2 class="cta-final-title">مستعد تبدأ رحلتك الرقمية؟</h2>
+        <img src="icons/heading-line.png" alt="" class="heading-line cta-final-heading-line" aria-hidden="true" />
+        <p class="cta-final-desc">
+          خلينا نحول رؤيتك لنتائج. احجز استشارة مجانية النهارده واعرف إزاي نقدر نساعدك تحقق أهدافك التسويقية.
+        </p>
+      </div>
+
+      <!-- الزر (شمال) -->
+      <div class="cta-final-action" id="ctaFinalAction">
+        <a href="contact.html" class="cta-final-btn">
+          <span>ابدأ الآن</span>
+          <img src="icons/cta-arrow.svg" alt="" />
+        </a>
+      </div>
+
+    </div>
+  </section>`;
+
+var FAQ_HTML = `<section class="faq" id="faq">
+    <div class="faq-container">
+
+      <!-- رأس السيكشن -->
+      <header class="faq-head" id="faqHead">
+        <h2 class="faq-title">الأسئلة الشائعة</h2>
+        <img src="icons/heading-line.png" alt="" class="heading-line faq-heading-line" aria-hidden="true" />
+        <p class="faq-desc">
+          جمعنا لك أكثر الأسئلة شيوعاً — لو عندك سؤال تاني، تواصل معنا على طول.
+        </p>
+      </header>
+
+      <!-- قائمة الأسئلة -->
+      <div class="faq-grid" id="faqGrid">
+
+        <!-- سؤال 1 -->
+        <div class="faq-item" data-faq="0">
+          <button class="faq-question" aria-expanded="false">
+            <span>إيه الفرق بين براند كي وشركات التسويق العادية؟</span>
+            <span class="faq-chevron"><img src="icons/faq-chevron.svg" alt="" /></span>
+          </button>
+          <div class="faq-answer"><p>الفريق اللي بيشتغل على مشروعك متخصص في مجاله — مش generalized. وكل مشروع ليه استراتيجية مخصصة بناءً على تحليل عميق لعملك وسوقك، مش قوالب جاهزة.</p></div>
+        </div>
+
+        <!-- سؤال 2 -->
+        <div class="faq-item" data-faq="1">
+          <button class="faq-question" aria-expanded="false">
+            <span>إمتى هشوف نتائج؟</span>
+            <span class="faq-chevron"><img src="icons/faq-chevron.svg" alt="" /></span>
+          </button>
+          <div class="faq-answer"><p>بيختلف حسب نوع الخدمة وأهدافك. حملات الإعلانات بتظهر نتائج أولية خلال 2-4 أسابيع. التحسين العضوي (SEO) بيحتاج 3-6 شهور. بنحدد لك timeline واضح من أول جلسة استشارية.</p></div>
+        </div>
+
+        <!-- سؤال 3 -->
+        <div class="faq-item" data-faq="2">
+          <button class="faq-question" aria-expanded="false">
+            <span>هل تقدمون تدريب وتمكين للفرق الداخلية؟</span>
+            <span class="faq-chevron"><img src="icons/faq-chevron.svg" alt="" /></span>
+          </button>
+          <div class="faq-answer"><p>أيوة — عندنا برامج تدريبية مخصصة للفرق التسويقية الداخلية في الشركات. نأسس الفريق، نحدد الأدوار، ونرفع الكفاءة بمنهجية عملية قابلة للتطبيق فوراً.</p></div>
+        </div>
+
+        <!-- سؤال 4 -->
+        <div class="faq-item" data-faq="3">
+          <button class="faq-question" aria-expanded="false">
+            <span>إيه القطاعات اللي بتشتغلوا فيها؟</span>
+            <span class="faq-chevron"><img src="icons/faq-chevron.svg" alt="" /></span>
+          </button>
+          <div class="faq-answer"><p>عندنا خبرة في قطاعات متنوعة: السياحة والسفر، التعليم، الطاقة المتجددة، الخدمات القانونية، المالية والمصرفية، التأمين، الموارد البشرية، التكنولوجيا، والصناعة.</p></div>
+        </div>
+
+        <!-- سؤال 5 -->
+        <div class="faq-item" data-faq="4">
+          <button class="faq-question" aria-expanded="false">
+            <span>إزاي تبدأون مع عميل جديد؟</span>
+            <span class="faq-chevron"><img src="icons/faq-chevron.svg" alt="" /></span>
+          </button>
+          <div class="faq-answer"><p>بجلسة استشارية مجانية بنفهم فيها أهدافك وتحدياتك. بعدها نبني استراتيجية مخصصة ونقدم لك خطة واضحة بـ timeline وميزانية. بعد الموافقة، نبدأ التنفيذ فوراً.</p></div>
+        </div>
+
+        <!-- سؤال 6 -->
+        <div class="faq-item" data-faq="5">
+          <button class="faq-question" aria-expanded="false">
+            <span>هل تتعاملون مع الشركات الصغيرة والناشئة؟</span>
+            <span class="faq-chevron"><img src="icons/faq-chevron.svg" alt="" /></span>
+          </button>
+          <div class="faq-answer"><p>أيوة — عندنا باقات مرنة تناسب كل المراحل. بنشتغل مع startups وSMES وكبار الشركات. المهم إن يكون عندك رؤية واضحة ونية حقيقية للنمو.</p></div>
+        </div>
+
+        <!-- سؤال 7 -->
+        <div class="faq-item" data-faq="6">
+          <button class="faq-question" aria-expanded="false">
+            <span>إيه المدة الزمنية النموذجية لمشروع؟</span>
+            <span class="faq-chevron"><img src="icons/faq-chevron.svg" alt="" /></span>
+          </button>
+          <div class="faq-answer"><p>بتختلف حسب نطاق المشروع. حملات قصيرة ممكن 1-3 شهور. برامج تسويق شاملة بتكون 6-12 شهر. بنحدد المدة المناسبة في خطة العمل ونراجعها دورياً.</p></div>
+        </div>
+
+        <!-- سؤال 8 -->
+        <div class="faq-item" data-faq="7">
+          <button class="faq-question" aria-expanded="false">
+            <span>هل تقدمون تقارير دورية؟</span>
+            <span class="faq-chevron"><img src="icons/faq-chevron.svg" alt="" /></span>
+          </button>
+          <div class="faq-answer"><p>أيوة — تقارير شهرية شفافة بكل التفاصيل: الأداء، النتائج، التحليلات، والتوصيات. وبنعمل جلسة مراجعة شهرية لمناقشة النتائج واتخاذ القرارات.</p></div>
+        </div>
+
+      </div>
+
+      <!-- شريط CTA في آخر السيكشن -->
+      <div class="faq-cta" id="faqCta">
+        <img src="icons/faq-vector.svg" alt="" class="faq-cta-vector" aria-hidden="true" />
+        <div class="faq-cta-text">
+          <h3 class="faq-cta-title">لسة عندك أسئلة؟</h3>
+          <p class="faq-cta-sub">فريقنا جاهز يرد على كل استفساراتك — تواصل معنا على طول.</p>
+        </div>
+        <a href="contact.html" class="faq-cta-btn">
+          <span>تواصل معنا</span>
+          <img src="icons/gold-arrow.svg" alt="" />
+        </a>
+      </div>
+
+    </div>
+  </section>`;
+
+var BLOG_HTML = `<section class="blog" id="blog">
+    <div class="blog-container">
+
+      <!-- رأس السيكشن: العنوان يمين + زر "كل المقالات" شمال -->
+      <header class="blog-head" id="blogHead">
+        <div class="blog-head-text">
+          <h2 class="blog-title">آخر أخبارنا</h2>
+          <img src="icons/heading-line.png" alt="" class="heading-line blog-heading-line" aria-hidden="true" />
+          <p class="blog-desc">
+            مقالات ورؤى من فريقنا حول التسويق الرقمي، التصميم، التطوير، وكل ما يهم علامتك التجارية في العالم الرقمي.
+          </p>
+        </div>
+        <a href="#" class="blog-more-link">
+          <span>كل المقالات</span>
+          <img src="icons/more-arrow.svg" alt="" />
+        </a>
+      </header>
+
+      <!-- شبكة المقالات (3 كروت) -->
+      <div class="blog-grid" id="blogGrid">
+
+        <!-- مقال 1 -->
+        <article class="blog-card" data-card="0">
+          <div class="blog-card-visual">
+            <img src="icons/blog-1.png" alt="مقال 1" class="blog-card-img" />
+            <span class="blog-card-date">15 يونيو 2026</span>
+          </div>
+          <div class="blog-card-body">
+            <h3 class="blog-card-title">5 استراتيجيات تسويقية تنجح في 2026</h3>
+            <p class="blog-card-excerpt">
+              تعرف على أحدث الاستراتيجيات التسويقية التي أثبتت فعاليتها هذا العام — من الذكاء الاصطناعي إلى التسويق بالمؤثرين.
+            </p>
+            <a href="#" class="blog-card-link">
+              <span>اقرأ المزيد</span>
+              <img src="icons/gold-arrow.svg" alt="" />
+            </a>
+          </div>
+        </article>
+
+        <!-- مقال 2 -->
+        <article class="blog-card" data-card="1">
+          <div class="blog-card-visual">
+            <img src="icons/blog-2.png" alt="مقال 2" class="blog-card-img" />
+            <span class="blog-card-date">10 يونيو 2026</span>
+          </div>
+          <div class="blog-card-body">
+            <h3 class="blog-card-title">دليلك الشامل لتحسين محركات البحث</h3>
+            <p class="blog-card-excerpt">
+              كل ما تحتاج معرفته عن SEO — من البحث عن الكلمات المفتاحية إلى بناء الروابط وتحليل المنافسين.
+            </p>
+            <a href="#" class="blog-card-link">
+              <span>اقرأ المزيد</span>
+              <img src="icons/gold-arrow.svg" alt="" />
+            </a>
+          </div>
+        </article>
+
+        <!-- مقال 3 -->
+        <article class="blog-card" data-card="2">
+          <div class="blog-card-visual">
+            <img src="icons/blog-3.png" alt="مقال 3" class="blog-card-img" />
+            <span class="blog-card-date">5 يونيو 2026</span>
+          </div>
+          <div class="blog-card-body">
+            <h3 class="blog-card-title">كيف تبني هوية بصرية قوية لعلامتك</h3>
+            <p class="blog-card-excerpt">
+              الهوية البصرية مش بس لوگو — هي قصة علامتك التجارية. تعلم كيف تبني هوية متكاملة تنعكس في كل نقاط التواصل.
+            </p>
+            <a href="#" class="blog-card-link">
+              <span>اقرأ المزيد</span>
+              <img src="icons/gold-arrow.svg" alt="" />
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>`;
+
+// خريطة بين اسم الـ component ومتغير الـ HTML بتاعه
+var SECTION_INCLUDES = {
+  'how': HOW_HTML,
+  'clients': CLIENTS_HTML,
+  'testimonials': TESTIMONIALS_HTML,
+  'cta-final': CTA_FINAL_HTML,
+  'faq': FAQ_HTML,
+  'blog': BLOG_HTML
+};
+
+// حقن كل العناصر اللي عليها data-include
+var sectionPlaceholders = Array.prototype.slice.call(
+  document.querySelectorAll('[data-include]')
+);
+sectionPlaceholders.forEach(function (ph) {
+  var name = ph.getAttribute('data-include');
+  var html = SECTION_INCLUDES[name];
+  if (html) {
+    ph.innerHTML = html;
+  } else {
+    console.warn('[includes] unknown section:', name);
+  }
+});
 })();
