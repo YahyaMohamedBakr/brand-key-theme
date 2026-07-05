@@ -1202,6 +1202,64 @@ function initShared() {
     a.addEventListener('click', function (e) { e.preventDefault(); });
   });
 
+  /* ============================================================
+     تفاعلات صفحة من نحن — السيكشنات الأربعة الجديدة
+     ============================================================ */
+  var aboutTargets = [
+    { id: 'aboutExploreHead', cls: 'about-explore-head' },
+    { id: 'aboutExploreGrid', cls: 'about-explore-cards', children: '.about-explore-card' },
+    { id: 'aboutUsVisual', cls: 'about-us-visual' },
+    { id: 'aboutUsContent', cls: 'about-us-content' },
+    { id: 'aboutWhyContent', cls: 'about-why-content' },
+    { id: 'aboutWhyVisual', cls: 'about-why-visual' },
+    { id: 'aboutSecurityHead', cls: 'about-security-head' },
+    { id: 'aboutSecurityGrid', cls: 'about-security-cards', children: '.about-security-card' },
+    { id: 'aboutSecurityCta', cls: 'about-security-cta' }
+  ];
+
+  function revealAboutSection(el) {
+    if (el) el.classList.add('revealed');
+  }
+
+  if ('IntersectionObserver' in window) {
+    aboutTargets.forEach(function (target) {
+      var el = document.getElementById(target.id);
+      if (!el) return;
+      // لو فيه children — observe كل واحد لوحده
+      if (target.children) {
+        var childItems = el.querySelectorAll(target.children);
+        var childIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              childIO.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        childItems.forEach(function (c) { childIO.observe(c); });
+      }
+      // observe الأب نفسه
+      var parentIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            revealAboutSection(entry.target);
+            parentIO.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+      parentIO.observe(el);
+    });
+  } else {
+    // fallback: اكشف كل حاجة فوراً
+    aboutTargets.forEach(function (target) {
+      var el = document.getElementById(target.id);
+      revealAboutSection(el);
+      if (target.children && el) {
+        el.querySelectorAll(target.children).forEach(function (c) { c.classList.add('revealed'); });
+      }
+    });
+  }
+
   console.log('%cBrand Key %cAll sections loaded (Header, Nav, Hero, Services, Consult, Sectors, CTA2, Portfolio, Pricing & Footer)',
     'color:#F2C94C;font-weight:bold;', 'color:#0E233F;');
 }

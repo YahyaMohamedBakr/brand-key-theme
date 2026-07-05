@@ -4740,6 +4740,574 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة من نحن — السيكشنات الأربعة الجديدة
+   ============================================================ */
+
+/* ---------- سيكشن 1: استكشف النجاح (3 أعمدة إحصائيات) ---------- */
+.about-explore {
+  position: relative;
+  background: var(--bg);
+  padding: 90px 24px 80px;
+  overflow: hidden;
+}
+.about-explore-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+.about-explore-head {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 56px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.about-explore-head.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.about-explore-title {
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+.about-explore-heading-line {
+  margin: 0 auto 18px;
+}
+.about-explore-desc {
+  font-size: clamp(14px, 1.3vw, 17px);
+  color: var(--muted);
+  line-height: 1.9;
+}
+.about-explore-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.about-explore-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  padding: 56px 32px;
+  text-align: center;
+  color: #fff;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s var(--ease-out), transform 0.8s var(--ease-out), box-shadow 0.45s var(--ease-out);
+  will-change: transform, opacity;
+}
+.about-explore-card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.about-explore-card[data-card="0"].revealed { transition-delay: 0ms; }
+.about-explore-card[data-card="1"].revealed { transition-delay: 150ms; }
+.about-explore-card[data-card="2"].revealed { transition-delay: 300ms; }
+.about-explore-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(14, 35, 63, 0.25);
+}
+/* التدرج الكحلي لكل عمود — من فاتح (يمين) لغامق (شمال) */
+.about-explore-card--1 {
+  background: linear-gradient(135deg, #2A4768 0%, #1A3556 100%);
+}
+.about-explore-card--2 {
+  background: linear-gradient(135deg, #1A3556 0%, #142B47 100%);
+}
+.about-explore-card--3 {
+  background: linear-gradient(135deg, #142B47 0%, #0E233F 100%);
+}
+/* keyhole زخرفي على جنب كل عمود */
+.about-explore-card-keyhole {
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  transform: translateY(-50%);
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(242, 201, 76, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.about-explore-card-keyhole::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 90px;
+  border: 2px solid rgba(242, 201, 76, 0.12);
+  border-radius: 30px 30px 0 0;
+}
+.about-explore-card-keyhole::after {
+  content: '';
+  position: absolute;
+  top: calc(50% + 35px);
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(242, 201, 76, 0.12);
+  border-radius: 50%;
+}
+.about-explore-card-num {
+  font-size: clamp(36px, 4.5vw, 52px);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 12px;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+.about-explore-card-label {
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- سيكشن 2: نحن (نص يمين + صورة شمال) ---------- */
+.about-us {
+  position: relative;
+  background: var(--bg);
+  padding: 80px 24px;
+  overflow: hidden;
+}
+.about-us-container {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+/* الصورة على الشمال */
+.about-us-visual {
+  order: 0;
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.about-us-visual.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+.about-us-image-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(14, 35, 63, 0.15);
+}
+.about-us-image {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  max-height: 460px;
+  object-fit: cover;
+  display: block;
+}
+/* تراكب لوگو BK + keyhole */
+.about-us-logo-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+.about-us-logo-text {
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--navy);
+  letter-spacing: -2px;
+  position: relative;
+}
+.about-us-logo-keyhole {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 8px);
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+}
+.about-us-logo-keyhole::before {
+  content: '';
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 26px;
+  border: 3px solid var(--gold);
+  border-bottom: none;
+  border-radius: 18px 18px 0 0;
+}
+/* النص على اليمين */
+.about-us-content {
+  order: 1;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+  transition-delay: 150ms;
+}
+.about-us-content.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+.about-us-title {
+  font-size: clamp(34px, 4.5vw, 52px);
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.about-us-heading-line {
+  margin: 0 0 22px;
+}
+.about-us-desc {
+  font-size: clamp(15px, 1.4vw, 17px);
+  color: var(--muted);
+  line-height: 2;
+}
+
+/* ---------- سيكشن 3: لماذا (نص شمال + صورة يمين — عكس نحن) ---------- */
+.about-why {
+  position: relative;
+  background: var(--bg-soft);
+  padding: 80px 24px;
+  overflow: hidden;
+}
+.about-why-container {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+/* النص أول في source، في RTL بيظهر يمين — بس إحنا عاوزينه شمال */
+.about-why-content {
+  order: 1;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.about-why-content.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+.about-why-title {
+  font-size: clamp(34px, 4.5vw, 52px);
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.about-why-heading-line {
+  margin: 0 0 22px;
+}
+.about-why-desc {
+  font-size: clamp(15px, 1.4vw, 17px);
+  color: var(--muted);
+  line-height: 2;
+}
+/* الصورة تانية في source، في RTL بتظهر شمال — بس عاوزينها يمين */
+.about-why-visual {
+  order: 0;
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+  transition-delay: 150ms;
+}
+.about-why-visual.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+.about-why-image-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(14, 35, 63, 0.15);
+}
+.about-why-image {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  max-height: 460px;
+  object-fit: cover;
+  display: block;
+}
+.about-why-logo-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+.about-why-logo-text {
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--navy);
+  letter-spacing: -2px;
+  position: relative;
+}
+.about-why-logo-keyhole {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 8px);
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+}
+.about-why-logo-keyhole::before {
+  content: '';
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 26px;
+  border: 3px solid var(--gold);
+  border-bottom: none;
+  border-radius: 18px 18px 0 0;
+}
+
+/* ---------- سيكشن 4: لا تقلق بشأن الأمان ---------- */
+.about-security {
+  position: relative;
+  background: var(--bg);
+  padding: 90px 24px 0;
+  overflow: hidden;
+}
+.about-security-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+.about-security-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 56px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.about-security-head.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.about-security-title {
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+.about-security-heading-line {
+  margin: 0 auto 18px;
+}
+.about-security-sub {
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: var(--muted);
+  line-height: 1.9;
+}
+.about-security-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 0;
+}
+.about-security-card {
+  display: flex;
+  gap: 20px;
+  padding: 32px 28px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 20px rgba(14, 35, 63, 0.06);
+  transition: box-shadow 0.45s var(--ease-out), transform 0.45s var(--ease-spring), border-color 0.35s var(--ease-out);
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: transform, opacity;
+}
+.about-security-card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s var(--ease-out), transform 0.8s var(--ease-out), box-shadow 0.45s var(--ease-out), border-color 0.35s var(--ease-out);
+}
+.about-security-card[data-card="0"].revealed { transition-delay: 0ms; }
+.about-security-card[data-card="1"].revealed { transition-delay: 150ms; }
+.about-security-card:hover {
+  box-shadow: 0 20px 40px rgba(14, 35, 63, 0.12);
+  border-color: var(--gold);
+  transform: translateY(-4px);
+}
+.about-security-card-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  color: var(--gold);
+  border-radius: var(--radius);
+}
+.about-security-card-body {
+  flex: 1;
+}
+.about-security-card-title {
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.about-security-card-desc {
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+/* شريط CTA كحلي في آخر السيكشن */
+.about-security-cta {
+  position: relative;
+  background: var(--navy);
+  margin: 0 -24px;
+  padding: 48px 24px;
+  text-align: center;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.about-security-cta.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.about-security-cta-deco {
+  position: absolute;
+  top: 50%;
+  left: -60px;
+  transform: translateY(-50%);
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(242, 201, 76, 0.08) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.about-security-cta-btn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: var(--gold);
+  color: var(--navy);
+  border-radius: var(--radius);
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(242, 201, 76, 0.35);
+  transition: background 0.35s var(--ease-out), transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-out);
+}
+.about-security-cta-btn:hover {
+  background: var(--gold-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-gold);
+}
+.about-security-cta-btn:hover svg {
+  transform: translateX(-5px);
+}
+.about-security-cta-btn svg {
+  transition: transform 0.4s var(--ease-spring);
+}
+
+/* ---------- ريسبونسف للسيكشنات الجديدة ---------- */
+@media (max-width: 900px) {
+  /* استكشف النجاح */
+  .about-explore { padding: 64px 20px 60px; }
+  .about-explore-head { margin-bottom: 40px; }
+  .about-explore-grid { grid-template-columns: 1fr; gap: 20px; }
+  .about-explore-card { padding: 40px 28px; min-height: 200px; }
+
+  /* نحن */
+  .about-us { padding: 60px 20px; }
+  .about-us-container { grid-template-columns: 1fr; gap: 36px; }
+  .about-us-visual { order: -1; }
+  .about-us-image { min-height: 280px; max-height: 360px; }
+
+  /* لماذا */
+  .about-why { padding: 60px 20px; }
+  .about-why-container { grid-template-columns: 1fr; gap: 36px; }
+  .about-why-visual { order: -1; }
+  .about-why-image { min-height: 280px; max-height: 360px; }
+
+  /* الأمان */
+  .about-security { padding: 64px 20px 0; }
+  .about-security-head { margin-bottom: 40px; }
+  .about-security-grid { grid-template-columns: 1fr; gap: 20px; }
+  .about-security-card { padding: 26px 22px; }
+  .about-security-cta { padding: 40px 20px; }
+}
+
+@media (max-width: 600px) {
+  /* استكشف النجاح */
+  .about-explore { padding: 48px 16px 40px; }
+  .about-explore-head { margin-bottom: 32px; }
+  .about-explore-card { padding: 32px 20px; min-height: 180px; }
+  .about-explore-card-num { font-size: 38px; }
+
+  /* نحن */
+  .about-us { padding: 44px 16px; }
+  .about-us-title { font-size: 30px; }
+  .about-us-desc { font-size: 14px; }
+  .about-us-logo-overlay, .about-why-logo-overlay { width: 100px; height: 100px; }
+  .about-us-logo-text, .about-why-logo-text { font-size: 40px; }
+
+  /* لماذا */
+  .about-why { padding: 44px 16px; }
+  .about-why-title { font-size: 30px; }
+  .about-why-desc { font-size: 14px; }
+
+  /* الأمان */
+  .about-security { padding: 48px 16px 0; }
+  .about-security-title { font-size: 26px; }
+  .about-security-sub { font-size: 14px; }
+  .about-security-card { flex-direction: column; gap: 14px; padding: 22px 18px; }
+  .about-security-card-icon { width: 52px; height: 52px; }
+  .about-security-card-icon svg { width: 26px; height: 26px; }
+  .about-security-card-title { font-size: 19px; }
+  .about-security-card-desc { font-size: 13.5px; }
+  .about-security-cta { padding: 32px 16px; }
+  .about-security-cta-btn { width: 100%; justify-content: center; }
+}
+
+/* ============================================================
    صفحات داخلية — placeholder للمحتوى قيد الإضافة
    ============================================================ */
 .page-content {
