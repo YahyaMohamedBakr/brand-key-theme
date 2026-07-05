@@ -5065,19 +5065,23 @@ a.contact-item:hover .contact-ic {
   line-height: 1.9;
 }
 .about-security-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-  margin-bottom: 0;
-}
-.about-security-card {
   display: flex;
-  gap: 20px;
-  padding: 32px 28px;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+/* مستطيل 620×182 + إطار E5E7EB 1px */
+.about-security-card {
+  position: relative;
+  flex: 1 1 0;
+  max-width: 620px;
+  min-height: 182px;
+  padding: 28px 32px;
   background: #fff;
-  border: 1px solid var(--line);
+  border: 1px solid #E5E7EB;
   border-radius: var(--radius-lg);
-  box-shadow: 0 4px 20px rgba(14, 35, 63, 0.06);
+  box-sizing: border-box;
   transition: box-shadow 0.45s var(--ease-out), transform 0.45s var(--ease-spring), border-color 0.35s var(--ease-out);
   opacity: 0;
   transform: translateY(40px);
@@ -5095,10 +5099,13 @@ a.contact-item:hover .contact-ic {
   border-color: var(--gold);
   transform: translateY(-4px);
 }
+/* أيقونة في مربع 72×72 لونه #0E233F — أعلى اليمين (محاذية لأول الكلام) */
 .about-security-card-icon {
-  flex-shrink: 0;
-  width: 64px;
-  height: 64px;
+  position: absolute;
+  top: 28px;
+  right: 32px;
+  width: 72px;
+  height: 72px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -5106,14 +5113,17 @@ a.contact-item:hover .contact-ic {
   color: var(--gold);
   border-radius: var(--radius);
 }
+/* جسم الكارت — الكلام بيمين المحتوى (عشان الأيقونة أعلى اليمين، الكلام يبدأ من نفس المستوى) */
 .about-security-card-body {
-  flex: 1;
+  width: calc(100% - 96px); /* خلي مساحة للأيقونة */
+  margin-right: 0;
+  margin-left: auto;
 }
 .about-security-card-title {
-  font-size: clamp(20px, 2vw, 24px);
+  font-size: 22px;
   font-weight: 800;
   color: var(--navy);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   line-height: 1.3;
 }
 .about-security-card-desc {
@@ -5121,13 +5131,20 @@ a.contact-item:hover .contact-ic {
   color: var(--muted);
   line-height: 1.85;
 }
-/* شريط CTA كحلي في آخر السيكشن */
+/* مستطيل كبير 1280×128 — لون #0E233F — تايتل+دسكربشن يمين + زر أصفر شمال */
 .about-security-cta {
   position: relative;
-  background: var(--navy);
-  margin: 0 -24px;
-  padding: 48px 24px;
-  text-align: center;
+  background: #0E233F;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  min-height: 128px;
+  padding: 28px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   opacity: 0;
   transform: translateY(30px);
@@ -5148,18 +5165,39 @@ a.contact-item:hover .contact-ic {
   border-radius: 50%;
   pointer-events: none;
 }
+/* النص (تايتل + دسكربشن) على اليمين */
+.about-security-cta-text {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  text-align: right;
+}
+.about-security-cta-title {
+  font-size: clamp(17px, 1.6vw, 20px);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+.about-security-cta-desc {
+  font-size: clamp(13px, 1.2vw, 15px);
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+}
+/* الزر الأصفر على الشمال */
 .about-security-cta-btn {
   position: relative;
   z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 32px;
+  padding: 14px 28px;
   background: var(--gold);
   color: var(--navy);
   border-radius: var(--radius);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
+  white-space: nowrap;
   box-shadow: 0 6px 16px rgba(242, 201, 76, 0.35);
   transition: background 0.35s var(--ease-out), transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-out);
 }
@@ -5196,11 +5234,15 @@ a.contact-item:hover .contact-ic {
   .about-why-image-wrap { width: 100%; max-width: 450px; margin: 0 auto; }
 
   /* الأمان */
-  .about-security { padding: 64px 20px 0; }
+  .about-security { padding: 64px 20px; }
   .about-security-head { margin-bottom: 40px; }
-  .about-security-grid { grid-template-columns: 1fr; gap: 20px; }
-  .about-security-card { padding: 26px 22px; }
-  .about-security-cta { padding: 40px 20px; }
+  .about-security-grid { flex-direction: column; gap: 20px; }
+  .about-security-card { flex: 0 0 auto; width: 100%; max-width: 100%; min-height: auto; padding: 24px 22px; }
+  .about-security-card-icon { width: 60px; height: 60px; top: 24px; right: 22px; }
+  .about-security-card-body { width: calc(100% - 80px); }
+  .about-security-cta { flex-direction: column; align-items: stretch; text-align: right; padding: 28px 22px; }
+  .about-security-cta-text { text-align: right; }
+  .about-security-cta-btn { align-self: flex-start; }
 }
 
 @media (max-width: 600px) {
@@ -5226,16 +5268,17 @@ a.contact-item:hover .contact-ic {
   .about-why-desc { font-size: 14px; }
 
   /* الأمان */
-  .about-security { padding: 48px 16px 0; }
+  .about-security { padding: 48px 16px; }
   .about-security-title { font-size: 26px; }
   .about-security-sub { font-size: 14px; }
-  .about-security-card { flex-direction: column; gap: 14px; padding: 22px 18px; }
-  .about-security-card-icon { width: 52px; height: 52px; }
+  .about-security-card { padding: 20px 16px; }
+  .about-security-card-icon { width: 52px; height: 52px; top: 20px; right: 16px; }
   .about-security-card-icon svg { width: 26px; height: 26px; }
+  .about-security-card-body { width: calc(100% - 68px); }
   .about-security-card-title { font-size: 19px; }
   .about-security-card-desc { font-size: 13.5px; }
-  .about-security-cta { padding: 32px 16px; }
-  .about-security-cta-btn { width: 100%; justify-content: center; }
+  .about-security-cta { padding: 24px 18px; }
+  .about-security-cta-btn { width: 100%; justify-content: center; align-self: stretch; }
 }
 
 /* ============================================================
