@@ -4873,7 +4873,7 @@ a.contact-item:hover .contact-ic {
 }
 /* الصورة على الشمال */
 .about-us-visual {
-  order: 0;
+  order: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4915,7 +4915,7 @@ a.contact-item:hover .contact-ic {
 }
 /* النص على اليمين */
 .about-us-content {
-  order: 1;
+  order: 0;
   opacity: 0;
   transform: translateX(40px);
   transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
