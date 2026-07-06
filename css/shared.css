@@ -5511,7 +5511,7 @@ a.contact-item:hover .contact-ic {
 /* ---------- شريط البحث + الفلاتر ---------- */
 .blog-filters {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 16px;
   margin-bottom: 48px;
@@ -5519,9 +5519,9 @@ a.contact-item:hover .contact-ic {
 /* شريط البحث (يمين) — مستطيل بحواف مستديرة */
 .blog-search-wrap {
   position: relative;
-  flex: 1 1 360px;
+  flex: 0 1 360px;
   max-width: 440px;
-  min-width: 280px;
+  min-width: 220px;
 }
 .blog-search-input {
   width: 100%;
@@ -5577,6 +5577,10 @@ a.contact-item:hover .contact-ic {
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
   transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out);
 }
 .blog-dropdown-btn:hover { border-color: var(--gold); }
@@ -5614,14 +5618,18 @@ a.contact-item:hover .contact-ic {
   transition: background 0.2s var(--ease-out);
 }
 .blog-dropdown-menu li:hover { background: var(--bg-soft); }
-/* أزرار الفلاتر (يمين) — 3 أزرار */
+/* أزرار الفلاتر (وسط) — 3 أزرار، قابلة للانكماش */
 .blog-filter-btns {
   display: flex;
   gap: 12px;
+  flex: 0 1 auto;
+  min-width: 0;
 }
-/* المنيو المنسدلة (شمال خالص) — margin-left: 0 + margin-right: auto يدفعلها لليسار في RTL */
+/* المنيو المنسدلة (شمال خالص) — margin-right: auto يدفعلها لليسار في RTL */
 .blog-dropdown-wrap {
   margin-right: auto;
+  flex: 0 1 auto;
+  min-width: 0;
 }
 .blog-filter-btn {
   display: inline-flex;
@@ -5637,6 +5645,9 @@ a.contact-item:hover .contact-ic {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
   transition: background 0.3s var(--ease-out), color 0.3s var(--ease-out), border-color 0.3s var(--ease-out), transform 0.3s var(--ease-spring);
 }
 .blog-filter-btn:hover {
@@ -5667,7 +5678,12 @@ a.contact-item:hover .contact-ic {
   background: rgba(255, 255, 255, 0.25);
   color: #fff;
 }
-.blog-filter-label { white-space: nowrap; }
+.blog-filter-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
 
 /* ---------- المقال البارز (Featured) ---------- */
 .blog-featured {
@@ -5933,12 +5949,9 @@ a.contact-item:hover .contact-ic {
 /* ---------- ريسبونسف ---------- */
 @media (max-width: 900px) {
   .blog-main { padding: 50px 20px 60px; }
-  .blog-filters { gap: 12px; }
-  .blog-search-wrap { flex: 1 1 100%; max-width: 100%; }
-  .blog-dropdown-wrap { flex: 0 0 auto; }
-  .blog-filter-btns { flex: 1 1 100%; flex-wrap: wrap; }
-  .blog-filter-btn { flex: 1 1 calc(50% - 6px); min-width: 0; padding: 0 12px; font-size: 13px; }
-  .blog-filter-label { white-space: normal; font-size: 12px; }
+  .blog-filters { gap: 10px; }
+  .blog-search-wrap { flex: 0 1 280px; min-width: 180px; }
+  .blog-filter-label { max-width: 100px; }
   .blog-featured { grid-template-columns: 1fr; gap: 24px; padding: 16px; }
   .blog-grid-main { grid-template-columns: 1fr 1fr; gap: 20px; }
   .blog-featured { margin-bottom: 48px; }
@@ -5946,12 +5959,15 @@ a.contact-item:hover .contact-ic {
 
 @media (max-width: 600px) {
   .blog-main { padding: 36px 16px 44px; }
-  .blog-filters { margin-bottom: 36px; }
+  .blog-filters { flex-wrap: wrap; margin-bottom: 36px; }
+  .blog-search-wrap { flex: 1 1 100%; max-width: 100%; min-width: 0; }
+  .blog-dropdown-wrap { flex: 0 0 auto; margin-right: 0; }
+  .blog-filter-btns { flex: 1 1 100%; flex-wrap: wrap; margin-right: 0; }
+  .blog-filter-btn { flex: 1 1 calc(50% - 6px); min-width: 0; padding: 0 12px; font-size: 13px; height: 48px; }
+  .blog-filter-label { white-space: normal; font-size: 12px; max-width: none; }
   .blog-search-input { height: 48px; font-size: 14px; }
   .blog-search-btn { width: 36px; height: 36px; }
-  .blog-dropdown-btn { height: 48px; font-size: 14px; }
-  .blog-filter-btn { flex: 1 1 100%; height: 48px; }
-  .blog-filter-label { font-size: 13px; }
+  .blog-dropdown-btn { height: 48px; font-size: 14px; max-width: 200px; }
   .blog-featured { margin-bottom: 36px; padding: 12px; }
   .blog-featured-title { font-size: 20px; }
   .blog-featured-desc { font-size: 14px; }
