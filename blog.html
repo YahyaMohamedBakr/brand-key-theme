@@ -34,26 +34,10 @@
       <div class="blog-main-container">
 
         <!-- ===== شريط البحث + المنيو المنسدلة + أزرار الفلاتر ===== -->
-        <!-- ترتيب RTL من اليمين لليسار: الفلاتر (يمين) → البحث (وسط) → الـ dropdown (شمال) -->
+        <!-- ترتيب RTL من اليمين لليسار: البحث (يمين) → الفلاتر (وسط) → الـ dropdown (شمال) -->
         <div class="blog-filters" id="blogFilters">
 
-          <!-- 3 أزرار فلاتر (يمين) — من اليمين لليسار: 5 (أصفر متفعل), 22, 16 -->
-          <div class="blog-filter-btns" id="blogFilterBtns">
-            <button class="blog-filter-btn active" data-filter="content" type="button">
-              <span class="blog-filter-count">5</span>
-              <span class="blog-filter-label">قسم المحتوى الإبداعي</span>
-            </button>
-            <button class="blog-filter-btn" data-filter="tech" type="button">
-              <span class="blog-filter-count">22</span>
-              <span class="blog-filter-label">قسم الحلول التقنية والمتاجر</span>
-            </button>
-            <button class="blog-filter-btn" data-filter="marketing" type="button">
-              <span class="blog-filter-count">16</span>
-              <span class="blog-filter-label">قسم التسويق والنمو</span>
-            </button>
-          </div>
-
-          <!-- شريط البحث (وسط) — مستطيل بحواف مستديرة، جواه placeholder رمادي، أيقونة عدسة في آخره شمال -->
+          <!-- شريط البحث (يمين) — مستطيل بحواف مستديرة، جواه placeholder رمادي، أيقونة عدسة في آخره شمال -->
           <div class="blog-search-wrap">
             <input
               type="search"
@@ -68,6 +52,22 @@
                 <circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="2"/>
                 <path d="M14 14L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
               </svg>
+            </button>
+          </div>
+
+          <!-- 3 أزرار فلاتر (وسط) — من اليمين لليسار: 5 (أصفر متفعل), 22, 16 -->
+          <div class="blog-filter-btns" id="blogFilterBtns">
+            <button class="blog-filter-btn active" data-filter="content" type="button">
+              <span class="blog-filter-count">5</span>
+              <span class="blog-filter-label">قسم المحتوى الإبداعي</span>
+            </button>
+            <button class="blog-filter-btn" data-filter="tech" type="button">
+              <span class="blog-filter-count">22</span>
+              <span class="blog-filter-label">قسم الحلول التقنية والمتاجر</span>
+            </button>
+            <button class="blog-filter-btn" data-filter="marketing" type="button">
+              <span class="blog-filter-count">16</span>
+              <span class="blog-filter-label">قسم التسويق والنمو</span>
             </button>
           </div>
 
