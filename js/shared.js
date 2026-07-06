@@ -1229,7 +1229,10 @@ function initShared() {
     { id: 'servicesMarketingList', cls: 'services-content-rows', children: '.services-content-row' },
     { id: 'servicesMarketingCta', cls: 'services-content-cta' },
     { id: 'servicesProjectsHead', cls: 'services-projects-head' },
-    { id: 'servicesMarketingProjectsHead', cls: 'services-projects-head' }
+    { id: 'servicesMarketingProjectsHead', cls: 'services-projects-head' },
+    { id: 'servicesTechHead', cls: 'services-content-head' },
+    { id: 'servicesTechList', cls: 'services-content-rows', children: '.services-content-row' },
+    { id: 'servicesTechCta', cls: 'services-content-cta' }
   ];
 
   function revealAboutSection(el) {
