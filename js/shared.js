@@ -1232,7 +1232,8 @@ function initShared() {
     { id: 'servicesMarketingProjectsHead', cls: 'services-projects-head' },
     { id: 'servicesTechHead', cls: 'services-content-head' },
     { id: 'servicesTechList', cls: 'services-content-rows', children: '.services-content-row' },
-    { id: 'servicesTechCta', cls: 'services-content-cta' }
+    { id: 'servicesTechCta', cls: 'services-content-cta' },
+    { id: 'servicesTechProjectsHead', cls: 'services-projects-head' }
   ];
 
   function revealAboutSection(el) {
@@ -1899,6 +1900,7 @@ function initShared() {
 
   setupProjectsSlider('servicesProjectsSlider');
   setupProjectsSlider('servicesMarketingProjectsSlider');
+  setupProjectsSlider('servicesTechProjectsSlider');
 
   console.log('%cBrand Key %cAll sections loaded (Header, Nav, Hero, Services, Consult, Sectors, CTA2, Portfolio, Pricing & Footer)',
     'color:#F2C94C;font-weight:bold;', 'color:#0E233F;');
