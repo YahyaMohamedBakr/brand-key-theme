@@ -1224,7 +1224,8 @@ function initShared() {
     { id: 'servicesAxesCta', cls: 'services-axes-cta' },
     { id: 'servicesContentHead', cls: 'services-content-head' },
     { id: 'servicesContentList', cls: 'services-content-rows', children: '.services-content-row' },
-    { id: 'servicesContentCta', cls: 'services-content-cta' }
+    { id: 'servicesContentCta', cls: 'services-content-cta' },
+    { id: 'servicesProjectsHead', cls: 'services-projects-head' }
   ];
 
   function revealAboutSection(el) {
@@ -1764,6 +1765,125 @@ function initShared() {
   } else {
     if (pHead) pHead.classList.add('revealed');
     pCards.forEach(function (c) { c.classList.add('revealed'); });
+  }
+
+  /* ============================================================
+     سلايدر أهم مشاريع المحتوى والإبداع (services-projects)
+     - 2 كروت ظاهرين، التنقل بأسهم + نقاط
+     ============================================================ */
+  var spSlider = document.getElementById('servicesProjectsSlider');
+  var spTrack = document.getElementById('servicesProjectsTrack');
+  var spCards = Array.prototype.slice.call(document.querySelectorAll('.services-projects-card'));
+  var spPrev = document.getElementById('servicesProjectsPrev');
+  var spNext = document.getElementById('servicesProjectsNext');
+  var spDotsContainer = document.getElementById('servicesProjectsDots');
+  var spViewport = document.getElementById('servicesProjectsViewport');
+
+  if (spSlider && spTrack && spCards.length) {
+    var spActive = 0;
+    var spTotal = spCards.length;
+
+    function spVisibleCount() {
+      var w = window.innerWidth;
+      if (w <= 900) return 1;
+      return 2;
+    }
+
+    function spBuildDots() {
+      if (!spDotsContainer) return;
+      var visible = spVisibleCount();
+      var pages = Math.max(1, spTotal - visible + 1);
+      spDotsContainer.innerHTML = '';
+      for (var i = 0; i < pages; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'services-projects-dot' + (i === spActive ? ' active' : '');
+        dot.type = 'button';
+        dot.setAttribute('data-go', i);
+        dot.setAttribute('aria-label', 'شريحة ' + (i + 1));
+        (function (idx) {
+          dot.addEventListener('click', function () { spGoTo(idx); });
+        })(i);
+        spDotsContainer.appendChild(dot);
+      }
+    }
+
+    function spUpdate() {
+      if (!spCards.length) return;
+      var card = spCards[0];
+      var cardWidth = card.getBoundingClientRect().width;
+      var gap = 24;
+      var offset = spActive * (cardWidth + gap);
+      spTrack.style.transform = 'translateX(' + offset + 'px)';
+
+      var dots = spDotsContainer ? spDotsContainer.querySelectorAll('.services-projects-dot') : [];
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle('active', i === spActive);
+      });
+
+      var visible = spVisibleCount();
+      var maxIndex = Math.max(0, spTotal - visible);
+      if (spPrev) spPrev.disabled = (spActive <= 0);
+      if (spNext) spNext.disabled = (spActive >= maxIndex);
+    }
+
+    function spGoTo(index) {
+      var visible = spVisibleCount();
+      var maxIndex = Math.max(0, spTotal - visible);
+      if (index < 0) index = 0;
+      if (index > maxIndex) index = maxIndex;
+      if (index === spActive) return;
+      spActive = index;
+      spUpdate();
+    }
+
+    function spPrevSlide() { spGoTo(spActive - 1); }
+    function spNextSlide() { spGoTo(spActive + 1); }
+
+    if (spPrev) spPrev.addEventListener('click', spPrevSlide);
+    if (spNext) spNext.addEventListener('click', spNextSlide);
+
+    spSlider.setAttribute('tabindex', '0');
+    spSlider.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); spPrevSlide(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); spNextSlide(); }
+    });
+
+    // swipe
+    if (spViewport) {
+      var spSwipeStart = null;
+      var spSwipeDelta = 0;
+      spViewport.addEventListener('touchstart', function (e) {
+        spSwipeStart = e.touches[0].clientX;
+        spSwipeDelta = 0;
+      }, { passive: true });
+      spViewport.addEventListener('touchmove', function (e) {
+        if (spSwipeStart === null) return;
+        spSwipeDelta = e.touches[0].clientX - spSwipeStart;
+      }, { passive: true });
+      spViewport.addEventListener('touchend', function () {
+        if (spSwipeStart === null) return;
+        var threshold = 40;
+        if (spSwipeDelta > threshold) spPrevSlide();
+        else if (spSwipeDelta < -threshold) spNextSlide();
+        spSwipeStart = null;
+        spSwipeDelta = 0;
+      });
+    }
+
+    var spResizeTimer = null;
+    window.addEventListener('resize', function () {
+      if (spResizeTimer) clearTimeout(spResizeTimer);
+      spResizeTimer = setTimeout(function () {
+        var visible = spVisibleCount();
+        var maxIndex = Math.max(0, spTotal - visible);
+        if (spActive > maxIndex) spActive = maxIndex;
+        spBuildDots();
+        spUpdate();
+      }, 200);
+    });
+
+    spBuildDots();
+    spUpdate();
   }
 
   console.log('%cBrand Key %cAll sections loaded (Header, Nav, Hero, Services, Consult, Sectors, CTA2, Portfolio, Pricing & Footer)',
