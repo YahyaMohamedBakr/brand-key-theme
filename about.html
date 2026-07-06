@@ -191,6 +191,124 @@
     </div>
   </section>
 
+  <!-- ===================== سيكشن 5: العقول خلف المنظومة (سلايدر التيم) ===================== -->
+  <section class="about-team" id="aboutTeam">
+    <div class="about-team-container">
+
+      <!-- رأس السيكشن على الشمال (تايتل + لاين + ديسكربشن) -->
+      <header class="about-team-head" id="aboutTeamHead">
+        <h2 class="about-team-title">العقول خلف المنظومة</h2>
+        <img src="icons/heading-line.png" alt="" class="heading-line about-team-heading-line" aria-hidden="true" />
+        <p class="about-team-desc">
+          نحن لسنا مجرد أفراد يؤدون مهاماً منفصلة، بل نحن فريق متكامل يعمل بروح الشراكة. يجمعنا هدف واحد: تحويل التحديات التقنية والتسويقية المعقدة إلى نتائج ملموسة تدفع عملك نحو الريادة.
+        </p>
+      </header>
+
+      <!-- سلايدر التيم — بيظهر 4 كروت، والباقي بيظهر تباعاً، لوب لا نهائي -->
+      <div class="about-team-slider" id="aboutTeamSlider" aria-roledescription="carousel" aria-label="فريق براند كي">
+
+        <!-- منصة عرض الكروت -->
+        <div class="about-team-viewport" id="aboutTeamViewport">
+          <div class="about-team-track" id="aboutTeamTrack">
+
+            <!-- عضو 1 -->
+            <article class="about-team-card" data-index="0">
+              <div class="about-team-card-photo" style="background-image: url('icons/team-member.png');"></div>
+              <div class="about-team-card-overlay"></div>
+              <div class="about-team-card-info">
+                <h3 class="about-team-card-name">أحمد</h3>
+                <p class="about-team-card-role">المدير العام</p>
+              </div>
+            </article>
+
+            <!-- عضو 2 -->
+            <article class="about-team-card" data-index="1">
+              <div class="about-team-card-photo" style="background-image: url('icons/team-member.png');"></div>
+              <div class="about-team-card-overlay"></div>
+              <div class="about-team-card-info">
+                <h3 class="about-team-card-name">جاك</h3>
+                <p class="about-team-card-role">مدير المبيعات والتسويق</p>
+              </div>
+            </article>
+
+            <!-- عضو 3 -->
+            <article class="about-team-card" data-index="2">
+              <div class="about-team-card-photo" style="background-image: url('icons/team-member.png');"></div>
+              <div class="about-team-card-overlay"></div>
+              <div class="about-team-card-info">
+                <h3 class="about-team-card-name">توماس</h3>
+                <p class="about-team-card-role">مدير قسم المبيعات</p>
+              </div>
+            </article>
+
+            <!-- عضو 4 -->
+            <article class="about-team-card" data-index="3">
+              <div class="about-team-card-photo" style="background-image: url('icons/team-member.png');"></div>
+              <div class="about-team-card-overlay"></div>
+              <div class="about-team-card-info">
+                <h3 class="about-team-card-name">ديفيد</h3>
+                <p class="about-team-card-role">مدير قسم التسويق الرقمي</p>
+              </div>
+            </article>
+
+            <!-- عضو 5 (زيادة عشان السلايد يكمل لوب) -->
+            <article class="about-team-card" data-index="4">
+              <div class="about-team-card-photo" style="background-image: url('icons/team-member.png');"></div>
+              <div class="about-team-card-overlay"></div>
+              <div class="about-team-card-info">
+                <h3 class="about-team-card-name">سالم</h3>
+                <p class="about-team-card-role">مدير تطوير المنتجات</p>
+              </div>
+            </article>
+
+            <!-- عضو 6 -->
+            <article class="about-team-card" data-index="5">
+              <div class="about-team-card-photo" style="background-image: url('icons/team-member.png');"></div>
+              <div class="about-team-card-overlay"></div>
+              <div class="about-team-card-info">
+                <h3 class="about-team-card-name">جيمس</h3>
+                <p class="about-team-card-role">مدير التكنولوجيا والمعلومات</p>
+              </div>
+            </article>
+
+            <!-- عضو 7 -->
+            <article class="about-team-card" data-index="6">
+              <div class="about-team-card-photo" style="background-image: url('icons/team-member.png');"></div>
+              <div class="about-team-card-overlay"></div>
+              <div class="about-team-card-info">
+                <h3 class="about-team-card-name">عمر</h3>
+                <p class="about-team-card-role">مدير التصميم الإبداعي</p>
+              </div>
+            </article>
+
+            <!-- عضو 8 -->
+            <article class="about-team-card" data-index="7">
+              <div class="about-team-card-photo" style="background-image: url('icons/team-member.png');"></div>
+              <div class="about-team-card-overlay"></div>
+              <div class="about-team-card-info">
+                <h3 class="about-team-card-name">خالد</h3>
+                <p class="about-team-card-role">مدير المشاريع</p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- أزرار التحكم: سهم + نقاط + سهم -->
+        <div class="about-team-controls" id="aboutTeamControls">
+          <button class="about-team-arrow about-team-arrow--prev" id="aboutTeamPrev" aria-label="السابق" type="button">
+            <img src="icons/arrow-active.svg" alt="" />
+          </button>
+          <div class="about-team-dots" id="aboutTeamDots" role="tablist" aria-label="اختيار العضو"></div>
+          <button class="about-team-arrow about-team-arrow--next" id="aboutTeamNext" aria-label="التالي" type="button">
+            <img src="icons/arrow-active.svg" alt="" class="about-team-arrow-flip" />
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
 
   <!-- ===================== السيكشنات المكررة (مستدعاة كـ components) ===================== -->
   <div data-include="how"></div>

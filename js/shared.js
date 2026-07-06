@@ -1214,7 +1214,9 @@ function initShared() {
     { id: 'aboutWhyVisual', cls: 'about-why-visual' },
     { id: 'aboutSecurityHead', cls: 'about-security-head' },
     { id: 'aboutSecurityGrid', cls: 'about-security-cards', children: '.about-security-card' },
-    { id: 'aboutSecurityCta', cls: 'about-security-cta' }
+    { id: 'aboutSecurityCta', cls: 'about-security-cta' },
+    { id: 'aboutTeamHead', cls: 'about-team-head' },
+    { id: 'aboutTeamSlider', cls: 'about-team-slider' }
   ];
 
   function revealAboutSection(el) {
@@ -1257,6 +1259,184 @@ function initShared() {
       if (target.children && el) {
         el.querySelectorAll(target.children).forEach(function (c) { c.classList.add('revealed'); });
       }
+    });
+  }
+
+  /* ============================================================
+     سلايدر العقول خلف المنظومة (about-team)
+     - بيظهر 4 كروت على الديسكتوب (2 على التابلت، 1 على الموبايل)
+     - لوب لا نهائي — لما تخلص بترجع من الأول
+     - أسهم + نقاط + swipe + autoplay
+     ============================================================ */
+  var teamSlider = document.getElementById('aboutTeamSlider');
+  var teamTrack = document.getElementById('aboutTeamTrack');
+  var teamCards = Array.prototype.slice.call(document.querySelectorAll('.about-team-card'));
+  var teamPrev = document.getElementById('aboutTeamPrev');
+  var teamNext = document.getElementById('aboutTeamNext');
+  var teamDotsContainer = document.getElementById('aboutTeamDots');
+  var teamViewport = document.getElementById('aboutTeamViewport');
+
+  if (teamSlider && teamTrack && teamCards.length) {
+    var teamActive = 0;
+    var teamTotal = teamCards.length;
+    var teamAutoplayTimer = null;
+    var teamAutoplayDelay = 5000;
+    var teamSwipeStart = null;
+    var teamSwipeDelta = 0;
+
+    // كم كارت يظهر في كل مرة حسب العرض
+    function teamVisibleCount() {
+      var w = window.innerWidth;
+      if (w <= 600) return 1;
+      if (w <= 900) return 2;
+      return 4;
+    }
+
+    // أنشئ النقاط حسب عدد الصفحات
+    function teamBuildDots() {
+      if (!teamDotsContainer) return;
+      var visible = teamVisibleCount();
+      var pages = Math.max(1, teamTotal - visible + 1);
+      teamDotsContainer.innerHTML = '';
+      for (var i = 0; i < pages; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'about-team-dot' + (i === teamActive ? ' active' : '');
+        dot.type = 'button';
+        dot.setAttribute('data-go', i);
+        dot.setAttribute('aria-label', 'صفحة ' + (i + 1));
+        (function (idx) {
+          dot.addEventListener('click', function () { teamGoTo(idx); });
+        })(i);
+        teamDotsContainer.appendChild(dot);
+      }
+    }
+
+    // حدّث موضع الـ track
+    function teamUpdate() {
+      if (!teamCards.length) return;
+      var card = teamCards[0];
+      var cardWidth = card.getBoundingClientRect().width;
+      var gap = 20; // نفس الـ gap في CSS
+      var offset = teamActive * (cardWidth + gap);
+      // في RTL: السلايد بيروح من اليمين للشمال، فالـ transform سالب
+      teamTrack.style.transform = 'translateX(' + offset + 'px)';
+
+      // حدّث النقاط
+      var dots = teamDotsContainer ? teamDotsContainer.querySelectorAll('.about-team-dot') : [];
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle('active', i === teamActive);
+      });
+    }
+
+    function teamGoTo(index) {
+      var visible = teamVisibleCount();
+      var maxIndex = Math.max(0, teamTotal - visible);
+      // لوب لا نهائي: لو عدّيت الآخر، ارجع للـ 0؛ لو نقصت عن 0، روح للآخر
+      if (index > maxIndex) index = 0;
+      if (index < 0) index = maxIndex;
+      if (index === teamActive) return;
+      teamActive = index;
+      teamUpdate();
+      teamRestartAutoplay();
+    }
+
+    function teamPrevSlide() { teamGoTo(teamActive - 1); }
+    function teamNextSlide() { teamGoTo(teamActive + 1); }
+
+    function teamStartAutoplay() {
+      stopTeamAutoplay();
+      teamAutoplayTimer = window.setInterval(function () {
+        if (document.hidden) return;
+        var rect = teamSlider.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) teamNextSlide();
+      }, teamAutoplayDelay);
+    }
+    function stopTeamAutoplay() {
+      if (teamAutoplayTimer) { window.clearInterval(teamAutoplayTimer); teamAutoplayTimer = null; }
+    }
+    function teamRestartAutoplay() {
+      if (!teamAutoplayTimer) return;
+      stopTeamAutoplay();
+      teamStartAutoplay();
+    }
+
+    // ربط الأحداث
+    if (teamPrev) teamPrev.addEventListener('click', teamPrevSlide);
+    if (teamNext) teamNext.addEventListener('click', teamNextSlide);
+
+    // لوحة المفاتيح
+    teamSlider.setAttribute('tabindex', '0');
+    teamSlider.addEventListener('keydown', function (e) {
+      // RTL: سهم اليمين = السابق، سهم الشمال = التالي
+      if (e.key === 'ArrowRight') { e.preventDefault(); teamPrevSlide(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); teamNextSlide(); }
+    });
+
+    // swipe
+    if (teamViewport) {
+      teamViewport.addEventListener('touchstart', function (e) {
+        teamSwipeStart = e.touches[0].clientX;
+        teamSwipeDelta = 0;
+        stopTeamAutoplay();
+      }, { passive: true });
+      teamViewport.addEventListener('touchmove', function (e) {
+        if (teamSwipeStart === null) return;
+        teamSwipeDelta = e.touches[0].clientX - teamSwipeStart;
+      }, { passive: true });
+      teamViewport.addEventListener('touchend', function () {
+        if (teamSwipeStart === null) return;
+        var threshold = 40;
+        // RTL: swipe يمين (delta موجب) = السابق، swipe شمال (delta سالب) = التالي
+        if (teamSwipeDelta > threshold) teamPrevSlide();
+        else if (teamSwipeDelta < -threshold) teamNextSlide();
+        teamSwipeStart = null;
+        teamSwipeDelta = 0;
+        teamStartAutoplay();
+      });
+    }
+
+    // إيقاف الأوتوبلاي عند hover/focus
+    teamSlider.addEventListener('mouseenter', stopTeamAutoplay);
+    teamSlider.addEventListener('mouseleave', teamStartAutoplay);
+    teamSlider.addEventListener('focusin', stopTeamAutoplay);
+    teamSlider.addEventListener('focusout', teamStartAutoplay);
+
+    // إعادة بناء النقاط وإعادة التحديث عند resize
+    var teamResizeTimer = null;
+    window.addEventListener('resize', function () {
+      if (teamResizeTimer) clearTimeout(teamResizeTimer);
+      teamResizeTimer = setTimeout(function () {
+        var visible = teamVisibleCount();
+        var maxIndex = Math.max(0, teamTotal - visible);
+        if (teamActive > maxIndex) teamActive = maxIndex;
+        teamBuildDots();
+        teamUpdate();
+      }, 200);
+    });
+
+    // التهيئة الأولية
+    teamBuildDots();
+    teamUpdate();
+
+    // شغّل الأوتوبلاي لما السلايدر يظهر في الشاشة
+    if ('IntersectionObserver' in window) {
+      var teamIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            teamStartAutoplay();
+            teamIO.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      teamIO.observe(teamSlider);
+    } else {
+      teamStartAutoplay();
+    }
+
+    // وقّف الأوتوبلاي لما التبويب يتفقّل
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stopTeamAutoplay();
+      else teamStartAutoplay();
     });
   }
 
