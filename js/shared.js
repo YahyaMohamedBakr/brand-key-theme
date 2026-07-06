@@ -1216,7 +1216,9 @@ function initShared() {
     { id: 'aboutSecurityGrid', cls: 'about-security-cards', children: '.about-security-card' },
     { id: 'aboutSecurityCta', cls: 'about-security-cta' },
     { id: 'aboutTeamHead', cls: 'about-team-head' },
-    { id: 'aboutTeamSlider', cls: 'about-team-slider' }
+    { id: 'aboutTeamSlider', cls: 'about-team-slider' },
+    { id: 'servicesPhilosophyVisual', cls: 'about-us-visual' },
+    { id: 'servicesPhilosophyContent', cls: 'about-us-content' }
   ];
 
   function revealAboutSection(el) {
