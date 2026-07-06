@@ -162,7 +162,7 @@
         <!-- 4 خدمات بأسلوب Z-Pattern (تبادل صورة/نص يمين وشمال) -->
         <div class="services-content-list" id="servicesContentList">
 
-          <!-- خدمة 1: إنتاج المحتوى الإعلاني (نص يمين، صورة شمال) -->
+          <!-- خدمة 1: إنتاج المحتوى الإعلاني (نص يمين، فريم شمال) -->
           <article class="services-content-row" data-row="0">
             <!-- النص (يمين — أول في source في RTL) -->
             <div class="services-content-text">
@@ -178,28 +178,25 @@
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
-            <!-- الصورة (شمال — تاني في source في RTL) -->
+            <!-- الفريم (شمال — زي الهيرو الداخلي: navy frame + photo inside + key) -->
             <div class="services-content-visual">
-              <div class="services-content-image-wrap">
-                <img src="icons/blog-1.png" alt="إنتاج المحتوى الإعلاني" class="services-content-image" />
-                <!-- مربع أبيض + دائرة صفراء + keyhole -->
-                <div class="services-content-keyhole-badge" aria-hidden="true">
-                  <div class="services-content-keyhole-circle"></div>
-                </div>
+              <div class="services-content-frame">
+                <div class="services-content-frame-fill"></div>
+                <div class="services-content-frame-photo" style="background-image: url('icons/blog-1.png');"></div>
               </div>
+              <img src="icons/pricing-key.svg" alt="" class="services-content-key" aria-hidden="true" />
             </div>
           </article>
 
-          <!-- خدمة 2: إدارة السوشيال (صورة يمين، نص شمال — معكوس) -->
+          <!-- خدمة 2: إدارة السوشيال (فريم يمين، نص شمال — معكوس) -->
           <article class="services-content-row services-content-row--reverse" data-row="1">
-            <!-- الصورة (يمين — أول في source في RTL) -->
+            <!-- الفريم (يمين — أول في source في RTL) -->
             <div class="services-content-visual">
-              <div class="services-content-image-wrap">
-                <img src="icons/blog-2.png" alt="إدارة السوشيال" class="services-content-image" />
-                <div class="services-content-keyhole-badge" aria-hidden="true">
-                  <div class="services-content-keyhole-circle"></div>
-                </div>
+              <div class="services-content-frame">
+                <div class="services-content-frame-fill"></div>
+                <div class="services-content-frame-photo" style="background-image: url('icons/blog-2.png');"></div>
               </div>
+              <img src="icons/pricing-key.svg" alt="" class="services-content-key" aria-hidden="true" />
             </div>
             <!-- النص (شمال — تاني في source في RTL) -->
             <div class="services-content-text">
@@ -217,7 +214,7 @@
             </div>
           </article>
 
-          <!-- خدمة 3: تصوير وفيديو (نص يمين، صورة شمال) -->
+          <!-- خدمة 3: تصوير وفيديو (نص يمين، فريم شمال) -->
           <article class="services-content-row" data-row="2">
             <!-- النص (يمين — أول في source في RTL) -->
             <div class="services-content-text">
@@ -233,29 +230,27 @@
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
-            <!-- الصورة (شمال — تاني في source في RTL) -->
+            <!-- الفريم (شمال) -->
             <div class="services-content-visual">
-              <div class="services-content-image-wrap">
-                <img src="icons/blog-3.png" alt="تصوير وفيديو" class="services-content-image" />
-                <div class="services-content-keyhole-badge" aria-hidden="true">
-                  <div class="services-content-keyhole-circle"></div>
-                </div>
+              <div class="services-content-frame">
+                <div class="services-content-frame-fill"></div>
+                <div class="services-content-frame-photo" style="background-image: url('icons/blog-3.png');"></div>
               </div>
+              <img src="icons/pricing-key.svg" alt="" class="services-content-key" aria-hidden="true" />
             </div>
           </article>
 
-          <!-- خدمة 4: تصميم الهوية البصرية (صورة يمين، نص شمال — معكوس) -->
+          <!-- خدمة 4: تصميم الهوية البصرية (فريم يمين، نص شمال — معكوس) -->
           <article class="services-content-row services-content-row--reverse" data-row="3">
-            <!-- الصورة (يمين — أول في source في RTL) -->
+            <!-- الفريم (يمين) -->
             <div class="services-content-visual">
-              <div class="services-content-image-wrap">
-                <img src="icons/project-img2.png" alt="تصميم الهوية البصرية" class="services-content-image" />
-                <div class="services-content-keyhole-badge" aria-hidden="true">
-                  <div class="services-content-keyhole-circle"></div>
-                </div>
+              <div class="services-content-frame">
+                <div class="services-content-frame-fill"></div>
+                <div class="services-content-frame-photo" style="background-image: url('icons/project-img2.png');"></div>
               </div>
+              <img src="icons/pricing-key.svg" alt="" class="services-content-key" aria-hidden="true" />
             </div>
-            <!-- النص (شمال — تاني في source في RTL) -->
+            <!-- النص (شمال) -->
             <div class="services-content-text">
               <h3 class="services-content-row-title">تصميم الهوية البصرية</h3>
               <ul class="services-content-bullets">
