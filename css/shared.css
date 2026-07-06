@@ -5238,13 +5238,13 @@ a.contact-item:hover .contact-ic {
   max-width: var(--container);
   margin: 0 auto;
 }
-/* رأس السيكشن على الشمال (تايتل + لاين + ديسكربشن) */
+/* رأس السيكشن على اليمين (تايتل + لاين + ديسكربشن) — RTL */
 .about-team-head {
-  text-align: left;
+  text-align: right;
   max-width: 560px;
-  margin: 0 auto 56px 0;
-  margin-right: auto;
-  margin-left: 0;
+  margin: 0 0 56px auto;
+  margin-right: 0;
+  margin-left: auto;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
@@ -5262,6 +5262,8 @@ a.contact-item:hover .contact-ic {
 }
 .about-team-heading-line {
   margin: 0 0 18px 0;
+  margin-right: 0;
+  margin-left: auto;
 }
 .about-team-desc {
   font-size: clamp(14px, 1.3vw, 17px);
