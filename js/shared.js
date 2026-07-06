@@ -1440,6 +1440,162 @@ function initShared() {
     });
   }
 
+  /* ============================================================
+     تفاعلات صفحة المدونة (blog-main)
+     - المنيو المنسدلة "الفئة"
+     - أزرار الفلاتر (تفعيل/إلغاء)
+     - البجنيشن (تبديل الصفحة النشطة)
+     - reveal animations
+     ============================================================ */
+  var blogDropdownBtn = document.getElementById('blogDropdownBtn');
+  var blogDropdownMenu = document.getElementById('blogDropdownMenu');
+  var blogDropdownWrap = document.getElementById('blogDropdownWrap');
+  var blogFilterBtns = Array.prototype.slice.call(document.querySelectorAll('.blog-filter-btn'));
+  var blogPageNumbers = Array.prototype.slice.call(document.querySelectorAll('.blog-pagination-num'));
+  var blogPagePrev = document.getElementById('blogPagePrev');
+  var blogPageNext = document.getElementById('blogPageNext');
+  var blogFeatured = document.getElementById('blogFeatured');
+  var blogGridCards = Array.prototype.slice.call(document.querySelectorAll('.blog-grid-card'));
+
+  // المنيو المنسدلة — فتح/إغلاق
+  if (blogDropdownBtn && blogDropdownMenu) {
+    blogDropdownBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = blogDropdownMenu.classList.toggle('is-open');
+      blogDropdownBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      blogDropdownMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    });
+    // إغلاق عند click برة
+    document.addEventListener('click', function (e) {
+      if (blogDropdownWrap && !blogDropdownWrap.contains(e.target)) {
+        blogDropdownMenu.classList.remove('is-open');
+        blogDropdownBtn.setAttribute('aria-expanded', 'false');
+        blogDropdownMenu.setAttribute('aria-hidden', 'true');
+      }
+    });
+    // اختيار فئة من المنيو
+    var blogDropdownItems = blogDropdownMenu.querySelectorAll('li');
+    blogDropdownItems.forEach(function (item) {
+      item.addEventListener('click', function () {
+        var val = item.getAttribute('data-value');
+        blogDropdownBtn.querySelector('span').textContent = item.textContent;
+        blogDropdownMenu.classList.remove('is-open');
+        blogDropdownBtn.setAttribute('aria-expanded', 'false');
+        blogDropdownMenu.setAttribute('aria-hidden', 'true');
+        // لو الفئة "all" شيل كل الفلاتر، غير كده فعّل الزر المطابق
+        if (val === 'all') {
+          blogFilterBtns.forEach(function (b) { b.classList.remove('active'); });
+        } else {
+          blogFilterBtns.forEach(function (b) {
+            b.classList.toggle('active', b.getAttribute('data-filter') === val);
+          });
+        }
+        filterBlogGrid();
+      });
+    });
+  }
+
+  // أزرار الفلاتر — تفعيل/إلغاء (واحد بس متفعل في المرة)
+  blogFilterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      // لو الزر ده متفعل بالفعل، شيله (يعني عرض الكل)
+      if (btn.classList.contains('active')) {
+        btn.classList.remove('active');
+      } else {
+        blogFilterBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+      }
+      filterBlogGrid();
+    });
+  });
+
+  // فلترة الجريد حسب الفئة المختارة
+  function filterBlogGrid() {
+    var activeBtn = document.querySelector('.blog-filter-btn.active');
+    var activeFilter = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+    blogGridCards.forEach(function (card) {
+      var cat = card.getAttribute('data-category');
+      var show = (activeFilter === 'all' || cat === activeFilter);
+      card.style.display = show ? '' : 'none';
+    });
+  }
+
+  // البجنيشن — تبديل الصفحة النشطة
+  blogPageNumbers.forEach(function (num) {
+    num.addEventListener('click', function () {
+      blogPageNumbers.forEach(function (n) { n.classList.remove('active'); });
+      num.classList.add('active');
+      // scroll لأعلى الجريد
+      var grid = document.getElementById('blogGridMain');
+      if (grid) {
+        var rect = grid.getBoundingClientRect();
+        window.scrollTo({ top: rect.top + window.scrollY - 120, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // أسهم البجنيشن
+  function getCurrentPage() {
+    var active = document.querySelector('.blog-pagination-num.active');
+    return active ? parseInt(active.getAttribute('data-page'), 10) : 1;
+  }
+  function goToPage(page) {
+    // نبحث عن زر الصفحة اللي عليه الـ data-page
+    var target = document.querySelector('.blog-pagination-num[data-page="' + page + '"]');
+    if (target) {
+      target.click();
+    } else {
+      // لو الصفحة مش معروضة (مثلا 6-32)، فعّل زر مؤقت على آخر صفحة معروضة
+      // للتبسيط: نعمل update للـ active على أقرب صفحة
+      console.log('[blog] page', page, 'not in visible pagination');
+    }
+  }
+  if (blogPagePrev) {
+    blogPagePrev.addEventListener('click', function () {
+      var curr = getCurrentPage();
+      if (curr > 1) goToPage(curr - 1);
+    });
+  }
+  if (blogPageNext) {
+    blogPageNext.addEventListener('click', function () {
+      var curr = getCurrentPage();
+      if (curr < 33) goToPage(curr + 1);
+    });
+  }
+
+  // reveal animations للمقال البارز + كروت الجريد
+  if ('IntersectionObserver' in window) {
+    if (blogFeatured) {
+      var blogFeatIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            blogFeatIO.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      blogFeatIO.observe(blogFeatured);
+    }
+    if (blogGridCards.length) {
+      var blogGridIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            blogGridIO.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      blogGridCards.forEach(function (card, i) {
+        // staggered delay
+        card.style.transitionDelay = (i % 3) * 100 + 'ms';
+        blogGridIO.observe(card);
+      });
+    }
+  } else {
+    if (blogFeatured) blogFeatured.classList.add('revealed');
+    blogGridCards.forEach(function (c) { c.classList.add('revealed'); });
+  }
+
   console.log('%cBrand Key %cAll sections loaded (Header, Nav, Hero, Services, Consult, Sectors, CTA2, Portfolio, Pricing & Footer)',
     'color:#F2C94C;font-weight:bold;', 'color:#0E233F;');
 }

@@ -26,13 +26,349 @@
        data-ghost-href="#">
   </div>
 
-  <!-- المحتوى الخاص بالصفحة — هنا هتتحط السيكشنز -->
+  <!-- المحتوى الخاص بالصفحة -->
   <main class="page-content" id="pageContent">
-    <div class="page-placeholder">
-      <span class="page-placeholder-eyebrow">المدونة</span>
-      <h2 class="page-placeholder-title">المحتوى قيد الإضافة</h2>
-      <p class="page-placeholder-desc">هنا سيتم إضافة السيكشنات الخاصة بصفحة المدونة واحدة واحدة.</p>
-    </div>
+
+    <!-- ===================== سيكشن المدونة (بحث + فلاتر + مقال بارز + جريد + بجنيشن) ===================== -->
+    <section class="blog-main" id="blogMain">
+      <div class="blog-main-container">
+
+        <!-- ===== شريط البحث + المنيو المنسدلة + أزرار الفلاتر ===== -->
+        <div class="blog-filters" id="blogFilters">
+
+          <!-- شريط البحث (يمين) — مستطيل بحواف مستديرة، جواه placeholder رمادي، أيقونة عدسة في آخره شمال -->
+          <div class="blog-search-wrap">
+            <input
+              type="search"
+              class="blog-search-input"
+              id="blogSearchInput"
+              placeholder="عن ماذا تبحث لتطوير أعمالك اليوم؟"
+              aria-label="بحث في المدونة"
+            />
+            <button class="blog-search-btn" id="blogSearchBtn" aria-label="بحث" type="button">
+              <!-- أيقونة عدسة -->
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="2"/>
+                <path d="M14 14L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- المنيو المنسدلة "الفئة" + أيقونة مربعات (شمال شريط البحث) -->
+          <div class="blog-dropdown-wrap" id="blogDropdownWrap">
+            <button class="blog-dropdown-btn" id="blogDropdownBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span>الفئة</span>
+              <!-- أيقونة مربعات (grid) -->
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <rect x="1" y="1" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+                <rect x="10" y="1" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+                <rect x="1" y="10" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+                <rect x="10" y="10" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
+            </button>
+            <ul class="blog-dropdown-menu" id="blogDropdownMenu" role="listbox" aria-hidden="true">
+              <li role="option" data-value="all">كل الفئات</li>
+              <li role="option" data-value="content">قسم المحتوى الإبداعي</li>
+              <li role="option" data-value="marketing">قسم التسويق والنمو</li>
+              <li role="option" data-value="tech">قسم الحلول التقنية والمتاجر</li>
+            </ul>
+          </div>
+
+          <!-- 3 أزرار فلاتر (شمال خالص) — اتنين أبيض بحدود رمادية + واحد متفعل ذهبي -->
+          <div class="blog-filter-btns" id="blogFilterBtns">
+            <button class="blog-filter-btn" data-filter="tech" type="button">
+              <span class="blog-filter-count">22</span>
+              <span class="blog-filter-label">قسم الحلول التقنية والمتاجر</span>
+            </button>
+            <button class="blog-filter-btn" data-filter="marketing" type="button">
+              <span class="blog-filter-count">16</span>
+              <span class="blog-filter-label">قسم التسويق والنمو</span>
+            </button>
+            <button class="blog-filter-btn active" data-filter="content" type="button">
+              <span class="blog-filter-count">5</span>
+              <span class="blog-filter-label">قسم المحتوى الإبداعي</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- ===== المقال البارز (Featured Post) ===== -->
+        <article class="blog-featured" id="blogFeatured">
+          <!-- اليمين: صورة عرضية كبيرة حواف مستديرة + تيج "الجديد" أصفر فوق يمين -->
+          <div class="blog-featured-visual">
+            <img src="icons/blog-1.png" alt="مقال بارز: كيف تبدأ العمل مع Brandkey" class="blog-featured-img" />
+            <span class="blog-featured-tag">الجديد</span>
+          </div>
+          <!-- الشمال: تايتل أسود كبير + ديسكريبشن رمادي + تحت (يمين: أيقونة ساعة + تاريخ / شمال: المزيد + سهم شمال) -->
+          <div class="blog-featured-body">
+            <h2 class="blog-featured-title">كيف تبدأ العمل مع Brandkey وما هي الخطوات؟</h2>
+            <p class="blog-featured-desc">
+              دليل شامل ومفصل يرافقك خطوة بخطوة في رحلتك الرقمية مع Brand Key — من أول جلسة استشارية لحد ما تشوف نتائج حقيقية. اكتشف منهجيتنا في التخطيط والتنفيذ والمتابعة.
+            </p>
+            <div class="blog-featured-meta">
+              <!-- يمين: أيقونة ساعة + تاريخ -->
+              <span class="blog-featured-date">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M8 4.5V8L10.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>20 يوليو 2025</span>
+              </span>
+              <!-- شمال: المزيد + سهم شمال -->
+              <a href="#" class="blog-featured-more">
+                <span>المزيد</span>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ===== جريد المقالات (9 مقالات = 3 صفوف × 3) ===== -->
+        <div class="blog-grid-main" id="blogGridMain">
+
+          <!-- كارت 1 -->
+          <article class="blog-grid-card" data-category="content">
+            <div class="blog-grid-card-visual">
+              <img src="icons/blog-1.png" alt="مقال 1" class="blog-grid-card-img" />
+              <span class="blog-grid-card-tag">الجديد</span>
+            </div>
+            <div class="blog-grid-card-body">
+              <h3 class="blog-grid-card-title">5 استراتيجيات تسويقية تنجح في 2026</h3>
+              <p class="blog-grid-card-excerpt">
+                تعرف على أحدث الاستراتيجيات التسويقية التي أثبتت فعاليتها هذا العام — من الذكاء الاصطناعي إلى التسويق بالمؤثرين.
+              </p>
+              <div class="blog-grid-card-meta">
+                <span class="blog-grid-card-date">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8L10.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>20 يوليو 2025</span>
+                </span>
+                <a href="#" class="blog-grid-card-more">
+                  <span>المزيد</span>
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- كارت 2 -->
+          <article class="blog-grid-card" data-category="marketing">
+            <div class="blog-grid-card-visual">
+              <img src="icons/blog-2.png" alt="مقال 2" class="blog-grid-card-img" />
+              <span class="blog-grid-card-tag">الجديد</span>
+            </div>
+            <div class="blog-grid-card-body">
+              <h3 class="blog-grid-card-title">دليلك الشامل لتحسين محركات البحث</h3>
+              <p class="blog-grid-card-excerpt">
+                كل ما تحتاج معرفته عن SEO — من البحث عن الكلمات المفتاحية إلى بناء الروابط وتحليل المنافسين.
+              </p>
+              <div class="blog-grid-card-meta">
+                <span class="blog-grid-card-date">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8L10.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>20 يوليو 2025</span>
+                </span>
+                <a href="#" class="blog-grid-card-more">
+                  <span>المزيد</span>
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- كارت 3 -->
+          <article class="blog-grid-card" data-category="tech">
+            <div class="blog-grid-card-visual">
+              <img src="icons/blog-3.png" alt="مقال 3" class="blog-grid-card-img" />
+              <span class="blog-grid-card-tag">الجديد</span>
+            </div>
+            <div class="blog-grid-card-body">
+              <h3 class="blog-grid-card-title">كيف تبني هوية بصرية قوية لعلامتك</h3>
+              <p class="blog-grid-card-excerpt">
+                الهوية البصرية مش بس لوگو — هي قصة علامتك التجارية. تعلم كيف تبني هوية متكاملة تنعكس في كل نقاط التواصل.
+              </p>
+              <div class="blog-grid-card-meta">
+                <span class="blog-grid-card-date">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8L10.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>20 يوليو 2025</span>
+                </span>
+                <a href="#" class="blog-grid-card-more">
+                  <span>المزيد</span>
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- كارت 4 -->
+          <article class="blog-grid-card" data-category="content">
+            <div class="blog-grid-card-visual">
+              <img src="icons/blog-2.png" alt="مقال 4" class="blog-grid-card-img" />
+              <span class="blog-grid-card-tag">الجديد</span>
+            </div>
+            <div class="blog-grid-card-body">
+              <h3 class="blog-grid-card-title">أهمية المحتوى الإبداعي في عصر الرقمنة</h3>
+              <p class="blog-grid-card-excerpt">
+                كيف يساعدك المحتوى الإبداعي على التميز في سوق مزدحم وبناء علاقة حقيقية مع جمهورك المستهدف.
+              </p>
+              <div class="blog-grid-card-meta">
+                <span class="blog-grid-card-date">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8L10.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>20 يوليو 2025</span>
+                </span>
+                <a href="#" class="blog-grid-card-more">
+                  <span>المزيد</span>
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- كارت 5 -->
+          <article class="blog-grid-card" data-category="marketing">
+            <div class="blog-grid-card-visual">
+              <img src="icons/blog-3.png" alt="مقال 5" class="blog-grid-card-img" />
+              <span class="blog-grid-card-tag">الجديد</span>
+            </div>
+            <div class="blog-grid-card-body">
+              <h3 class="blog-grid-card-title">كيفية إدارة حملات إعلانية ناجحة</h3>
+              <p class="blog-grid-card-excerpt">
+                خطوات عملية لإدارة حملاتك الإعلانية على منصات التواصل الاجتماعي وتحقيق أعلى عائد على الاستثمار.
+              </p>
+              <div class="blog-grid-card-meta">
+                <span class="blog-grid-card-date">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8L10.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>20 يوليو 2025</span>
+                </span>
+                <a href="#" class="blog-grid-card-more">
+                  <span>المزيد</span>
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- كارت 6 -->
+          <article class="blog-grid-card" data-category="tech">
+            <div class="blog-grid-card-visual">
+              <img src="icons/blog-1.png" alt="مقال 6" class="blog-grid-card-img" />
+              <span class="blog-grid-card-tag">الجديد</span>
+            </div>
+            <div class="blog-grid-card-body">
+              <h3 class="blog-grid-card-title">بناء متجر إلكتروني متكامل من الصفر</h3>
+              <p class="blog-grid-card-excerpt">
+                دليلك الكامل لبناء متجر إلكتروني احترافي — من اختيار المنصة إلى تصميم تجربة المستخدم والدفع الآمن.
+              </p>
+              <div class="blog-grid-card-meta">
+                <span class="blog-grid-card-date">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8L10.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>20 يوليو 2025</span>
+                </span>
+                <a href="#" class="blog-grid-card-more">
+                  <span>المزيد</span>
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- كارت 7 -->
+          <article class="blog-grid-card" data-category="content">
+            <div class="blog-grid-card-visual">
+              <img src="icons/blog-3.png" alt="مقال 7" class="blog-grid-card-img" />
+              <span class="blog-grid-card-tag">الجديد</span>
+            </div>
+            <div class="blog-grid-card-body">
+              <h3 class="blog-grid-card-title">إنتاج الفيديو التسويقي: من الفكرة للتنفيذ</h3>
+              <p class="blog-grid-card-excerpt">
+                كيف تخطط وتنتج فيديوهات تسويقية احترافية تجذب جمهورك وتحقق أهدافك التسويقية بأقل تكلفة.
+              </p>
+              <div class="blog-grid-card-meta">
+                <span class="blog-grid-card-date">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8L10.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>20 يوليو 2025</span>
+                </span>
+                <a href="#" class="blog-grid-card-more">
+                  <span>المزيد</span>
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- كارت 8 -->
+          <article class="blog-grid-card" data-category="marketing">
+            <div class="blog-grid-card-visual">
+              <img src="icons/blog-1.png" alt="مقال 8" class="blog-grid-card-img" />
+              <span class="blog-grid-card-tag">الجديد</span>
+            </div>
+            <div class="blog-grid-card-body">
+              <h3 class="blog-grid-card-title">التسويق بالمؤثرين: دليل المبتدئين</h3>
+              <p class="blog-grid-card-excerpt">
+                كل ما تحتاج معرفته للبدء في التسويق بالمؤثرين — اختيار المؤثر المناسب، التفاوض، وقياس النتائج.
+              </p>
+              <div class="blog-grid-card-meta">
+                <span class="blog-grid-card-date">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8L10.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>20 يوليو 2025</span>
+                </span>
+                <a href="#" class="blog-grid-card-more">
+                  <span>المزيد</span>
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- كارت 9 -->
+          <article class="blog-grid-card" data-category="tech">
+            <div class="blog-grid-card-visual">
+              <img src="icons/blog-2.png" alt="مقال 9" class="blog-grid-card-img" />
+              <span class="blog-grid-card-tag">الجديد</span>
+            </div>
+            <div class="blog-grid-card-body">
+              <h3 class="blog-grid-card-title">تطوير تطبيقات الجوال: أفضل الممارسات</h3>
+              <p class="blog-grid-card-excerpt">
+                تعرف على أفضل الممارسات في تطوير تطبيقات الجوال — من تصميم الواجهة إلى الأداء وتجربة المستخدم.
+              </p>
+              <div class="blog-grid-card-meta">
+                <span class="blog-grid-card-date">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8L10.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>20 يوليو 2025</span>
+                </span>
+                <a href="#" class="blog-grid-card-more">
+                  <span>المزيد</span>
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- ===== البجنيشن (Pagination) ===== -->
+        <nav class="blog-pagination" id="blogPagination" aria-label="تصفح صفحات المدونة">
+          <!-- سهم يمين (السابق في RTL) -->
+          <button class="blog-pagination-arrow blog-pagination-arrow--prev" id="blogPagePrev" aria-label="الصفحة السابقة" type="button">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M13 9H5M5 9L10 4M5 9L10 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <!-- أرقام الصفحات (1 نشط ذهبي، الباقي أبيض بحدود رمادية) -->
+          <div class="blog-pagination-numbers" id="blogPageNumbers">
+            <button class="blog-pagination-num active" data-page="1" type="button">1</button>
+            <button class="blog-pagination-num" data-page="2" type="button">2</button>
+            <button class="blog-pagination-num" data-page="3" type="button">3</button>
+            <button class="blog-pagination-num" data-page="4" type="button">4</button>
+            <button class="blog-pagination-num" data-page="5" type="button">5</button>
+            <span class="blog-pagination-ellipsis">…</span>
+            <button class="blog-pagination-num" data-page="33" type="button">33</button>
+          </div>
+          <!-- سهم شمال (التالي في RTL) -->
+          <button class="blog-pagination-arrow blog-pagination-arrow--next" id="blogPageNext" aria-label="الصفحة التالية" type="button">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M5 9H13M13 9L8 4M13 9L8 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </nav>
+
+      </div>
+    </section>
+
   </main>
 
   <!-- الفوتر (محمل بالـ JS) -->

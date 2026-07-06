@@ -5496,6 +5496,470 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة المدونة — سيكشن المدونة الرئيسية
+   ============================================================ */
+.blog-main {
+  position: relative;
+  background: var(--bg);
+  padding: 70px 24px 80px;
+}
+.blog-main-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* ---------- شريط البحث + الفلاتر ---------- */
+.blog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+/* شريط البحث (يمين) — مستطيل بحواف مستديرة */
+.blog-search-wrap {
+  position: relative;
+  flex: 1 1 360px;
+  max-width: 440px;
+  min-width: 280px;
+}
+.blog-search-input {
+  width: 100%;
+  height: 52px;
+  padding: 0 56px 0 20px; /* يمين مساحة للأيقونة */
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--navy);
+  outline: none;
+  transition: border-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+.blog-search-input::placeholder { color: var(--muted-2); }
+.blog-search-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(242, 201, 76, 0.15);
+}
+.blog-search-btn {
+  position: absolute;
+  top: 50%;
+  left: 8px; /* شمال في RTL */
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gold);
+  color: var(--navy);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s var(--ease-out);
+}
+.blog-search-btn:hover { background: var(--gold-hover); }
+/* المنيو المنسدلة "الفئة" (شمال شريط البحث) */
+.blog-dropdown-wrap {
+  position: relative;
+}
+.blog-dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--navy);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out);
+}
+.blog-dropdown-btn:hover { border-color: var(--gold); }
+.blog-dropdown-btn[aria-expanded="true"] { border-color: var(--gold); background: #FFF8E6; }
+.blog-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: auto;
+  min-width: 240px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  list-style: none;
+  padding: 6px;
+  margin: 0;
+  z-index: 20;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out), visibility 0.25s;
+}
+.blog-dropdown-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.blog-dropdown-menu li {
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--navy);
+  cursor: pointer;
+  transition: background 0.2s var(--ease-out);
+}
+.blog-dropdown-menu li:hover { background: var(--bg-soft); }
+/* أزرار الفلاتر (شمال خالص) — 3 أزرار */
+.blog-filter-btns {
+  display: flex;
+  gap: 12px;
+  margin-right: auto; /* يدفعهم لليسار في RTL */
+}
+.blog-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 18px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--navy);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s var(--ease-out), color 0.3s var(--ease-out), border-color 0.3s var(--ease-out), transform 0.3s var(--ease-spring);
+}
+.blog-filter-btn:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+/* الزر المتفعل — ذهبي، كتابة بيضاء */
+.blog-filter-btn.active {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+}
+.blog-filter-btn.active .blog-filter-count { color: #fff; }
+.blog-filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  background: rgba(14, 35, 63, 0.08);
+  color: var(--navy);
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 800;
+}
+.blog-filter-btn.active .blog-filter-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+.blog-filter-label { white-space: nowrap; }
+
+/* ---------- المقال البارز (Featured) ---------- */
+.blog-featured {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 64px;
+  padding: 24px;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px rgba(14, 35, 63, 0.06);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.blog-featured.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* اليمين: صورة عرضية كبيرة */
+.blog-featured-visual {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+.blog-featured-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.blog-featured-tag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 800;
+  z-index: 1;
+}
+/* الشمال: تايتل + ديسكريبشن + ميتا */
+.blog-featured-body {
+  padding: 12px 8px;
+}
+.blog-featured-title {
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+.blog-featured-desc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 24px;
+}
+.blog-featured-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.blog-featured-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.blog-featured-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold);
+  font-size: 15px;
+  font-weight: 700;
+  transition: gap 0.3s var(--ease-spring);
+}
+.blog-featured-more:hover { gap: 12px; }
+
+/* ---------- جريد المقالات (9 مقالات) ---------- */
+.blog-grid-main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 64px;
+}
+.blog-grid-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s var(--ease-out), transform 0.8s var(--ease-out), box-shadow 0.45s var(--ease-out), border-color 0.35s var(--ease-out);
+  will-change: transform, opacity;
+}
+.blog-grid-card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.blog-grid-card:hover {
+  box-shadow: 0 20px 40px rgba(14, 35, 63, 0.12);
+  border-color: var(--gold);
+}
+.blog-grid-card-visual {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+.blog-grid-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease-spring);
+}
+.blog-grid-card:hover .blog-grid-card-img { transform: scale(1.06); }
+.blog-grid-card-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 800;
+  z-index: 1;
+}
+.blog-grid-card-body {
+  padding: 22px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.blog-grid-card-title {
+  font-size: clamp(16px, 1.5vw, 19px);
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+.blog-grid-card-excerpt {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 18px;
+  flex: 1;
+}
+.blog-grid-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-soft);
+}
+.blog-grid-card-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.blog-grid-card-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 700;
+  transition: gap 0.3s var(--ease-spring);
+}
+.blog-grid-card-more:hover { gap: 10px; }
+
+/* ---------- البجنيشن ---------- */
+.blog-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.blog-pagination-arrow {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.3s var(--ease-out), color 0.3s var(--ease-out), border-color 0.3s var(--ease-out), transform 0.3s var(--ease-spring);
+}
+.blog-pagination-arrow:hover {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+  transform: translateY(-2px);
+}
+.blog-pagination-arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+.blog-pagination-numbers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.blog-pagination-num {
+  min-width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--navy);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s var(--ease-out), color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+.blog-pagination-num:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.blog-pagination-num.active {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+}
+.blog-pagination-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 44px;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* ---------- ريسبونسف ---------- */
+@media (max-width: 900px) {
+  .blog-main { padding: 50px 20px 60px; }
+  .blog-filters { gap: 12px; }
+  .blog-search-wrap { flex: 1 1 100%; max-width: 100%; }
+  .blog-dropdown-wrap { flex: 0 0 auto; }
+  .blog-filter-btns { flex: 1 1 100%; flex-wrap: wrap; }
+  .blog-filter-btn { flex: 1 1 calc(50% - 6px); min-width: 0; padding: 0 12px; font-size: 13px; }
+  .blog-filter-label { white-space: normal; font-size: 12px; }
+  .blog-featured { grid-template-columns: 1fr; gap: 24px; padding: 16px; }
+  .blog-grid-main { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .blog-featured { margin-bottom: 48px; }
+}
+
+@media (max-width: 600px) {
+  .blog-main { padding: 36px 16px 44px; }
+  .blog-filters { margin-bottom: 36px; }
+  .blog-search-input { height: 48px; font-size: 14px; }
+  .blog-search-btn { width: 36px; height: 36px; }
+  .blog-dropdown-btn { height: 48px; font-size: 14px; }
+  .blog-filter-btn { flex: 1 1 100%; height: 48px; }
+  .blog-filter-label { font-size: 13px; }
+  .blog-featured { margin-bottom: 36px; padding: 12px; }
+  .blog-featured-title { font-size: 20px; }
+  .blog-featured-desc { font-size: 14px; }
+  .blog-grid-main { grid-template-columns: 1fr; gap: 18px; margin-bottom: 40px; }
+  .blog-grid-card-title { font-size: 17px; }
+  .blog-grid-card-excerpt { font-size: 13px; }
+  .blog-pagination-num, .blog-pagination-arrow { min-width: 40px; width: 40px; height: 40px; font-size: 14px; }
+  .blog-pagination-ellipsis { height: 40px; }
+}
+
+/* ============================================================
    صفحات داخلية — placeholder للمحتوى قيد الإضافة
    ============================================================ */
 .page-content {
