@@ -6413,6 +6413,212 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة خدماتنا — سيكشن المحاور الاستراتيجية + CTA banner
+   ============================================================ */
+.services-axes {
+  position: relative;
+  background: var(--bg);
+  padding: 80px 24px;
+}
+.services-axes-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+/* الهيدر (تايتل + خط + ديسكريبشن في النص) */
+.services-axes-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 56px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.services-axes-head.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.services-axes-title {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+.services-axes-heading-line {
+  margin: 0 auto 18px;
+}
+.services-axes-desc {
+  font-size: clamp(14px, 1.3vw, 17px);
+  color: #475569;
+  line-height: 1.9;
+}
+
+/* ---------- 3 كروت المحاور ---------- */
+.services-axes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.services-axes-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s var(--ease-out), transform 0.8s var(--ease-out), box-shadow 0.45s var(--ease-out), border-color 0.35s var(--ease-out);
+  will-change: transform, opacity;
+}
+.services-axes-card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.services-axes-card[data-card="0"].revealed { transition-delay: 0ms; }
+.services-axes-card[data-card="1"].revealed { transition-delay: 150ms; }
+.services-axes-card[data-card="2"].revealed { transition-delay: 300ms; }
+.services-axes-card:hover {
+  box-shadow: 0 20px 40px rgba(14, 35, 63, 0.1);
+  border-color: var(--gold);
+}
+/* هيدر الكارت: تايتل يمين + أيقونة مربع كحلي شمال */
+.services-axes-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.services-axes-card-title {
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.3;
+  flex: 1;
+}
+.services-axes-card-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  color: var(--gold);
+  border-radius: var(--radius);
+}
+.services-axes-card-desc {
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+/* ---------- بانر CTA (كحلي داكن) ---------- */
+.services-axes-cta {
+  position: relative;
+  background: var(--navy);
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.services-axes-cta.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* تأثير تموج كحلي أفتح على الشمال */
+.services-axes-cta-deco {
+  position: absolute;
+  top: 50%;
+  left: -40px;
+  transform: translateY(-50%);
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(42, 71, 104, 0.5) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+/* النص (يمين) */
+.services-axes-cta-text {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  text-align: right;
+}
+.services-axes-cta-title {
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+.services-axes-cta-desc {
+  font-size: clamp(13px, 1.2vw, 15px);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+}
+/* الزر الأصفر (شمال) */
+.services-axes-cta-btn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--gold);
+  color: var(--navy);
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px rgba(242, 201, 76, 0.35);
+  transition: background 0.35s var(--ease-out), transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-out);
+}
+.services-axes-cta-btn:hover {
+  background: var(--gold-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-gold);
+}
+.services-axes-cta-btn:hover svg {
+  transform: translateX(-5px);
+}
+.services-axes-cta-btn svg {
+  transition: transform 0.4s var(--ease-spring);
+}
+
+/* ---------- ريسبونسف ---------- */
+@media (max-width: 900px) {
+  .services-axes { padding: 60px 20px; }
+  .services-axes-head { margin-bottom: 40px; }
+  .services-axes-grid { grid-template-columns: 1fr; gap: 20px; }
+  .services-axes-card { padding: 26px 22px; }
+  .services-axes-cta { flex-direction: column; align-items: stretch; text-align: right; padding: 28px 22px; }
+  .services-axes-cta-text { text-align: right; }
+}
+
+@media (max-width: 600px) {
+  .services-axes { padding: 44px 16px; }
+  .services-axes-title { font-size: 24px; }
+  .services-axes-desc { font-size: 14px; }
+  .services-axes-card { padding: 22px 18px; }
+  .services-axes-card-header { gap: 12px; margin-bottom: 14px; }
+  .services-axes-card-icon { width: 48px; height: 48px; }
+  .services-axes-card-icon svg { width: 24px; height: 24px; }
+  .services-axes-card-title { font-size: 18px; }
+  .services-axes-card-desc { font-size: 13.5px; }
+  .services-axes-cta { padding: 24px 18px; }
+  .services-axes-cta-title { font-size: 18px; }
+  .services-axes-cta-desc { font-size: 13px; }
+  .services-axes-cta-btn { width: 100%; justify-content: center; }
+}
+
+/* ============================================================
    صفحات داخلية — placeholder للمحتوى قيد الإضافة
    ============================================================ */
 .page-content {

@@ -1218,7 +1218,10 @@ function initShared() {
     { id: 'aboutTeamHead', cls: 'about-team-head' },
     { id: 'aboutTeamSlider', cls: 'about-team-slider' },
     { id: 'servicesPhilosophyVisual', cls: 'about-us-visual' },
-    { id: 'servicesPhilosophyContent', cls: 'about-us-content' }
+    { id: 'servicesPhilosophyContent', cls: 'about-us-content' },
+    { id: 'servicesAxesHead', cls: 'services-axes-head' },
+    { id: 'servicesAxesGrid', cls: 'services-axes-cards', children: '.services-axes-card' },
+    { id: 'servicesAxesCta', cls: 'services-axes-cta' }
   ];
 
   function revealAboutSection(el) {
