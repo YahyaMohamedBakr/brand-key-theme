@@ -6697,7 +6697,7 @@ a.contact-item:hover .contact-ic {
   max-width: 100%;
   aspect-ratio: 389 / 248;
 }
-/* خلفية navy بـ mask = شكل الفريم الجديد (مع notch أكبر) */
+/* خلفية navy بـ mask = شكل الفريم الجديد (Frame-.png من المستخدم) */
 .services-content-frame-fill {
   position: absolute;
   inset: 0;
@@ -6707,7 +6707,7 @@ a.contact-item:hover .contact-ic {
   -webkit-mask-mode: alpha;
   mask-mode: alpha;
 }
-/* الصورة داخل الفريم — div بـ background-image + mask = الثقب (بدون المفتاح) */
+/* الصورة داخل الفريم — div بـ background-image + mask = الثقب */
 .services-content-frame-photo {
   position: absolute;
   inset: 0;
@@ -6719,14 +6719,14 @@ a.contact-item:hover .contact-ic {
   -webkit-mask-mode: alpha;
   mask-mode: alpha;
 }
-/* المفتاح في النوتش — مكانه ثابت جوه القصة الكبيرة */
+/* المفتاح في النوتش — صورة Framekey.png من المستخدم */
 .services-content-key {
   position: absolute;
-  top: 4%;
-  left: 2%; /* جوه النوتش الكبير (أعلى شمال الفريم) */
-  width: 23%; /* 88px من 389px ≈ 23% */
+  top: 1%;
+  left: 1%; /* جوه النوتش (أعلى شمال الفريم) */
+  width: 27%; /* 107px من 389px ≈ 27% */
   height: auto;
-  aspect-ratio: 1;
+  aspect-ratio: 107 / 110;
   z-index: 5;
 }
 
@@ -6738,14 +6738,15 @@ a.contact-item:hover .contact-ic {
   font-size: clamp(18px, 1.8vw, 22px);
   font-weight: 800;
   color: var(--navy);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   line-height: 1.3;
 }
-.services-content-row-desc {
+/* كل سطر تفاصيل — فقرة قصيرة بالرمادي */
+.services-content-row-line {
   font-size: 14.5px;
   color: var(--muted);
-  line-height: 1.85;
-  margin-bottom: 18px;
+  line-height: 1.8;
+  margin-bottom: 10px;
 }
 .services-content-bullets {
   list-style: none;
