@@ -64,7 +64,7 @@
             </div>
           </div>
 
-          <!-- السطر الثاني: الفلاتر (من اليمين لليسار: 3 أزرار → dropdown الفئة → dropdown الصناعة) -->
+          <!-- السطر الثاني: الفلاتر (من اليمين لليسار: 3 أزرار → dropdown الفئة + dropdown الصناعة مع بعض على الشمال) -->
           <div class="portfolio-filter-row">
             <!-- 3 أزرار فلاتر (يمين) — من اليمين لليسار: 5 (أصفر متفعل), 16, 22 -->
             <div class="portfolio-filter-btns" id="portfolioFilterBtns">
@@ -82,45 +82,48 @@
               </button>
             </div>
 
-            <!-- dropdown "الفئة" + أيقونة مربعات (وسط) -->
-            <div class="portfolio-dropdown-wrap" id="portfolioDropdownWrap">
-              <button class="portfolio-dropdown-btn" id="portfolioDropdownBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
-                <span>الفئة</span>
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                  <rect x="1" y="1" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
-                  <rect x="10" y="1" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
-                  <rect x="1" y="10" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
-                  <rect x="10" y="10" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
-                </svg>
-              </button>
-              <ul class="portfolio-dropdown-menu" id="portfolioDropdownMenu" role="listbox" aria-hidden="true">
-                <li role="option" data-value="all">كل الفئات</li>
-                <li role="option" data-value="content">قسم المحتوى والإبداع</li>
-                <li role="option" data-value="marketing">قسم التسويق والنمو</li>
-                <li role="option" data-value="tech">قسم الحلول التقنية والمتاجر</li>
-              </ul>
-            </div>
+            <!-- الـ dropdowns (الفئة + الصناعة) مع بعض على الشمال -->
+            <div class="portfolio-dropdowns-group">
+              <!-- dropdown "الفئة" + أيقونة مربعات -->
+              <div class="portfolio-dropdown-wrap" id="portfolioDropdownWrap">
+                <button class="portfolio-dropdown-btn" id="portfolioDropdownBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
+                  <span>الفئة</span>
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <rect x="1" y="1" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+                    <rect x="10" y="1" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+                    <rect x="1" y="10" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+                    <rect x="10" y="10" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+                  </svg>
+                </button>
+                <ul class="portfolio-dropdown-menu" id="portfolioDropdownMenu" role="listbox" aria-hidden="true">
+                  <li role="option" data-value="all">كل الفئات</li>
+                  <li role="option" data-value="content">قسم المحتوى والإبداع</li>
+                  <li role="option" data-value="marketing">قسم التسويق والنمو</li>
+                  <li role="option" data-value="tech">قسم الحلول التقنية والمتاجر</li>
+                </ul>
+              </div>
 
-            <!-- dropdown "الصناعة" + أيقونة مصنع صفراء (شمال) -->
-            <div class="portfolio-dropdown-wrap portfolio-dropdown-wrap--industry" id="portfolioIndustryWrap">
-              <button class="portfolio-dropdown-btn" id="portfolioIndustryBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
-                <span>الصناعة</span>
-                <!-- أيقونة مصنع صفراء -->
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M2 20V10L7 13V10L12 13V10L17 13V7L22 10V20H2Z" fill="#F2C94C" stroke="#F2C94C" stroke-width="1.5" stroke-linejoin="round"/>
-                  <rect x="5" y="16" width="2.5" height="2.5" fill="#0E233F"/>
-                  <rect x="10" y="16" width="2.5" height="2.5" fill="#0E233F"/>
-                  <rect x="15" y="16" width="2.5" height="2.5" fill="#0E233F"/>
-                </svg>
-              </button>
-              <ul class="portfolio-dropdown-menu" id="portfolioIndustryMenu" role="listbox" aria-hidden="true">
-                <li role="option" data-value="all">كل الصناعات</li>
-                <li role="option" data-value="education">التعليم</li>
-                <li role="option" data-value="health">القطاع الطبي</li>
-                <li role="option" data-value="ecommerce">التجارة الإلكترونية</li>
-                <li role="option" data-value="realestate">العقارات</li>
-                <li role="option" data-value="finance">الخدمات المالية</li>
-              </ul>
+              <!-- dropdown "الصناعة" + أيقونة مصنع صفراء -->
+              <div class="portfolio-dropdown-wrap portfolio-dropdown-wrap--industry" id="portfolioIndustryWrap">
+                <button class="portfolio-dropdown-btn" id="portfolioIndustryBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
+                  <span>الصناعة</span>
+                  <!-- أيقونة مصنع صفراء -->
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M2 20V10L7 13V10L12 13V10L17 13V7L22 10V20H2Z" fill="#F2C94C" stroke="#F2C94C" stroke-width="1.5" stroke-linejoin="round"/>
+                    <rect x="5" y="16" width="2.5" height="2.5" fill="#0E233F"/>
+                    <rect x="10" y="16" width="2.5" height="2.5" fill="#0E233F"/>
+                    <rect x="15" y="16" width="2.5" height="2.5" fill="#0E233F"/>
+                  </svg>
+                </button>
+                <ul class="portfolio-dropdown-menu" id="portfolioIndustryMenu" role="listbox" aria-hidden="true">
+                  <li role="option" data-value="all">كل الصناعات</li>
+                  <li role="option" data-value="education">التعليم</li>
+                  <li role="option" data-value="health">القطاع الطبي</li>
+                  <li role="option" data-value="ecommerce">التجارة الإلكترونية</li>
+                  <li role="option" data-value="realestate">العقارات</li>
+                  <li role="option" data-value="finance">الخدمات المالية</li>
+                </ul>
+              </div>
             </div>
           </div>
 

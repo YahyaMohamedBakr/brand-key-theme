@@ -6137,15 +6137,20 @@ a.contact-item:hover .contact-ic {
   text-overflow: ellipsis;
   max-width: 160px;
 }
-/* dropdown "الفئة" (وسط) */
+/* مجموعة الـ dropdowns (الفئة + الصناعة) — مع بعض على الشمال */
+.portfolio-dropdowns-group {
+  display: flex;
+  gap: 12px;
+  margin-right: auto; /* يدفعم للشمال في RTL */
+}
+/* dropdown "الفئة" */
 .portfolio-dropdown-wrap {
   position: relative;
   flex: 0 1 auto;
   min-width: 0;
 }
-/* dropdown "الصناعة" (شمال خالص) */
+/* dropdown "الصناعة" (جنب الفئة) */
 .portfolio-dropdown-wrap--industry {
-  margin-right: auto;
 }
 .portfolio-dropdown-btn {
   display: inline-flex;
@@ -6395,8 +6400,8 @@ a.contact-item:hover .contact-ic {
   .portfolio-filter-btns { flex: 1 1 100%; flex-wrap: wrap; }
   .portfolio-filter-btn { flex: 1 1 calc(50% - 6px); min-width: 0; padding: 0 12px; font-size: 13px; height: 48px; }
   .portfolio-filter-label { white-space: normal; font-size: 12px; max-width: none; }
+  .portfolio-dropdowns-group { margin-right: 0; flex-wrap: wrap; }
   .portfolio-dropdown-wrap { flex: 0 0 auto; }
-  .portfolio-dropdown-wrap--industry { margin-right: 0; }
   .portfolio-search-input { height: 48px; font-size: 14px; }
   .portfolio-search-btn { width: 36px; height: 36px; }
   .portfolio-dropdown-btn { height: 48px; font-size: 14px; max-width: 200px; }
