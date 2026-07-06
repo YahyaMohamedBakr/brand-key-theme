@@ -5979,6 +5979,435 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة معرض الأعمال — سيكشن المعرض الرئيسي
+   ============================================================ */
+.portfolio-main {
+  position: relative;
+  background: var(--bg);
+  padding: 70px 24px 80px;
+}
+.portfolio-main-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+/* الهيدر (تايتل + خط + ديسكريبشن في النص) */
+.portfolio-main-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 48px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.portfolio-main-head.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.portfolio-main-title {
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+.portfolio-main-heading-line {
+  margin: 0 auto 18px;
+}
+.portfolio-main-desc {
+  font-size: clamp(14px, 1.3vw, 17px);
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+/* ---------- شريط البحث + الفلاتر (سطرين) ---------- */
+.portfolio-filters {
+  margin-bottom: 48px;
+}
+/* السطر الأول: شريط البحث (متمركز في النص) */
+.portfolio-search-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.portfolio-search-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+}
+.portfolio-search-input {
+  width: 100%;
+  height: 52px;
+  padding: 0 56px 0 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--navy);
+  outline: none;
+  transition: border-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+.portfolio-search-input::placeholder { color: var(--muted-2); }
+.portfolio-search-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(242, 201, 76, 0.15);
+}
+.portfolio-search-btn {
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gold);
+  color: var(--navy);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s var(--ease-out);
+}
+.portfolio-search-btn:hover { background: var(--gold-hover); }
+
+/* السطر الثاني: الفلاتر (من اليمين لليسار: 3 أزرار → dropdown الفئة → dropdown الصناعة) */
+.portfolio-filter-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 16px;
+}
+/* 3 أزرار فلاتر (يمين) */
+.portfolio-filter-btns {
+  display: flex;
+  gap: 12px;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+.portfolio-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 18px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--navy);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+  transition: background 0.3s var(--ease-out), color 0.3s var(--ease-out), border-color 0.3s var(--ease-out), transform 0.3s var(--ease-spring);
+}
+.portfolio-filter-btn:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.portfolio-filter-btn.active {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+}
+.portfolio-filter-btn.active .portfolio-filter-count { color: #fff; }
+.portfolio-filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  background: rgba(14, 35, 63, 0.08);
+  color: var(--navy);
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 800;
+}
+.portfolio-filter-btn.active .portfolio-filter-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+.portfolio-filter-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+/* dropdown "الفئة" (وسط) */
+.portfolio-dropdown-wrap {
+  position: relative;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+/* dropdown "الصناعة" (شمال خالص) */
+.portfolio-dropdown-wrap--industry {
+  margin-right: auto;
+}
+.portfolio-dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--navy);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
+  transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out);
+}
+.portfolio-dropdown-btn:hover { border-color: var(--gold); }
+.portfolio-dropdown-btn[aria-expanded="true"] { border-color: var(--gold); background: #FFF8E6; }
+.portfolio-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: auto;
+  min-width: 240px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  list-style: none;
+  padding: 6px;
+  margin: 0;
+  z-index: 20;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out), visibility 0.25s;
+}
+.portfolio-dropdown-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.portfolio-dropdown-menu li {
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--navy);
+  cursor: pointer;
+  transition: background 0.2s var(--ease-out);
+}
+.portfolio-dropdown-menu li:hover { background: var(--bg-soft); }
+
+/* ---------- جريد المشاريع (6 مشاريع = 3 صفوف × 2) ---------- */
+.portfolio-grid-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 64px;
+}
+.portfolio-grid-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s var(--ease-out), transform 0.8s var(--ease-out), box-shadow 0.45s var(--ease-out), border-color 0.35s var(--ease-out);
+  will-change: transform, opacity;
+}
+.portfolio-grid-card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.portfolio-grid-card:hover {
+  box-shadow: 0 20px 40px rgba(14, 35, 63, 0.12);
+  border-color: var(--gold);
+}
+.portfolio-grid-card-visual {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+.portfolio-grid-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease-spring);
+}
+.portfolio-grid-card:hover .portfolio-grid-card-img { transform: scale(1.05); }
+/* جسم الكارت: عمودين (يمين: نص / شمال: تاجات) */
+.portfolio-grid-card-body {
+  padding: 24px 22px;
+  display: flex;
+  gap: 20px;
+}
+/* اليمين: تايتل + ديسكريبشن + رؤية المشروع */
+.portfolio-grid-card-text {
+  flex: 1;
+  min-width: 0;
+}
+.portfolio-grid-card-title {
+  font-size: clamp(17px, 1.6vw, 20px);
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+.portfolio-grid-card-excerpt {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.portfolio-grid-card-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 700;
+  transition: gap 0.3s var(--ease-spring);
+}
+.portfolio-grid-card-more:hover { gap: 10px; }
+/* الشمال: تاجات فوق بعض */
+.portfolio-grid-card-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+  align-items: flex-start;
+}
+.portfolio-grid-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 600;
+  color: #2B578F; /* أزرق */
+  white-space: nowrap;
+  transition: border-color 0.3s var(--ease-out), color 0.3s var(--ease-out);
+}
+.portfolio-grid-card:hover .portfolio-grid-tag {
+  border-color: rgba(43, 87, 143, 0.3);
+}
+
+/* ---------- البجنيشن ---------- */
+.portfolio-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.portfolio-pagination-arrow {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.3s var(--ease-out), color 0.3s var(--ease-out), border-color 0.3s var(--ease-out), transform 0.3s var(--ease-spring);
+}
+.portfolio-pagination-arrow:hover {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+  transform: translateY(-2px);
+}
+.portfolio-pagination-arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+.portfolio-pagination-numbers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.portfolio-pagination-num {
+  min-width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--navy);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s var(--ease-out), color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+.portfolio-pagination-num:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.portfolio-pagination-num.active {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+}
+.portfolio-pagination-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 44px;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* ---------- ريسبونسف ---------- */
+@media (max-width: 900px) {
+  .portfolio-main { padding: 50px 20px 60px; }
+  .portfolio-filter-row { gap: 10px; }
+  .portfolio-search-wrap { max-width: 100%; }
+  .portfolio-filter-label { max-width: 100px; }
+  .portfolio-grid-main { grid-template-columns: 1fr; gap: 20px; }
+  .portfolio-grid-card-body { flex-direction: column; gap: 14px; }
+  .portfolio-grid-card-tags { flex-direction: row; flex-wrap: wrap; }
+}
+
+@media (max-width: 600px) {
+  .portfolio-main { padding: 36px 16px 44px; }
+  .portfolio-main-head { margin-bottom: 32px; }
+  .portfolio-filters { margin-bottom: 36px; }
+  .portfolio-filter-row { flex-wrap: wrap; }
+  .portfolio-filter-btns { flex: 1 1 100%; flex-wrap: wrap; }
+  .portfolio-filter-btn { flex: 1 1 calc(50% - 6px); min-width: 0; padding: 0 12px; font-size: 13px; height: 48px; }
+  .portfolio-filter-label { white-space: normal; font-size: 12px; max-width: none; }
+  .portfolio-dropdown-wrap { flex: 0 0 auto; }
+  .portfolio-dropdown-wrap--industry { margin-right: 0; }
+  .portfolio-search-input { height: 48px; font-size: 14px; }
+  .portfolio-search-btn { width: 36px; height: 36px; }
+  .portfolio-dropdown-btn { height: 48px; font-size: 14px; max-width: 200px; }
+  .portfolio-grid-card-body { padding: 18px 16px; }
+  .portfolio-grid-card-title { font-size: 17px; }
+  .portfolio-grid-card-excerpt { font-size: 13px; }
+  .portfolio-pagination-num, .portfolio-pagination-arrow { min-width: 40px; width: 40px; height: 40px; font-size: 14px; }
+  .portfolio-pagination-ellipsis { height: 40px; }
+}
+
+/* ============================================================
    صفحات داخلية — placeholder للمحتوى قيد الإضافة
    ============================================================ */
 .page-content {

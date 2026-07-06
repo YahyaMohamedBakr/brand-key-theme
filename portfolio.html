@@ -26,13 +26,286 @@
        data-ghost-href="#">
   </div>
 
-  <!-- المحتوى الخاص بالصفحة — هنا هتتحط السيكشنز -->
+  <!-- المحتوى الخاص بالصفحة -->
   <main class="page-content" id="pageContent">
-    <div class="page-placeholder">
-      <span class="page-placeholder-eyebrow">معرض الأعمال</span>
-      <h2 class="page-placeholder-title">المحتوى قيد الإضافة</h2>
-      <p class="page-placeholder-desc">هنا سيتم إضافة السيكشنات الخاصة بصفحة معرض الأعمال واحدة واحدة.</p>
-    </div>
+
+    <!-- ===================== سيكشن معرض الأعمال (Portfolio Grid) ===================== -->
+    <section class="portfolio-main" id="portfolioMain">
+      <div class="portfolio-main-container">
+
+        <!-- ===== الهيدر (تايتل + خط + ديسكريبشن في النص) ===== -->
+        <header class="portfolio-main-head" id="portfolioMainHead">
+          <h2 class="portfolio-main-title">قصص واقعية.. لأثر مستدام</h2>
+          <img src="icons/heading-line.png" alt="" class="heading-line portfolio-main-heading-line" aria-hidden="true" />
+          <p class="portfolio-main-desc">
+            نحول الأفكار إلى واقع ملموس.. إليك بعض القصص التي صنعناها بشغف
+          </p>
+        </header>
+
+        <!-- ===== شريط البحث + الفلاتر (على سطرين) ===== -->
+        <div class="portfolio-filters" id="portfolioFilters">
+
+          <!-- السطر الأول: شريط البحث (متمركز في النص) -->
+          <div class="portfolio-search-row">
+            <div class="portfolio-search-wrap">
+              <input
+                type="search"
+                class="portfolio-search-input"
+                id="portfolioSearchInput"
+                placeholder="ابحث عن مشروع.. مثلاً: التحول الرقمي، التسويق الإلكتروني"
+                aria-label="بحث في المشاريع"
+              />
+              <button class="portfolio-search-btn" id="portfolioSearchBtn" aria-label="بحث" type="button">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="2"/>
+                  <path d="M14 14L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- السطر الثاني: الفلاتر (من اليمين لليسار: 3 أزرار → dropdown الفئة → dropdown الصناعة) -->
+          <div class="portfolio-filter-row">
+            <!-- 3 أزرار فلاتر (يمين) — من اليمين لليسار: 5 (أصفر متفعل), 16, 22 -->
+            <div class="portfolio-filter-btns" id="portfolioFilterBtns">
+              <button class="portfolio-filter-btn active" data-filter="content" type="button">
+                <span class="portfolio-filter-count">5</span>
+                <span class="portfolio-filter-label">قسم المحتوى والإبداع</span>
+              </button>
+              <button class="portfolio-filter-btn" data-filter="marketing" type="button">
+                <span class="portfolio-filter-count">16</span>
+                <span class="portfolio-filter-label">قسم التسويق والنمو</span>
+              </button>
+              <button class="portfolio-filter-btn" data-filter="tech" type="button">
+                <span class="portfolio-filter-count">22</span>
+                <span class="portfolio-filter-label">قسم الحلول التقنية والمتاجر</span>
+              </button>
+            </div>
+
+            <!-- dropdown "الفئة" + أيقونة مربعات (وسط) -->
+            <div class="portfolio-dropdown-wrap" id="portfolioDropdownWrap">
+              <button class="portfolio-dropdown-btn" id="portfolioDropdownBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span>الفئة</span>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+                  <rect x="10" y="1" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+                  <rect x="1" y="10" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+                  <rect x="10" y="10" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+                </svg>
+              </button>
+              <ul class="portfolio-dropdown-menu" id="portfolioDropdownMenu" role="listbox" aria-hidden="true">
+                <li role="option" data-value="all">كل الفئات</li>
+                <li role="option" data-value="content">قسم المحتوى والإبداع</li>
+                <li role="option" data-value="marketing">قسم التسويق والنمو</li>
+                <li role="option" data-value="tech">قسم الحلول التقنية والمتاجر</li>
+              </ul>
+            </div>
+
+            <!-- dropdown "الصناعة" + أيقونة مصنع صفراء (شمال) -->
+            <div class="portfolio-dropdown-wrap portfolio-dropdown-wrap--industry" id="portfolioIndustryWrap">
+              <button class="portfolio-dropdown-btn" id="portfolioIndustryBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span>الصناعة</span>
+                <!-- أيقونة مصنع صفراء -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M2 20V10L7 13V10L12 13V10L17 13V7L22 10V20H2Z" fill="#F2C94C" stroke="#F2C94C" stroke-width="1.5" stroke-linejoin="round"/>
+                  <rect x="5" y="16" width="2.5" height="2.5" fill="#0E233F"/>
+                  <rect x="10" y="16" width="2.5" height="2.5" fill="#0E233F"/>
+                  <rect x="15" y="16" width="2.5" height="2.5" fill="#0E233F"/>
+                </svg>
+              </button>
+              <ul class="portfolio-dropdown-menu" id="portfolioIndustryMenu" role="listbox" aria-hidden="true">
+                <li role="option" data-value="all">كل الصناعات</li>
+                <li role="option" data-value="education">التعليم</li>
+                <li role="option" data-value="health">القطاع الطبي</li>
+                <li role="option" data-value="ecommerce">التجارة الإلكترونية</li>
+                <li role="option" data-value="realestate">العقارات</li>
+                <li role="option" data-value="finance">الخدمات المالية</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ===== جريد المشاريع (6 مشاريع = 3 صفوف × 2) ===== -->
+        <div class="portfolio-grid-main" id="portfolioGridMain">
+
+          <!-- مشروع 1 -->
+          <article class="portfolio-grid-card" data-category="content">
+            <div class="portfolio-grid-card-visual">
+              <img src="icons/project-img1.png" alt="مشروع 1" class="portfolio-grid-card-img" />
+            </div>
+            <div class="portfolio-grid-card-body">
+              <!-- يمين: تايتل + ديسكريبشن + رؤية المشروع -->
+              <div class="portfolio-grid-card-text">
+                <h3 class="portfolio-grid-card-title">السلسلة التعليمية لأنت المستقبل</h3>
+                <p class="portfolio-grid-card-excerpt">
+                  منصة تعليمية متكاملة تخدم آلاف الطلاب بنظام تتبع تقدم ذكي ومحتوى تفاعلي يحقق نتائج تعليمية ملموسة.
+                </p>
+                <a href="#" class="portfolio-grid-card-more">
+                  <span>رؤية المشروع كامل</span>
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+              <!-- شمال: تاجات فوق بعض -->
+              <div class="portfolio-grid-card-tags">
+                <span class="portfolio-grid-tag">تطوير المواقع</span>
+                <span class="portfolio-grid-tag">البراندينج</span>
+                <span class="portfolio-grid-tag">تحسين محركات البحث</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- مشروع 2 -->
+          <article class="portfolio-grid-card" data-category="tech">
+            <div class="portfolio-grid-card-visual">
+              <img src="icons/project-img2.png" alt="مشروع 2" class="portfolio-grid-card-img" />
+            </div>
+            <div class="portfolio-grid-card-body">
+              <div class="portfolio-grid-card-text">
+                <h3 class="portfolio-grid-card-title">تطوير منصة مسار</h3>
+                <p class="portfolio-grid-card-excerpt">
+                  منصة شاملة لإدارة المسارات المهنية مع نظام تقييم وتطوير ذاتي مخصص لكل موظف حسب أهدافه.
+                </p>
+                <a href="#" class="portfolio-grid-card-more">
+                  <span>رؤية المشروع كامل</span>
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+              <div class="portfolio-grid-card-tags">
+                <span class="portfolio-grid-tag">تطوير المواقع</span>
+                <span class="portfolio-grid-tag">التجارة الإلكترونية</span>
+                <span class="portfolio-grid-tag">UX/UI</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- مشروع 3 -->
+          <article class="portfolio-grid-card" data-category="marketing">
+            <div class="portfolio-grid-card-visual">
+              <img src="icons/project-img3.png" alt="مشروع 3" class="portfolio-grid-card-img" />
+            </div>
+            <div class="portfolio-grid-card-body">
+              <div class="portfolio-grid-card-text">
+                <h3 class="portfolio-grid-card-title">هوية بصرية لعلامة تجارية ناشئة</h3>
+                <p class="portfolio-grid-card-excerpt">
+                  تصميم هوية بصرية متكاملة شملت الشعار والألوان والخطوط والمطبوعات لتعزيز حضور العلامة في السوق.
+                </p>
+                <a href="#" class="portfolio-grid-card-more">
+                  <span>رؤية المشروع كامل</span>
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+              <div class="portfolio-grid-card-tags">
+                <span class="portfolio-grid-tag">البراندينج</span>
+                <span class="portfolio-grid-tag">التصميم الجرافيكي</span>
+                <span class="portfolio-grid-tag">الهوية البصرية</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- مشروع 4 -->
+          <article class="portfolio-grid-card" data-category="content">
+            <div class="portfolio-grid-card-visual">
+              <img src="icons/blog-1.png" alt="مشروع 4" class="portfolio-grid-card-img" />
+            </div>
+            <div class="portfolio-grid-card-body">
+              <div class="portfolio-grid-card-text">
+                <h3 class="portfolio-grid-card-title">استراتيجية محتوى لشركة تقنية</h3>
+                <p class="portfolio-grid-card-excerpt">
+                  خطة محتوى شاملة تضاعفت معها الزيارات العضوية بنسبة 200% خلال 6 أشهر فقط.
+                </p>
+                <a href="#" class="portfolio-grid-card-more">
+                  <span>رؤية المشروع كامل</span>
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+              <div class="portfolio-grid-card-tags">
+                <span class="portfolio-grid-tag">كتابة المحتوى</span>
+                <span class="portfolio-grid-tag">تحسين محركات البحث</span>
+                <span class="portfolio-grid-tag">التسويق الرقمي</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- مشروع 5 -->
+          <article class="portfolio-grid-card" data-category="tech">
+            <div class="portfolio-grid-card-visual">
+              <img src="icons/blog-2.png" alt="مشروع 5" class="portfolio-grid-card-img" />
+            </div>
+            <div class="portfolio-grid-card-body">
+              <div class="portfolio-grid-card-text">
+                <h3 class="portfolio-grid-card-title">تطبيق جوال لإدارة المهام</h3>
+                <p class="portfolio-grid-card-excerpt">
+                  تطبيق ذكي لإدارة المهام يتيح للمستخدمين تنظيم عملهم ومتابعة تقدمهم عبر واجهة بسيطة وأنيقة.
+                </p>
+                <a href="#" class="portfolio-grid-card-more">
+                  <span>رؤية المشروع كامل</span>
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+              <div class="portfolio-grid-card-tags">
+                <span class="portfolio-grid-tag">تطبيقات الجوال</span>
+                <span class="portfolio-grid-tag">تطوير البرمجيات</span>
+                <span class="portfolio-grid-tag">UX/UI</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- مشروع 6 -->
+          <article class="portfolio-grid-card" data-category="marketing">
+            <div class="portfolio-grid-card-visual">
+              <img src="icons/blog-3.png" alt="مشروع 6" class="portfolio-grid-card-img" />
+            </div>
+            <div class="portfolio-grid-card-body">
+              <div class="portfolio-grid-card-text">
+                <h3 class="portfolio-grid-card-title">حملة تسويقية لعلامة تجارية</h3>
+                <p class="portfolio-grid-card-excerpt">
+                  حملة رقمية متكاملة حققت عائد على الاستثمار بنسبة 350% وزادت المبيعات بنسبة 45%.
+                </p>
+                <a href="#" class="portfolio-grid-card-more">
+                  <span>رؤية المشروع كامل</span>
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L8 3M14 9L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+              <div class="portfolio-grid-card-tags">
+                <span class="portfolio-grid-tag">التسويق الرقمي</span>
+                <span class="portfolio-grid-tag">إدارة الحملات</span>
+                <span class="portfolio-grid-tag">تحسين المحتوى</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- ===== البجنيشن (Pagination) ===== -->
+        <nav class="portfolio-pagination" id="portfolioPagination" aria-label="تصفح صفحات المشاريع">
+          <button class="portfolio-pagination-arrow portfolio-pagination-arrow--prev" id="portfolioPagePrev" aria-label="الصفحة السابقة" type="button">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M13 9H5M5 9L10 4M5 9L10 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="portfolio-pagination-numbers" id="portfolioPageNumbers">
+            <button class="portfolio-pagination-num active" data-page="1" type="button">1</button>
+            <button class="portfolio-pagination-num" data-page="2" type="button">2</button>
+            <button class="portfolio-pagination-num" data-page="3" type="button">3</button>
+            <button class="portfolio-pagination-num" data-page="4" type="button">4</button>
+            <button class="portfolio-pagination-num" data-page="5" type="button">5</button>
+            <span class="portfolio-pagination-ellipsis">…</span>
+            <button class="portfolio-pagination-num" data-page="33" type="button">33</button>
+          </div>
+          <button class="portfolio-pagination-arrow portfolio-pagination-arrow--next" id="portfolioPageNext" aria-label="الصفحة التالية" type="button">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M5 9H13M13 9L8 4M13 9L8 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </nav>
+
+      </div>
+    </section>
+
+    <!-- ===================== السيكشنات المكررة (مستدعاة كـ components) ===================== -->
+    <div data-include="clients"></div>
+    <div data-include="testimonials"></div>
+    <div data-include="cta-final"></div>
+    <div data-include="faq"></div>
+    <div data-include="blog"></div>
+
   </main>
 
   <!-- الفوتر (محمل بالـ JS) -->

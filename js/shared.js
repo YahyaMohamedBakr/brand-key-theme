@@ -1596,6 +1596,168 @@ function initShared() {
     blogGridCards.forEach(function (c) { c.classList.add('revealed'); });
   }
 
+  /* ============================================================
+     تفاعلات صفحة معرض الأعمال (portfolio-main)
+     نفس نظام المدونة: dropdowns + filter buttons + pagination + reveal
+     ============================================================ */
+  var pHead = document.getElementById('portfolioMainHead');
+  var pCards = Array.prototype.slice.call(document.querySelectorAll('.portfolio-grid-card'));
+
+  // القائمة المنسدلة "الفئة"
+  var pDropdownBtn = document.getElementById('portfolioDropdownBtn');
+  var pDropdownMenu = document.getElementById('portfolioDropdownMenu');
+  var pDropdownWrap = document.getElementById('portfolioDropdownWrap');
+  // القائمة المنسدلة "الصناعة"
+  var pIndustryBtn = document.getElementById('portfolioIndustryBtn');
+  var pIndustryMenu = document.getElementById('portfolioIndustryMenu');
+  var pIndustryWrap = document.getElementById('portfolioIndustryWrap');
+  // أزرار الفلاتر
+  var pFilterBtns = Array.prototype.slice.call(document.querySelectorAll('.portfolio-filter-btn'));
+  // البجنيشن
+  var pPageNumbers = Array.prototype.slice.call(document.querySelectorAll('.portfolio-pagination-num'));
+  var pPagePrev = document.getElementById('portfolioPagePrev');
+  var pPageNext = document.getElementById('portfolioPageNext');
+
+  // القائمة المنسدلة "الفئة" — فتح/إغلاق
+  function setupPortfolioDropdown(btn, menu, wrap) {
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      // اقفل أي قائمة منسدلة أخرى مفتوحة
+      var otherMenus = document.querySelectorAll('.portfolio-dropdown-menu.is-open');
+      otherMenus.forEach(function (m) {
+        if (m !== menu) {
+          m.classList.remove('is-open');
+          var otherBtn = m.parentElement.querySelector('.portfolio-dropdown-btn');
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+          m.setAttribute('aria-hidden', 'true');
+        }
+      });
+      var isOpen = menu.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    });
+    // إغلاق عند click برة
+    document.addEventListener('click', function (e) {
+      if (wrap && !wrap.contains(e.target)) {
+        menu.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+      }
+    });
+    // اختيار فئة
+    var items = menu.querySelectorAll('li');
+    items.forEach(function (item) {
+      item.addEventListener('click', function () {
+        var val = item.getAttribute('data-value');
+        btn.querySelector('span').textContent = item.textContent;
+        menu.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+        // فلترة الجريد حسب الفئة
+        if (val === 'all') {
+          pFilterBtns.forEach(function (b) { b.classList.remove('active'); });
+        } else {
+          pFilterBtns.forEach(function (b) {
+            b.classList.toggle('active', b.getAttribute('data-filter') === val);
+          });
+        }
+        filterPortfolioGrid();
+      });
+    });
+  }
+  setupPortfolioDropdown(pDropdownBtn, pDropdownMenu, pDropdownWrap);
+  setupPortfolioDropdown(pIndustryBtn, pIndustryMenu, pIndustryWrap);
+
+  // أزرار الفلاتر — تفعيل/إلغاء
+  pFilterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (btn.classList.contains('active')) {
+        btn.classList.remove('active');
+      } else {
+        pFilterBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+      }
+      filterPortfolioGrid();
+    });
+  });
+
+  function filterPortfolioGrid() {
+    var activeBtn = document.querySelector('.portfolio-filter-btn.active');
+    var activeFilter = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+    pCards.forEach(function (card) {
+      var cat = card.getAttribute('data-category');
+      var show = (activeFilter === 'all' || cat === activeFilter);
+      card.style.display = show ? '' : 'none';
+    });
+  }
+
+  // البجنيشن — تبديل الصفحة النشطة
+  pPageNumbers.forEach(function (num) {
+    num.addEventListener('click', function () {
+      pPageNumbers.forEach(function (n) { n.classList.remove('active'); });
+      num.classList.add('active');
+      var grid = document.getElementById('portfolioGridMain');
+      if (grid) {
+        var rect = grid.getBoundingClientRect();
+        window.scrollTo({ top: rect.top + window.scrollY - 120, behavior: 'smooth' });
+      }
+    });
+  });
+
+  function getCurrentPortfolioPage() {
+    var active = document.querySelector('.portfolio-pagination-num.active');
+    return active ? parseInt(active.getAttribute('data-page'), 10) : 1;
+  }
+  function goToPortfolioPage(page) {
+    var target = document.querySelector('.portfolio-pagination-num[data-page="' + page + '"]');
+    if (target) target.click();
+  }
+  if (pPagePrev) {
+    pPagePrev.addEventListener('click', function () {
+      var curr = getCurrentPortfolioPage();
+      if (curr > 1) goToPortfolioPage(curr - 1);
+    });
+  }
+  if (pPageNext) {
+    pPageNext.addEventListener('click', function () {
+      var curr = getCurrentPortfolioPage();
+      if (curr < 33) goToPortfolioPage(curr + 1);
+    });
+  }
+
+  // reveal animations للهيدر + كروت الجريد
+  if ('IntersectionObserver' in window) {
+    if (pHead) {
+      var pHeadIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            pHeadIO.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      pHeadIO.observe(pHead);
+    }
+    if (pCards.length) {
+      var pCardsIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            pCardsIO.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      pCards.forEach(function (card, i) {
+        card.style.transitionDelay = (i % 2) * 100 + 'ms';
+        pCardsIO.observe(card);
+      });
+    }
+  } else {
+    if (pHead) pHead.classList.add('revealed');
+    pCards.forEach(function (c) { c.classList.add('revealed'); });
+  }
+
   console.log('%cBrand Key %cAll sections loaded (Header, Nav, Hero, Services, Consult, Sectors, CTA2, Portfolio, Pricing & Footer)',
     'color:#F2C94C;font-weight:bold;', 'color:#0E233F;');
 }
