@@ -1236,7 +1236,9 @@ function initShared() {
     { id: 'servicesTechProjectsHead', cls: 'services-projects-head' },
     { id: 'sectorsAxesHead', cls: 'services-axes-head' },
     { id: 'sectorsAxesGrid', cls: 'services-axes-cards', children: '.services-axes-card' },
-    { id: 'sectorsAxesCta', cls: 'services-axes-cta' }
+    { id: 'sectorsAxesCta', cls: 'services-axes-cta' },
+    { id: 'sectorsGridHead', cls: 'sectors-grid-head' },
+    { id: 'sectorsGridCards', cls: 'sectors-grid-cards', children: '.sector-flip-card' }
   ];
 
   function revealAboutSection(el) {
