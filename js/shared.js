@@ -1221,7 +1221,10 @@ function initShared() {
     { id: 'servicesPhilosophyContent', cls: 'about-us-content' },
     { id: 'servicesAxesHead', cls: 'services-axes-head' },
     { id: 'servicesAxesGrid', cls: 'services-axes-cards', children: '.services-axes-card' },
-    { id: 'servicesAxesCta', cls: 'services-axes-cta' }
+    { id: 'servicesAxesCta', cls: 'services-axes-cta' },
+    { id: 'servicesContentHead', cls: 'services-content-head' },
+    { id: 'servicesContentList', cls: 'services-content-rows', children: '.services-content-row' },
+    { id: 'servicesContentCta', cls: 'services-content-cta' }
   ];
 
   function revealAboutSection(el) {
