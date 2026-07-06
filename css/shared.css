@@ -5619,9 +5619,9 @@ a.contact-item:hover .contact-ic {
   display: flex;
   gap: 12px;
 }
-/* شريط البحث (شمال خالص) — margin-left: auto يدفعه لليسار في RTL */
-.blog-search-wrap {
-  margin-left: auto;
+/* المنيو المنسدلة (شمال خالص) — margin-left: 0 + margin-right: auto يدفعلها لليسار في RTL */
+.blog-dropdown-wrap {
+  margin-right: auto;
 }
 .blog-filter-btn {
   display: inline-flex;
