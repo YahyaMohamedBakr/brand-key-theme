@@ -221,9 +221,9 @@ var FOOTER_HTML = `<footer class="site-footer" id="siteFooter">
               <li><a href="index.html">الرئيسية</a></li>
               <li><a href="about.html">عن الشركة</a></li>
               <li><a href="services.html">خدماتنا</a></li>
+              <li><a href="sectors.html">حلول القطاعات</a></li>
               <li><a href="portfolio.html">عملاؤنا</a></li>
               <li><a href="contact.html">التوظيف</a></li>
-              <li><a href="#">سياسة الخصوصية</a></li>
             </ul>
           </div>
 
@@ -236,7 +236,6 @@ var FOOTER_HTML = `<footer class="site-footer" id="siteFooter">
               <li><a href="services.html">تطوير المواقع</a></li>
               <li><a href="services.html">الإعلانات المدفوعة</a></li>
               <li><a href="contact.html">تواصل معنا</a></li>
-              <li><a href="#">سياسة الخصوصية</a></li>
             </ul>
           </div>
 
