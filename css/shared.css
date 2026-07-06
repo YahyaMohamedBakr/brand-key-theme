@@ -6663,8 +6663,8 @@ a.contact-item:hover .contact-ic {
 .services-content-list {
   display: flex;
   flex-direction: column;
-  gap: 64px;
-  margin-bottom: 64px;
+  gap: 100px;
+  margin-bottom: 80px;
 }
 .services-content-row {
   display: grid;
@@ -6721,13 +6721,13 @@ a.contact-item:hover .contact-ic {
 }
 /* المفتاح في النوتش — صورة Framekey.png من المستخدم */
 .services-content-key {
-  position: absolute;
-  top: 1%;
-  left: 1%; /* جوه النوتش (أعلى شمال الفريم) */
-  width: 27%; /* 107px من 389px ≈ 27% */
-  height: auto;
-  aspect-ratio: 107 / 110;
-  z-index: 5;
+    position: absolute;
+    top: -5%;
+    left: 17%;
+    width: 22%;
+    height: auto;
+    aspect-ratio: 107 / 110;
+    z-index: 5;
 }
 
 /* النص */
