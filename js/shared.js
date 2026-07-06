@@ -1228,7 +1228,8 @@ function initShared() {
     { id: 'servicesMarketingHead', cls: 'services-content-head' },
     { id: 'servicesMarketingList', cls: 'services-content-rows', children: '.services-content-row' },
     { id: 'servicesMarketingCta', cls: 'services-content-cta' },
-    { id: 'servicesProjectsHead', cls: 'services-projects-head' }
+    { id: 'servicesProjectsHead', cls: 'services-projects-head' },
+    { id: 'servicesMarketingProjectsHead', cls: 'services-projects-head' }
   ];
 
   function revealAboutSection(el) {
@@ -1771,123 +1772,130 @@ function initShared() {
   }
 
   /* ============================================================
-     سلايدر أهم مشاريع المحتوى والإبداع (services-projects)
+     سلايدرات المشاريع (services-projects) — عام لأي عدد من السلايدرات
      - 2 كروت ظاهرين، التنقل بأسهم + نقاط
      ============================================================ */
-  var spSlider = document.getElementById('servicesProjectsSlider');
-  var spTrack = document.getElementById('servicesProjectsTrack');
-  var spCards = Array.prototype.slice.call(document.querySelectorAll('.services-projects-card'));
-  var spPrev = document.getElementById('servicesProjectsPrev');
-  var spNext = document.getElementById('servicesProjectsNext');
-  var spDotsContainer = document.getElementById('servicesProjectsDots');
-  var spViewport = document.getElementById('servicesProjectsViewport');
+  function setupProjectsSlider(sliderId) {
+    var slider = document.getElementById(sliderId);
+    if (!slider) return;
 
-  if (spSlider && spTrack && spCards.length) {
-    var spActive = 0;
-    var spTotal = spCards.length;
+    var prefix = sliderId;
+    var track = document.getElementById(prefix + 'Track');
+    var viewport = document.getElementById(prefix + 'Viewport');
+    var prevBtn = document.getElementById(prefix + 'Prev');
+    var nextBtn = document.getElementById(prefix + 'Next');
+    var dotsContainer = document.getElementById(prefix + 'Dots');
+    var cards = Array.prototype.slice.call(slider.querySelectorAll('.services-projects-card'));
 
-    function spVisibleCount() {
+    if (!track || !cards.length) return;
+
+    var active = 0;
+    var total = cards.length;
+
+    function visibleCount() {
       var w = window.innerWidth;
       if (w <= 900) return 1;
       return 2;
     }
 
-    function spBuildDots() {
-      if (!spDotsContainer) return;
-      var visible = spVisibleCount();
-      var pages = Math.max(1, spTotal - visible + 1);
-      spDotsContainer.innerHTML = '';
+    function buildDots() {
+      if (!dotsContainer) return;
+      var visible = visibleCount();
+      var pages = Math.max(1, total - visible + 1);
+      dotsContainer.innerHTML = '';
       for (var i = 0; i < pages; i++) {
         var dot = document.createElement('button');
-        dot.className = 'services-projects-dot' + (i === spActive ? ' active' : '');
+        dot.className = 'services-projects-dot' + (i === active ? ' active' : '');
         dot.type = 'button';
         dot.setAttribute('data-go', i);
         dot.setAttribute('aria-label', 'شريحة ' + (i + 1));
         (function (idx) {
-          dot.addEventListener('click', function () { spGoTo(idx); });
+          dot.addEventListener('click', function () { goTo(idx); });
         })(i);
-        spDotsContainer.appendChild(dot);
+        dotsContainer.appendChild(dot);
       }
     }
 
-    function spUpdate() {
-      if (!spCards.length) return;
-      var card = spCards[0];
+    function update() {
+      if (!cards.length) return;
+      var card = cards[0];
       var cardWidth = card.getBoundingClientRect().width;
       var gap = 24;
-      var offset = spActive * (cardWidth + gap);
-      spTrack.style.transform = 'translateX(' + offset + 'px)';
+      var offset = active * (cardWidth + gap);
+      track.style.transform = 'translateX(' + offset + 'px)';
 
-      var dots = spDotsContainer ? spDotsContainer.querySelectorAll('.services-projects-dot') : [];
+      var dots = dotsContainer ? dotsContainer.querySelectorAll('.services-projects-dot') : [];
       dots.forEach(function (dot, i) {
-        dot.classList.toggle('active', i === spActive);
+        dot.classList.toggle('active', i === active);
       });
 
-      var visible = spVisibleCount();
-      var maxIndex = Math.max(0, spTotal - visible);
-      if (spPrev) spPrev.disabled = (spActive <= 0);
-      if (spNext) spNext.disabled = (spActive >= maxIndex);
+      var visible = visibleCount();
+      var maxIndex = Math.max(0, total - visible);
+      if (prevBtn) prevBtn.disabled = (active <= 0);
+      if (nextBtn) nextBtn.disabled = (active >= maxIndex);
     }
 
-    function spGoTo(index) {
-      var visible = spVisibleCount();
-      var maxIndex = Math.max(0, spTotal - visible);
+    function goTo(index) {
+      var visible = visibleCount();
+      var maxIndex = Math.max(0, total - visible);
       if (index < 0) index = 0;
       if (index > maxIndex) index = maxIndex;
-      if (index === spActive) return;
-      spActive = index;
-      spUpdate();
+      if (index === active) return;
+      active = index;
+      update();
     }
 
-    function spPrevSlide() { spGoTo(spActive - 1); }
-    function spNextSlide() { spGoTo(spActive + 1); }
+    function prevSlide() { goTo(active - 1); }
+    function nextSlide() { goTo(active + 1); }
 
-    if (spPrev) spPrev.addEventListener('click', spPrevSlide);
-    if (spNext) spNext.addEventListener('click', spNextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
 
-    spSlider.setAttribute('tabindex', '0');
-    spSlider.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') { e.preventDefault(); spPrevSlide(); }
-      else if (e.key === 'ArrowLeft') { e.preventDefault(); spNextSlide(); }
+    slider.setAttribute('tabindex', '0');
+    slider.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); prevSlide(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); nextSlide(); }
     });
 
-    // swipe
-    if (spViewport) {
-      var spSwipeStart = null;
-      var spSwipeDelta = 0;
-      spViewport.addEventListener('touchstart', function (e) {
-        spSwipeStart = e.touches[0].clientX;
-        spSwipeDelta = 0;
+    if (viewport) {
+      var swipeStart = null;
+      var swipeDelta = 0;
+      viewport.addEventListener('touchstart', function (e) {
+        swipeStart = e.touches[0].clientX;
+        swipeDelta = 0;
       }, { passive: true });
-      spViewport.addEventListener('touchmove', function (e) {
-        if (spSwipeStart === null) return;
-        spSwipeDelta = e.touches[0].clientX - spSwipeStart;
+      viewport.addEventListener('touchmove', function (e) {
+        if (swipeStart === null) return;
+        swipeDelta = e.touches[0].clientX - swipeStart;
       }, { passive: true });
-      spViewport.addEventListener('touchend', function () {
-        if (spSwipeStart === null) return;
+      viewport.addEventListener('touchend', function () {
+        if (swipeStart === null) return;
         var threshold = 40;
-        if (spSwipeDelta > threshold) spPrevSlide();
-        else if (spSwipeDelta < -threshold) spNextSlide();
-        spSwipeStart = null;
-        spSwipeDelta = 0;
+        if (swipeDelta > threshold) prevSlide();
+        else if (swipeDelta < -threshold) nextSlide();
+        swipeStart = null;
+        swipeDelta = 0;
       });
     }
 
-    var spResizeTimer = null;
+    var resizeTimer = null;
     window.addEventListener('resize', function () {
-      if (spResizeTimer) clearTimeout(spResizeTimer);
-      spResizeTimer = setTimeout(function () {
-        var visible = spVisibleCount();
-        var maxIndex = Math.max(0, spTotal - visible);
-        if (spActive > maxIndex) spActive = maxIndex;
-        spBuildDots();
-        spUpdate();
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        var visible = visibleCount();
+        var maxIndex = Math.max(0, total - visible);
+        if (active > maxIndex) active = maxIndex;
+        buildDots();
+        update();
       }, 200);
     });
 
-    spBuildDots();
-    spUpdate();
+    buildDots();
+    update();
   }
+
+  setupProjectsSlider('servicesProjectsSlider');
+  setupProjectsSlider('servicesMarketingProjectsSlider');
 
   console.log('%cBrand Key %cAll sections loaded (Header, Nav, Hero, Services, Consult, Sectors, CTA2, Portfolio, Pricing & Footer)',
     'color:#F2C94C;font-weight:bold;', 'color:#0E233F;');
