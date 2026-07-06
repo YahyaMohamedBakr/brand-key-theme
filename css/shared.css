@@ -5614,11 +5614,14 @@ a.contact-item:hover .contact-ic {
   transition: background 0.2s var(--ease-out);
 }
 .blog-dropdown-menu li:hover { background: var(--bg-soft); }
-/* أزرار الفلاتر (شمال خالص) — 3 أزرار */
+/* أزرار الفلاتر (يمين) — 3 أزرار */
 .blog-filter-btns {
   display: flex;
   gap: 12px;
-  margin-right: auto; /* يدفعهم لليسار في RTL */
+}
+/* شريط البحث (شمال خالص) — margin-left: auto يدفعه لليسار في RTL */
+.blog-search-wrap {
+  margin-left: auto;
 }
 .blog-filter-btn {
   display: inline-flex;

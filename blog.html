@@ -34,27 +34,26 @@
       <div class="blog-main-container">
 
         <!-- ===== شريط البحث + المنيو المنسدلة + أزرار الفلاتر ===== -->
+        <!-- ترتيب RTL من اليمين لليسار: الفلاتر (يمين) → الـ dropdown (وسط) → البحث (شمال) -->
         <div class="blog-filters" id="blogFilters">
 
-          <!-- شريط البحث (يمين) — مستطيل بحواف مستديرة، جواه placeholder رمادي، أيقونة عدسة في آخره شمال -->
-          <div class="blog-search-wrap">
-            <input
-              type="search"
-              class="blog-search-input"
-              id="blogSearchInput"
-              placeholder="عن ماذا تبحث لتطوير أعمالك اليوم؟"
-              aria-label="بحث في المدونة"
-            />
-            <button class="blog-search-btn" id="blogSearchBtn" aria-label="بحث" type="button">
-              <!-- أيقونة عدسة -->
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="2"/>
-                <path d="M14 14L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
+          <!-- 3 أزرار فلاتر (يمين) — اتنين أبيض بحدود رمادية + واحد متفعل ذهبي -->
+          <div class="blog-filter-btns" id="blogFilterBtns">
+            <button class="blog-filter-btn" data-filter="tech" type="button">
+              <span class="blog-filter-count">22</span>
+              <span class="blog-filter-label">قسم الحلول التقنية والمتاجر</span>
+            </button>
+            <button class="blog-filter-btn" data-filter="marketing" type="button">
+              <span class="blog-filter-count">16</span>
+              <span class="blog-filter-label">قسم التسويق والنمو</span>
+            </button>
+            <button class="blog-filter-btn active" data-filter="content" type="button">
+              <span class="blog-filter-count">5</span>
+              <span class="blog-filter-label">قسم المحتوى الإبداعي</span>
             </button>
           </div>
 
-          <!-- المنيو المنسدلة "الفئة" + أيقونة مربعات (شمال شريط البحث) -->
+          <!-- المنيو المنسدلة "الفئة" + أيقونة مربعات (وسط) -->
           <div class="blog-dropdown-wrap" id="blogDropdownWrap">
             <button class="blog-dropdown-btn" id="blogDropdownBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
               <span>الفئة</span>
@@ -74,19 +73,21 @@
             </ul>
           </div>
 
-          <!-- 3 أزرار فلاتر (شمال خالص) — اتنين أبيض بحدود رمادية + واحد متفعل ذهبي -->
-          <div class="blog-filter-btns" id="blogFilterBtns">
-            <button class="blog-filter-btn" data-filter="tech" type="button">
-              <span class="blog-filter-count">22</span>
-              <span class="blog-filter-label">قسم الحلول التقنية والمتاجر</span>
-            </button>
-            <button class="blog-filter-btn" data-filter="marketing" type="button">
-              <span class="blog-filter-count">16</span>
-              <span class="blog-filter-label">قسم التسويق والنمو</span>
-            </button>
-            <button class="blog-filter-btn active" data-filter="content" type="button">
-              <span class="blog-filter-count">5</span>
-              <span class="blog-filter-label">قسم المحتوى الإبداعي</span>
+          <!-- شريط البحث (شمال) — مستطيل بحواف مستديرة، جواه placeholder رمادي، أيقونة عدسة في آخره شمال -->
+          <div class="blog-search-wrap">
+            <input
+              type="search"
+              class="blog-search-input"
+              id="blogSearchInput"
+              placeholder="عن ماذا تبحث لتطوير أعمالك اليوم؟"
+              aria-label="بحث في المدونة"
+            />
+            <button class="blog-search-btn" id="blogSearchBtn" aria-label="بحث" type="button">
+              <!-- أيقونة عدسة -->
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="2"/>
+                <path d="M14 14L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
             </button>
           </div>
 
