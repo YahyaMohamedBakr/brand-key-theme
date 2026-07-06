@@ -1225,6 +1225,9 @@ function initShared() {
     { id: 'servicesContentHead', cls: 'services-content-head' },
     { id: 'servicesContentList', cls: 'services-content-rows', children: '.services-content-row' },
     { id: 'servicesContentCta', cls: 'services-content-cta' },
+    { id: 'servicesMarketingHead', cls: 'services-content-head' },
+    { id: 'servicesMarketingList', cls: 'services-content-rows', children: '.services-content-row' },
+    { id: 'servicesMarketingCta', cls: 'services-content-cta' },
     { id: 'servicesProjectsHead', cls: 'services-projects-head' }
   ];
 
