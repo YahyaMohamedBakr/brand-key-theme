@@ -1238,7 +1238,9 @@ function initShared() {
     { id: 'sectorsAxesGrid', cls: 'services-axes-cards', children: '.services-axes-card' },
     { id: 'sectorsAxesCta', cls: 'services-axes-cta' },
     { id: 'sectorsGridHead', cls: 'sectors-grid-head' },
-    { id: 'sectorsGridCards', cls: 'sectors-grid-cards', children: '.sector-flip-card' }
+    { id: 'sectorsGridCards', cls: 'sectors-grid-cards', children: '.sector-flip-card' },
+    { id: 'sectorsCommerceHead', cls: 'sectors-commerce-head' },
+    { id: 'sectorsCommerceList', cls: 'sectors-commerce-list', children: '.commerce-card' }
   ];
 
   function revealAboutSection(el) {

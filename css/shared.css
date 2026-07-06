@@ -7262,6 +7262,203 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة حلول القطاعات — سيكشن قطاعات التجارة والمبيعات
+   ============================================================ */
+.sectors-commerce {
+  position: relative;
+  background: var(--bg-soft);
+  padding: 80px 24px;
+}
+.sectors-commerce-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+/* الهيدر */
+.sectors-commerce-head {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 56px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.sectors-commerce-head.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.sectors-commerce-title {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+.sectors-commerce-heading-line {
+  margin: 0 auto 18px;
+}
+.sectors-commerce-desc {
+  font-size: clamp(14px, 1.3vw, 17px);
+  color: #475569;
+  line-height: 1.9;
+}
+
+/* ---------- قائمة الكروت ---------- */
+.sectors-commerce-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ---------- الكارت العصري بعرض كامل ---------- */
+.commerce-card {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 40px;
+  border-radius: 24px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out), box-shadow 0.45s var(--ease-out);
+  will-change: transform, opacity;
+}
+.commerce-card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.commerce-card:hover {
+  box-shadow: 0 20px 50px rgba(14, 35, 63, 0.15);
+}
+
+/* العمود الأيسر: النصوص */
+.commerce-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.commerce-card-title {
+  font-size: clamp(24px, 2.5vw, 32px);
+  font-weight: 800;
+  line-height: 1.3;
+}
+.commerce-card-desc {
+  font-size: clamp(14px, 1.3vw, 16px);
+  line-height: 1.8;
+  opacity: 0.85;
+}
+/* شبكة الميزات (2 عمودين) */
+.commerce-card-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+  margin-top: 8px;
+}
+.commerce-card-feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.commerce-card-plus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  font-size: 16px;
+  font-weight: 800;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* العمود الأيمن: الصورة */
+.commerce-card-visual {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+.commerce-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease-spring);
+}
+.commerce-card:hover .commerce-card-img {
+  transform: scale(1.05);
+}
+
+/* ---------- ألوان الكروت (بألوان هويتنا) ---------- */
+
+/* كارت كحلي (السفر والسياحة) */
+.commerce-card--navy {
+  background: var(--navy);
+  color: #fff;
+}
+.commerce-card--navy .commerce-card-title { color: #fff; }
+.commerce-card--navy .commerce-card-desc { color: rgba(255, 255, 255, 0.8); }
+.commerce-card--navy .commerce-card-feature { color: rgba(255, 255, 255, 0.9); }
+.commerce-card--navy .commerce-card-plus {
+  background: rgba(242, 201, 76, 0.2);
+  color: var(--gold);
+}
+
+/* كارت أبيض (العقارات) */
+.commerce-card--white {
+  background: #fff;
+  color: var(--navy);
+  border: 1px solid var(--line);
+}
+.commerce-card--white .commerce-card-title { color: var(--navy); }
+.commerce-card--white .commerce-card-desc { color: var(--muted); }
+.commerce-card--white .commerce-card-feature { color: #334155; }
+.commerce-card--white .commerce-card-plus {
+  background: rgba(14, 35, 63, 0.08);
+  color: var(--navy);
+}
+
+/* كارت ذهبي (التجارة الإلكترونية) */
+.commerce-card--gold {
+  background: var(--gold);
+  color: var(--navy);
+}
+.commerce-card--gold .commerce-card-title { color: var(--navy); }
+.commerce-card--gold .commerce-card-desc { color: rgba(14, 35, 63, 0.8); }
+.commerce-card--gold .commerce-card-feature { color: var(--navy); }
+.commerce-card--gold .commerce-card-plus {
+  background: rgba(14, 35, 63, 0.15);
+  color: var(--navy);
+}
+
+/* ---------- ريسبونسف ---------- */
+@media (max-width: 900px) {
+  .sectors-commerce { padding: 60px 20px; }
+  .commerce-card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 28px;
+  }
+  .commerce-card-features { grid-template-columns: 1fr; gap: 8px; }
+  .commerce-card-visual { aspect-ratio: 16 / 9; }
+}
+
+@media (max-width: 600px) {
+  .sectors-commerce { padding: 44px 16px; }
+  .sectors-commerce-title { font-size: 24px; }
+  .sectors-commerce-desc { font-size: 14px; }
+  .sectors-commerce-list { gap: 20px; }
+  .commerce-card { padding: 22px 18px; border-radius: 18px; }
+  .commerce-card-title { font-size: 22px; }
+  .commerce-card-desc { font-size: 14px; }
+  .commerce-card-feature { font-size: 13px; }
+  .commerce-card-plus { width: 20px; height: 20px; font-size: 14px; }
+  .commerce-card-visual { border-radius: 12px; }
+}
+
+/* ============================================================
    صفحات داخلية — placeholder للمحتوى قيد الإضافة
    ============================================================ */
 .page-content {
