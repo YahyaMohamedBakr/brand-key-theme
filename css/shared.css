@@ -6683,49 +6683,50 @@ a.contact-item:hover .contact-ic {
 /* الصف المعكوس: الصورة على اليمين، النص على الشمال
    ترتيب source: الصورة أول → تظهر يمين في RTL تلقائياً (لا حاجة لـ order) */
 
-/* الصورة — فريم كحلي (زي الهيرو الداخلي: navy frame + photo inside + key) */
+/* الصورة — فريم كحلي ب notch أكبر + مفتاح (صورة جاهزة من المستخدم) */
 .services-content-visual {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-/* الفريم: 389×247 + mask = شكل الفريم (مع النوتش) */
+/* الفريم: 389×248 — بنستخدم صورة المستخدم كـ mask للفريم */
 .services-content-frame {
   position: relative;
   width: 389px;
   max-width: 100%;
-  aspect-ratio: 389 / 247;
+  aspect-ratio: 389 / 248;
 }
-/* خلفية navy بـ mask = شكل الفريم */
+/* خلفية navy بـ mask = شكل الفريم الجديد (مع notch أكبر) */
 .services-content-frame-fill {
   position: absolute;
   inset: 0;
   background: var(--navy);
-  -webkit-mask: url('../icons/inner-hero-frame.png') no-repeat center / contain;
-  mask: url('../icons/inner-hero-frame.png') no-repeat center / contain;
+  -webkit-mask: url('../icons/services-frame-mask.png') no-repeat center / contain;
+  mask: url('../icons/services-frame-mask.png') no-repeat center / contain;
   -webkit-mask-mode: alpha;
   mask-mode: alpha;
 }
-/* الصورة داخل الفريم — div بـ background-image + mask = الثقب (RGBA) */
+/* الصورة داخل الفريم — div بـ background-image + mask = الثقب (بدون المفتاح) */
 .services-content-frame-photo {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  -webkit-mask: url('../icons/inner-hero-hole-rgba.png') no-repeat center / contain;
-  mask: url('../icons/inner-hero-hole-rgba.png') no-repeat center / contain;
+  -webkit-mask: url('../icons/services-frame-hole.png') no-repeat center / contain;
+  mask: url('../icons/services-frame-hole.png') no-repeat center / contain;
   -webkit-mask-mode: alpha;
   mask-mode: alpha;
 }
-/* المفتاح في النوتش — النوتش على أعلى شمال الفريم، المفتاح أكبر وجواه */
+/* المفتاح في النوتش — مكانه ثابت جوه القصة الكبيرة */
 .services-content-key {
   position: absolute;
-  top: -8px;
-  left: 2px; /* جوه النوتش (أعلى شمال الفريم) */
-  width: 64px;
-  height: 64px;
+  top: 4%;
+  left: 2%; /* جوه النوتش الكبير (أعلى شمال الفريم) */
+  width: 23%; /* 88px من 389px ≈ 23% */
+  height: auto;
+  aspect-ratio: 1;
   z-index: 5;
 }
 
