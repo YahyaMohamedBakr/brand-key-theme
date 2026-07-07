@@ -314,25 +314,33 @@
       </div>
     </section>
 
-    <!-- ===================== سيكشن 3: قطاعات التجارة والمبيعات (3 كروت عصرية بعرض كامل) ===================== -->
-    <section class="sectors-commerce" id="sectorsCommerce">
-      <div class="sectors-commerce-container">
+    <!-- ===================== سيكشن 3: قطاعات التجارة والمبيعات (Stacked Cards on Scroll) ===================== -->
+    <section class="sectors-commerce sectors-commerce-stack" id="sectorsCommerce">
 
-        <!-- الهيدر (في النص) -->
+      <!-- الحاوية المثبتة (Pinned) — كل المحتوى جواها يفضل ثابت أثناء السكرول -->
+      <div class="sectors-commerce-pin" id="sectorsCommercePin">
+
+        <!-- الهيدر (ثابت في الخلفية) -->
         <header class="sectors-commerce-head" id="sectorsCommerceHead">
           <h2 class="sectors-commerce-title">قطاعات التجارة والمبيعات</h2>
           <img src="icons/heading-line.png" alt="" class="heading-line sectors-commerce-heading-line" aria-hidden="true" />
           <p class="sectors-commerce-desc">
             نقدم حلولاً متخصصة لقطاعات التجارة والمبيعات بمنظومة متكاملة تساعدك على النمو والتفوق في سوقك.
           </p>
+          <!-- شريط تقدّم السكرول -->
+          <div class="sectors-commerce-progress" aria-hidden="true">
+            <div class="sectors-commerce-progress-bar" id="commerceProgress"></div>
+          </div>
         </header>
 
-        <!-- 3 كروت عصرية بعرض كامل -->
+        <!-- الكروت المتراكمة -->
         <div class="sectors-commerce-list" id="sectorsCommerceList">
 
           <!-- كارت 1: السفر والسياحة (خلفية كحلي) -->
           <article class="commerce-card commerce-card--navy" data-card="0">
+            <div class="commerce-card-overlay" aria-hidden="true"></div>
             <div class="commerce-card-content">
+              <span class="commerce-card-num">01</span>
               <h3 class="commerce-card-title">السفر والسياحة</h3>
               <p class="commerce-card-desc">منصات حجز متكاملة وتجربة مستخدم استثنائية تساعد عملاءك على اتخاذ قرار الحجز بثقة وسرعة.</p>
               <div class="commerce-card-features">
@@ -349,7 +357,9 @@
 
           <!-- كارت 2: العقارات (خلفية بيضاء) -->
           <article class="commerce-card commerce-card--white" data-card="1">
+            <div class="commerce-card-overlay" aria-hidden="true"></div>
             <div class="commerce-card-content">
+              <span class="commerce-card-num">02</span>
               <h3 class="commerce-card-title">العقارات</h3>
               <p class="commerce-card-desc">منصات عقارية احترافية تعرض عقاراتك بشكل جذاب مع أدوات بحث وتصفية متقدمة لعملائك.</p>
               <div class="commerce-card-features">
@@ -366,7 +376,9 @@
 
           <!-- كارت 3: التجارة الإلكترونية (خلفية ذهبية) -->
           <article class="commerce-card commerce-card--gold" data-card="2">
+            <div class="commerce-card-overlay" aria-hidden="true"></div>
             <div class="commerce-card-content">
+              <span class="commerce-card-num">03</span>
               <h3 class="commerce-card-title">التجارة الإلكترونية</h3>
               <p class="commerce-card-desc">متاجر إلكترونية متكاملة بمسارات شراء محسّنة ترفع معدلات التحويل وتقلل السلال المتروكة.</p>
               <div class="commerce-card-features">
@@ -383,6 +395,240 @@
 
         </div>
 
+      </div>
+    </section>
+
+    <!-- ===================== سيكشن 4: الخدمات المهنية والمؤسسية (B2B) ===================== -->
+    <section class="sectors-commerce sectors-commerce-stack" id="sectorsB2B">
+
+      <div class="sectors-commerce-pin">
+        <header class="sectors-commerce-head">
+          <h2 class="sectors-commerce-title">الخدمات المهنية والمؤسسية (B2B)</h2>
+          <img src="icons/heading-line.png" alt="" class="heading-line sectors-commerce-heading-line" aria-hidden="true" />
+          <p class="sectors-commerce-desc">
+            نصمم واجهات مؤسسية تعكس هويتك، ونؤتمت حجز الاستشارات لتسهيل بناء علاقات استراتيجية.
+          </p>
+          <div class="sectors-commerce-progress" aria-hidden="true">
+            <div class="sectors-commerce-progress-bar"></div>
+          </div>
+        </header>
+
+        <div class="sectors-commerce-list">
+
+          <!-- كارت 1: خدمات الأعمال (خلفية كحلي) -->
+          <article class="commerce-card commerce-card--navy" data-card="0">
+            <div class="commerce-card-overlay" aria-hidden="true"></div>
+            <div class="commerce-card-content">
+              <span class="commerce-card-num">01</span>
+              <h3 class="commerce-card-title">خدمات الأعمال</h3>
+              <p class="commerce-card-desc">حلول استشارية وتشغيلية متكاملة تساعد المؤسسات على تحسين كفاءتها وتحقيق نمو مستدام.</p>
+              <div class="commerce-card-features">
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> الاستشارات الإدارية والاستراتيجية</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> تطوير الأعمال والنمو</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> أتمتة العمليات التشغيلية</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> تحليل الأداء وإعداد التقارير</div>
+              </div>
+            </div>
+            <div class="commerce-card-visual">
+              <img src="icons/project-img1.png" alt="خدمات الأعمال" class="commerce-card-img" />
+            </div>
+          </article>
+
+          <!-- كارت 2: خدمات الاستقدام (خلفية بيضاء) -->
+          <article class="commerce-card commerce-card--white" data-card="1">
+            <div class="commerce-card-overlay" aria-hidden="true"></div>
+            <div class="commerce-card-content">
+              <span class="commerce-card-num">02</span>
+              <h3 class="commerce-card-title">خدمات الاستقدام</h3>
+              <p class="commerce-card-desc">منصات رقمية لإدارة طلبات الاستقدام والتأشيرات بكفاءة عالية وشفافية تامة.</p>
+              <div class="commerce-card-features">
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> بوابات طلب استقدام إلكترونية</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> تتبع حالة التأشيرات لحظياً</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> إدارة عقود العمالة والرواتب</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> تكامل مع منصات الحكومة</div>
+              </div>
+            </div>
+            <div class="commerce-card-visual">
+              <img src="icons/project-img2.png" alt="خدمات الاستقدام" class="commerce-card-img" />
+            </div>
+          </article>
+
+          <!-- كارت 3: مكاتب المحاماة (خلفية ذهبية) -->
+          <article class="commerce-card commerce-card--gold" data-card="2">
+            <div class="commerce-card-overlay" aria-hidden="true"></div>
+            <div class="commerce-card-content">
+              <span class="commerce-card-num">03</span>
+              <h3 class="commerce-card-title">مكاتب المحاماة</h3>
+              <p class="commerce-card-desc">أنظمة حجز الاستشارات القانونية وإدارة القضايا لخدمة عملائك باحترافية وكفاءة.</p>
+              <div class="commerce-card-features">
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> حجز المواعيد والاستشارات</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> إدارة العملاء والقضايا</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> أرشفة العقود والمستندات</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> فواتير إلكترونية ومتابعة مدفوعات</div>
+              </div>
+            </div>
+            <div class="commerce-card-visual">
+              <img src="icons/project-img3.png" alt="مكاتب المحاماة" class="commerce-card-img" />
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== سيكشن 5: القطاعات الحيوية والخدمية ===================== -->
+    <section class="sectors-commerce sectors-commerce-stack" id="sectorsVital">
+
+      <div class="sectors-commerce-pin">
+        <header class="sectors-commerce-head">
+          <h2 class="sectors-commerce-title">القطاعات الحيوية والخدمية</h2>
+          <img src="icons/heading-line.png" alt="" class="heading-line sectors-commerce-heading-line" aria-hidden="true" />
+          <p class="sectors-commerce-desc">
+            نطور أنظمة تثق بها لتسهيل الوصول، من حجز طبي إلى منصات تعليمية وتحسين الظهور المحلي.
+          </p>
+          <div class="sectors-commerce-progress" aria-hidden="true">
+            <div class="sectors-commerce-progress-bar"></div>
+          </div>
+        </header>
+
+        <div class="sectors-commerce-list">
+
+          <!-- كارت 1: التعليم والتدريب (خلفية كحلي) -->
+          <article class="commerce-card commerce-card--navy" data-card="0">
+            <div class="commerce-card-overlay" aria-hidden="true"></div>
+            <div class="commerce-card-content">
+              <span class="commerce-card-num">01</span>
+              <h3 class="commerce-card-title">التعليم والتدريب</h3>
+              <p class="commerce-card-desc">منصات تعليمية تفاعلية وأنظمة إدارة تدريب متكاملة للمؤسسات والأكاديميات.</p>
+              <div class="commerce-card-features">
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> منصات التعليم الإلكتروني (LMS)</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> إدارة الدورات والمدربين</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> شهادات إلكترونية معتمدة</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> تتبع تقدم المتدربين وتقارير</div>
+              </div>
+            </div>
+            <div class="commerce-card-visual">
+              <img src="icons/service-content.png" alt="التعليم والتدريب" class="commerce-card-img" />
+            </div>
+          </article>
+
+          <!-- كارت 2: خدمات الصيانة (خلفية بيضاء) -->
+          <article class="commerce-card commerce-card--white" data-card="1">
+            <div class="commerce-card-overlay" aria-hidden="true"></div>
+            <div class="commerce-card-content">
+              <span class="commerce-card-num">02</span>
+              <h3 class="commerce-card-title">خدمات الصيانة</h3>
+              <p class="commerce-card-desc">تطبيقات حجز خدمات الصيانة الميدانية مع تتبع الفنيين وإدارة طلبات العمل.</p>
+              <div class="commerce-card-features">
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> حجز مواعيد الصيانة إلكترونياً</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> تتبع الفنيين على الخريطة</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> إدارة طلبات العمل والمخزون</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> تقييم الخدمة وفواتير رقمية</div>
+              </div>
+            </div>
+            <div class="commerce-card-visual">
+              <img src="icons/service-marketing.png" alt="خدمات الصيانة" class="commerce-card-img" />
+            </div>
+          </article>
+
+          <!-- كارت 3: القطاع الطبي (خلفية ذهبية) -->
+          <article class="commerce-card commerce-card--gold" data-card="2">
+            <div class="commerce-card-overlay" aria-hidden="true"></div>
+            <div class="commerce-card-content">
+              <span class="commerce-card-num">03</span>
+              <h3 class="commerce-card-title">القطاع الطبي</h3>
+              <p class="commerce-card-desc">أنظمة حجز مواعيد طبية وسجلات صحية إلكترونية تعزز تجربة المريض ودقة الخدمة.</p>
+              <div class="commerce-card-features">
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> حجز المواعيد الطبية إلكترونياً</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> السجلات الطبية الإلكترونية</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> استشارات طبية عن بُعد</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> تذكيرات تلقائية للمواعيد</div>
+              </div>
+            </div>
+            <div class="commerce-card-visual">
+              <img src="icons/service-tech.png" alt="القطاع الطبي" class="commerce-card-img" />
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== سيكشن 6: الصناعة والمشاريع الكبرى ===================== -->
+    <section class="sectors-commerce sectors-commerce-stack" id="sectorsIndustrial">
+
+      <div class="sectors-commerce-pin">
+        <header class="sectors-commerce-head">
+          <h2 class="sectors-commerce-title">الصناعة والمشاريع الكبرى</h2>
+          <img src="icons/heading-line.png" alt="" class="heading-line sectors-commerce-heading-line" aria-hidden="true" />
+          <p class="sectors-commerce-desc">
+            نحول الكتالوجات الصناعية إلى معارض تفاعلية ونبني منصات تجذب المستثمرين لتعزيز حضورك.
+          </p>
+          <div class="sectors-commerce-progress" aria-hidden="true">
+            <div class="sectors-commerce-progress-bar"></div>
+          </div>
+        </header>
+
+        <div class="sectors-commerce-list">
+
+          <!-- كارت 1: المجال الصناعي (خلفية كحلي) -->
+          <article class="commerce-card commerce-card--navy" data-card="0">
+            <div class="commerce-card-overlay" aria-hidden="true"></div>
+            <div class="commerce-card-content">
+              <span class="commerce-card-num">01</span>
+              <h3 class="commerce-card-title">المجال الصناعي</h3>
+              <p class="commerce-card-desc">معارض افتراضية للمنتجات الصناعية ومنصات إدارة الإنتاج والمخزون بكفاءة عالية.</p>
+              <div class="commerce-card-features">
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> كتالوجات منتجات تفاعلية 3D</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> إدارة الإنتاج والمخزون</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> تكامل مع أنظمة ERP</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> تقارير الإنتاج لحظية</div>
+              </div>
+            </div>
+            <div class="commerce-card-visual">
+              <img src="icons/blog-1.png" alt="المجال الصناعي" class="commerce-card-img" />
+            </div>
+          </article>
+
+          <!-- كارت 2: قطاع الطاقة (خلفية بيضاء) -->
+          <article class="commerce-card commerce-card--white" data-card="1">
+            <div class="commerce-card-overlay" aria-hidden="true"></div>
+            <div class="commerce-card-content">
+              <span class="commerce-card-num">02</span>
+              <h3 class="commerce-card-title">قطاع الطاقة</h3>
+              <p class="commerce-card-desc">منصات لعرض مشاريع الطاقة المتجددة وإدارة الاستثمارات في قطاع الطاقة بكفاءة.</p>
+              <div class="commerce-card-features">
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> عرض مشاريع الطاقة المتجددة</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> لوحات تحكم لمراقبة الأداء</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> إدارة الاستثمارات والعوائد</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> تقارير استدامة بيئية</div>
+              </div>
+            </div>
+            <div class="commerce-card-visual">
+              <img src="icons/blog-2.png" alt="قطاع الطاقة" class="commerce-card-img" />
+            </div>
+          </article>
+
+          <!-- كارت 3: القطاع العقاري (خلفية ذهبية) -->
+          <article class="commerce-card commerce-card--gold" data-card="2">
+            <div class="commerce-card-overlay" aria-hidden="true"></div>
+            <div class="commerce-card-content">
+              <span class="commerce-card-num">03</span>
+              <h3 class="commerce-card-title">القطاع العقاري</h3>
+              <p class="commerce-card-desc">منصات استثمارية عقارية تجذب المستثمرين وتعرض المشاريع الكبرى بأسلوب احترافي.</p>
+              <div class="commerce-card-features">
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> معارض افتراضية للمشاريع الكبرى</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> فرص استثمارية وعوائد متوقعة</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> جولات افتراضية 360° للوحدات</div>
+                <div class="commerce-card-feature"><span class="commerce-card-plus">+</span> إدارة المحافظ العقارية</div>
+              </div>
+            </div>
+            <div class="commerce-card-visual">
+              <img src="icons/blog-3.png" alt="القطاع العقاري" class="commerce-card-img" />
+            </div>
+          </article>
+
+        </div>
       </div>
     </section>
 

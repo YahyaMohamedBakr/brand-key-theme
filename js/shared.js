@@ -15,6 +15,8 @@ function initAll() {
   if (typeof initFooter === 'function') initFooter();
   // تهيئة الهيرو الداخلي (لو موجود)
   if (typeof initInnerHero === 'function') initInnerHero();
+  // تهيئة سيكشن التجارة والمبيعات (Stacked Cards on Scroll)
+  if (typeof initCommerceStack === 'function') initCommerceStack();
 }
 
 // تشغيل تلقائي لما DOM يتحمل
@@ -578,10 +580,12 @@ function initShared() {
   /* التشغيل التلقائي */
   function startPortfolioAutoplay() {
     if (!portfolioIsDesktop) return;
+    if (!portfolioSlider) return; // لو مفيش portfolio section (صفحة غير الرئيسية)
     stopPortfolioAutoplay();
     portfolioAutoplayTimer = window.setInterval(function () {
       // اتأكد إن السيكشن في الـ viewport
       if (document.hidden) return;
+      if (!portfolioSlider) return; // تأكيد إضافي
       var rect = portfolioSlider.getBoundingClientRect();
       var inView = rect.top < window.innerHeight && rect.bottom > 0;
       if (inView) portfolioNextSlide();
@@ -1916,4 +1920,163 @@ function initShared() {
 function initFooter() {
   'use strict';
   // Footer interactions are handled in initShared()
+}
+
+/* ============================================================
+   صفحة حلول القطاعات — سيكشنات Stacked Cards المتعددة
+   - كل سيكشن بـ class .sectors-commerce-stack بيشغل نفس الـ logic
+   - الكروت absolute، متراكمة فوق بعض من الأول (زي الملفات في درج)
+   - الـ pin بـ position: sticky يثبت السيكشن أثناء السكرول
+   - الكارت القديم بيتصغّر (scale 0.95) ويِداكن لما الجديد يغطيه
+   ============================================================ */
+function initCommerceStack() {
+  'use strict';
+
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.sectors-commerce-stack'));
+  if (sections.length === 0) return;
+
+  sections.forEach(function (section, idx) {
+    setupCommerceSection(section, idx);
+  });
+
+  console.log('%cBrand Key %cCommerce Stack initialized — ' + sections.length + ' sections',
+    'color:#F2C94C;font-weight:bold;', 'color:#0E233F;');
+}
+
+function setupCommerceSection(section, sectionIdx) {
+  'use strict';
+
+  var pin = section.querySelector('.sectors-commerce-pin');
+  var list = section.querySelector('.sectors-commerce-list');
+  var progressBar = section.querySelector('.sectors-commerce-progress-bar');
+  var header = section.querySelector('.sectors-commerce-head');
+  if (!pin || !list) return;
+
+  var cards = Array.prototype.slice.call(list.querySelectorAll('.commerce-card'));
+  var N = cards.length;
+  if (N < 2) return; // محتاجين على الأقل كارتين عشان الـ animation يشتغل
+
+  // ====== إعدادات ======
+  var CARD_OFFSET = 150; // المسافة بين قمة كل كارت واللي قبله (px)
+
+  // ====== تعيين z-index لكل كارت ======
+  cards.forEach(function (card, i) {
+    card.style.setProperty('--card-z', String(N - i));
+    card.style.setProperty('--darken', '0');
+  });
+
+  // ====== حساب ارتفاع السيكشن ======
+  function recalcHeight() {
+    var viewportH = window.innerHeight || document.documentElement.clientHeight;
+    var firstCardHeight = cards[0].offsetHeight;
+    var stackHeight = firstCardHeight + (N - 1) * CARD_OFFSET;
+    var pinContentHeight = stackHeight + 280;
+    var extraScroll = (N - 1) * (CARD_OFFSET * 4);
+    var totalHeight = Math.max(pinContentHeight + extraScroll, viewportH + extraScroll);
+    section.style.height = totalHeight + 'px';
+  }
+
+  var ticking = false;
+  var lastProgress = -1;
+
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function clamp(v, min, max) {
+    return Math.max(min, Math.min(max, v));
+  }
+
+  function update() {
+    var rect = section.getBoundingClientRect();
+    var viewportH = window.innerHeight || document.documentElement.clientHeight;
+
+    var scrolled = -rect.top;
+    var totalScroll = rect.height - viewportH;
+    if (totalScroll <= 0) {
+      ticking = false;
+      return;
+    }
+
+    var progress = scrolled / totalScroll;
+    if (progress < 0) progress = 0;
+    if (progress > 1) progress = 1;
+
+    if (Math.abs(progress - lastProgress) < 0.0005) {
+      ticking = false;
+      return;
+    }
+    lastProgress = progress;
+
+    if (progressBar) {
+      progressBar.style.width = (progress * 100) + '%';
+    }
+
+    if (header) {
+      var headerOpacity = 1 - progress * 0.3;
+      header.style.opacity = String(headerOpacity);
+      header.style.transform = 'translateY(' + (-progress * 8) + 'px)';
+    }
+
+    var segmentSize = 1 / (N - 1);
+
+    cards.forEach(function (card, i) {
+      var translateY = i * CARD_OFFSET;
+      var scale = 1;
+      var darken = 0;
+      var z = N - i;
+
+      if (i > 0) {
+        var enterStart = (i - 1) * segmentSize;
+        var enterEnd = i * segmentSize;
+        var enterP = (progress - enterStart) / (enterEnd - enterStart);
+        enterP = easeInOutCubic(clamp(enterP, 0, 1));
+
+        translateY = i * CARD_OFFSET * (1 - enterP);
+
+        if (enterP > 0.01) {
+          z = N + i;
+        }
+      }
+
+      if (i < N - 1) {
+        var coverStart = i * segmentSize;
+        var coverEnd = (i + 1) * segmentSize;
+        var coverP = (progress - coverStart) / (coverEnd - coverStart);
+        coverP = easeInOutCubic(clamp(coverP, 0, 1));
+        scale = 1 - coverP * 0.05;
+        darken = coverP * 0.55;
+      }
+
+      card.style.transform = 'translateY(' + translateY + 'px) scale(' + scale + ')';
+      card.style.setProperty('--darken', String(darken));
+      card.style.setProperty('--card-z', String(z));
+    });
+
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', function () {
+    recalcHeight();
+    onScroll();
+  }, { passive: true });
+
+  recalcHeight();
+  if (document.readyState === 'complete') {
+    update();
+  } else {
+    window.addEventListener('load', function () {
+      recalcHeight();
+      update();
+    });
+  }
+  update();
 }
