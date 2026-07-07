@@ -1,0 +1,120 @@
+  <section class="portfolio" id="portfolio">
+    <div class="portfolio-container">
+
+      <!-- رأس السيكشن -->
+      <header class="portfolio-head" id="portfolioHead">
+        <span class="portfolio-eyebrow">أعمالنا الأخيرة</span>
+        <h2 class="portfolio-title">آخر أعمالنا</h2>
+        <img src="icons/heading-line.png" alt="" class="heading-line portfolio-heading-line" aria-hidden="true" />
+        <p class="portfolio-desc">
+          مجموعة مختارة من أحدث المشاريع التي أنجزناها لعملائنا — نفتخر بكل مشروع ونحرص على تقديم أفضل النتائج التي تلبي تطلعات عملائنا.
+        </p>
+      </header>
+
+      <!-- السلايدر (3 كروت على شكل coverflow — الكارت اللي في النص هو الكبير) -->
+      <div class="portfolio-slider" id="portfolioSlider" aria-roledescription="carousel" aria-label="آخر أعمالنا">
+
+        <!-- منصة عرض الكروت -->
+        <div class="portfolio-viewport">
+          <div class="portfolio-track" id="portfolioTrack">
+
+            <!-- مشروع 1 -->
+            <article class="portfolio-card" data-index="0" role="group" aria-roledescription="slide" aria-label="1 من 3">
+              <div class="portfolio-card-visual">
+                <img src="icons/project-img1.png" alt="مشروع منصة تجارة إلكترونية" class="portfolio-card-img" />
+              </div>
+              <div class="portfolio-card-body">
+                <h3 class="portfolio-card-title">منصة تجارة إلكترونية متكاملة</h3>
+                <p class="portfolio-card-excerpt">
+                  قمنا بتطوير منصة تجارة إلكترونية متكاملة تضم آلاف المنتجات مع نظام دفع آمن ولوحة تحكم متقدمة لإدارة المخزون والطلبات.
+                </p>
+                <div class="portfolio-card-tags">
+                  <span class="portfolio-tag">تطوير المواقع</span>
+                  <span class="portfolio-tag">التجارة الإلكترونية</span>
+                  <span class="portfolio-tag">UX/UI</span>
+                </div>
+                <a href="#" class="portfolio-card-btn">
+                  <span>رؤية المشروع كاملاً</span>
+                  <img src="icons/gold-arrow.svg" alt="" />
+                </a>
+              </div>
+            </article>
+
+            <!-- مشروع 2 -->
+            <article class="portfolio-card" data-index="1" role="group" aria-roledescription="slide" aria-label="2 من 3">
+              <div class="portfolio-card-visual">
+                <img src="icons/project-img2.png" alt="مشروع هوية بصرية" class="portfolio-card-img" />
+              </div>
+              <div class="portfolio-card-body">
+                <h3 class="portfolio-card-title">هوية بصرية لعلامة تجارية</h3>
+                <p class="portfolio-card-excerpt">
+                  صممنا هوية بصرية متكاملة لعلامة تجارية ناشئة شملت الشعار والألوان والخطوط والمطبوعات لتعزيز حضورها في السوق.
+                </p>
+                <div class="portfolio-card-tags">
+                  <span class="portfolio-tag">الهوية البصرية</span>
+                  <span class="portfolio-tag">التصميم الجرافيكي</span>
+                  <span class="portfolio-tag">البراندينج</span>
+                </div>
+                <a href="#" class="portfolio-card-btn">
+                  <span>رؤية المشروع كاملاً</span>
+                  <img src="icons/gold-arrow.svg" alt="" />
+                </a>
+              </div>
+            </article>
+
+            <!-- مشروع 3 -->
+            <article class="portfolio-card" data-index="2" role="group" aria-roledescription="slide" aria-label="3 من 3">
+              <div class="portfolio-card-visual">
+                <img src="icons/project-img3.png" alt="مشروع تطبيق جوال" class="portfolio-card-img" />
+              </div>
+              <div class="portfolio-card-body">
+                <h3 class="portfolio-card-title">تطبيق جوال لإدارة المهام</h3>
+                <p class="portfolio-card-excerpt">
+                  طوّرنا تطبيق جوال ذكي لإدارة المهام والمشاريع يتيح للمستخدمين تنظيم عملهم ومتابعة تقدمهم بسهولة عبر واجهة بسيطة وأنيقة.
+                </p>
+                <div class="portfolio-card-tags">
+                  <span class="portfolio-tag">تطبيقات الجوال</span>
+                  <span class="portfolio-tag">تطوير البرمجيات</span>
+                  <span class="portfolio-tag">UX/UI</span>
+                </div>
+                <a href="#" class="portfolio-card-btn">
+                  <span>رؤية المشروع كاملاً</span>
+                  <img src="icons/gold-arrow.svg" alt="" />
+                </a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- أزرار التحكم: سهم + نقاط + سهم -->
+        <div class="portfolio-controls" id="portfolioControls">
+          <button class="portfolio-arrow portfolio-arrow--prev" id="portfolioPrev" aria-label="المشروع السابق" type="button">
+            <img src="icons/arrow-active.svg" alt="" />
+          </button>
+          <div class="portfolio-dots" id="portfolioDots" role="tablist" aria-label="اختيار المشروع">
+            <button class="portfolio-dot" data-go="0" type="button" aria-label="المشروع الأول"></button>
+            <button class="portfolio-dot active" data-go="1" type="button" aria-label="المشروع الثاني"></button>
+            <button class="portfolio-dot" data-go="2" type="button" aria-label="المشروع الثالث"></button>
+          </div>
+          <button class="portfolio-arrow portfolio-arrow--next" id="portfolioNext" aria-label="المشروع التالي" type="button">
+            <img src="icons/arrow-active.svg" alt="" class="portfolio-arrow-flip" />
+          </button>
+        </div>
+
+      </div>
+
+      <!-- زرّان في آخر السيكشن (الذهبي يمين، outline شمال) -->
+      <div class="portfolio-actions" id="portfolioActions">
+        <a href="#" class="portfolio-action portfolio-action--primary">
+          <span>ابدأ مشروعك الآن</span>
+          <img src="icons/start-icon.svg" alt="" />
+        </a>
+        <a href="#" class="portfolio-action portfolio-action--outline">
+          <span>اعرف المزيد</span>
+          <img src="icons/more-arrow.svg" alt="" />
+        </a>
+      </div>
+
+    </div>
+  </section>
