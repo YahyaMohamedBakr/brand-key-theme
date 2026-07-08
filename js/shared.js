@@ -1249,7 +1249,9 @@ function initShared() {
     { id: 'integrationVisionContent', cls: 'about-us-content' },
     { id: 'integrationCompareHead', cls: 'integration-compare-head' },
     { id: 'integrationCompareGrid', cls: 'integration-compare-grid' },
-    { id: 'integrationCompareCta', cls: 'integration-compare-cta' }
+    { id: 'integrationCompareCta', cls: 'integration-compare-cta' },
+    { id: 'integrationTimelineHead', cls: 'integration-timeline-head' },
+    { id: 'integrationTimelineGrid', cls: 'integration-timeline-grid' }
   ];
 
   function revealAboutSection(el) {
