@@ -1254,7 +1254,10 @@ function initShared() {
     { id: 'integrationTimelineGrid', cls: 'integration-timeline-grid' },
     { id: 'integrationServicesHead', cls: 'integration-services-head' },
     { id: 'integrationServicesGrid', cls: 'integration-services-grid' },
-    { id: 'integrationServicesCta', cls: 'integration-services-cta' }
+    { id: 'integrationServicesCta', cls: 'integration-services-cta' },
+    { id: 'integrationDeliverablesHead', cls: 'integration-deliverables-head' },
+    { id: 'integrationDeliverablesGrid', cls: 'integration-deliverables-grid' },
+    { id: 'integrationDeliverablesCta', cls: 'integration-deliverables-cta' }
   ];
 
   function revealAboutSection(el) {
