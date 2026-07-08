@@ -1251,7 +1251,10 @@ function initShared() {
     { id: 'integrationCompareGrid', cls: 'integration-compare-grid' },
     { id: 'integrationCompareCta', cls: 'integration-compare-cta' },
     { id: 'integrationTimelineHead', cls: 'integration-timeline-head' },
-    { id: 'integrationTimelineGrid', cls: 'integration-timeline-grid' }
+    { id: 'integrationTimelineGrid', cls: 'integration-timeline-grid' },
+    { id: 'integrationServicesHead', cls: 'integration-services-head' },
+    { id: 'integrationServicesGrid', cls: 'integration-services-grid' },
+    { id: 'integrationServicesCta', cls: 'integration-services-cta' }
   ];
 
   function revealAboutSection(el) {
