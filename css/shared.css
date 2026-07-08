@@ -2272,7 +2272,7 @@ body.nav-open { overflow: hidden; }
 }
 
 .portfolio-title {
-  font-size: clamp(32px, 5vw, 48px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -2676,7 +2676,7 @@ body.nav-open { overflow: hidden; }
 }
 
 .pricing-title {
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -2916,7 +2916,7 @@ body.nav-open { overflow: hidden; }
 }
 
 .how-title {
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -3100,7 +3100,7 @@ body.nav-open { overflow: hidden; }
 }
 
 .clients-title {
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: #fff;
   margin-bottom: 14px;
@@ -3235,7 +3235,7 @@ body.nav-open { overflow: hidden; }
 }
 
 .testimonials-title {
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -3493,7 +3493,7 @@ body.nav-open { overflow: hidden; }
 }
 
 .cta-final-title {
-  font-size: clamp(26px, 3.5vw, 38px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: #fff;
   margin-bottom: 14px;
@@ -3826,7 +3826,7 @@ body.nav-open { overflow: hidden; }
 }
 
 .blog-title {
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -4600,7 +4600,7 @@ a.contact-item:hover .contact-ic {
   /* أعمالنا على الموبايل: كروت عمودية تحت بعضها (سلايدر بيطّلع) */
   .portfolio { padding: 48px 16px 40px; }
   .portfolio-head { margin-bottom: 36px; }
-  .portfolio-title { font-size: 26px; }
+  .portfolio-title { font-size: 24px; }
   .portfolio-desc { font-size: 14px; }
 
   /* على الموبايل: نشيل سلوك الـ coverflow ونخلي الكروت تحت بعضها */
@@ -4937,7 +4937,7 @@ a.contact-item:hover .contact-ic {
   transform: translateX(0);
 }
 .about-us-title {
-  font-size: clamp(34px, 4.5vw, 52px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -4979,7 +4979,7 @@ a.contact-item:hover .contact-ic {
   transform: translateX(0);
 }
 .about-why-title {
-  font-size: clamp(34px, 4.5vw, 52px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -5061,7 +5061,7 @@ a.contact-item:hover .contact-ic {
   transform: translateY(0);
 }
 .about-security-title {
-  font-size: clamp(30px, 4vw, 44px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -5460,7 +5460,7 @@ a.contact-item:hover .contact-ic {
 
   /* رؤيتنا */
   .about-us { padding: 44px 16px; }
-  .about-us-title { font-size: 30px; }
+  .about-us-title { font-size: 24px; }
   .about-us-desc { font-size: 14px; }
   /* رؤيتنا / رسالتنا — صورة بيضاوية أعرض على الموبايل */
   .about-us-image-wrap, .about-why-image-wrap { border-radius: 90px; }
@@ -5468,12 +5468,12 @@ a.contact-item:hover .contact-ic {
 
   /* رسالتنا */
   .about-why { padding: 44px 16px; }
-  .about-why-title { font-size: 30px; }
+  .about-why-title { font-size: 24px; }
   .about-why-desc { font-size: 14px; }
 
   /* الأمان */
   .about-security { padding: 48px 16px; }
-  .about-security-title { font-size: 26px; }
+  .about-security-title { font-size: 24px; }
   .about-security-sub { font-size: 14px; }
   .about-security-card { padding: 20px 16px; }
   .about-security-card-icon { width: 52px; height: 52px; }
@@ -6440,7 +6440,7 @@ a.contact-item:hover .contact-ic {
   transform: translateY(0);
 }
 .services-axes-title {
-  font-size: clamp(28px, 3.5vw, 40px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -6646,7 +6646,7 @@ a.contact-item:hover .contact-ic {
   transform: translateY(0);
 }
 .services-content-title {
-  font-size: clamp(28px, 3.5vw, 40px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -6889,7 +6889,7 @@ a.contact-item:hover .contact-ic {
   min-width: 300px;
 }
 .services-projects-title {
-  font-size: clamp(24px, 3vw, 34px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -7115,7 +7115,7 @@ a.contact-item:hover .contact-ic {
   transform: translateY(0);
 }
 .sectors-grid-title {
-  font-size: clamp(28px, 3.5vw, 40px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -7329,7 +7329,7 @@ a.contact-item:hover .contact-ic {
   transform: translateY(0);
 }
 .sectors-commerce-title {
-  font-size: clamp(26px, 3.2vw, 38px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 12px;
@@ -7547,7 +7547,7 @@ a.contact-item:hover .contact-ic {
   }
   .commerce-card-features { grid-template-columns: 1fr; gap: 8px; }
   .commerce-card-visual { aspect-ratio: 16 / 9; }
-  .sectors-commerce-title { font-size: 26px; }
+  .sectors-commerce-title { font-size: 24px; }
   .sectors-commerce-desc { font-size: 14px; }
 }
 
@@ -7622,7 +7622,7 @@ a.contact-item:hover .contact-ic {
 }
 
 .sectors-cta-title {
-  font-size: clamp(26px, 3.2vw, 38px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   line-height: 1.25;
