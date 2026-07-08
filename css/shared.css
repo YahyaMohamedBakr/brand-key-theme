@@ -9025,8 +9025,6 @@ a.contact-item:hover .contact-ic {
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  max-width: 1100px;
-  margin: 0 auto;
 }
 
 .training-problems-cta-text {
