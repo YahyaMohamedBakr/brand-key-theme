@@ -1259,7 +1259,10 @@ function initShared() {
     { id: 'integrationDeliverablesGrid', cls: 'integration-deliverables-grid' },
     { id: 'integrationDeliverablesCta', cls: 'integration-deliverables-cta' },
     { id: 'trainingExploreHead', cls: 'about-explore-head' },
-    { id: 'trainingExploreGrid', cls: 'about-explore-cards', children: '.about-explore-card' }
+    { id: 'trainingExploreGrid', cls: 'about-explore-cards', children: '.about-explore-card' },
+    { id: 'trainingProblemsHead', cls: 'training-problems-head' },
+    { id: 'trainingProblemsGrid', cls: 'training-problems-grid' },
+    { id: 'trainingProblemsCta', cls: 'training-problems-cta' }
   ];
 
   function revealAboutSection(el) {

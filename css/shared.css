@@ -8861,6 +8861,303 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة تدريب الشركات — سيكشن هل تعرف هذه المشكلات؟ (Problem Cards Grid)
+   ============================================================ */
+.training-problems {
+  position: relative;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(242, 201, 76, 0.05), transparent 40%),
+    radial-gradient(circle at 15% 85%, rgba(14, 35, 63, 0.03), transparent 40%),
+    var(--bg-soft);
+  padding: 80px 24px 0;
+  overflow: hidden;
+}
+
+.training-problems-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* ---------- الهيدر ---------- */
+.training-problems-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 56px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.training-problems-head.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.training-problems-title {
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  margin: 0 0 14px;
+}
+
+.training-problems-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.training-problems-line-bar {
+  display: block;
+  width: 56px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+.training-problems-line-dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.training-problems-sub {
+  font-size: clamp(14px, 1.3vw, 16px);
+  color: #475569;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* ---------- الـ Grid (2 أعمدة × 3 صفوف) ---------- */
+.training-problems-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 64px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out) 0.15s, transform 0.7s var(--ease-out) 0.15s;
+}
+.training-problems-grid.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- الكارت ---------- */
+.training-problems-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 2px 8px -2px rgba(14, 35, 63, 0.05);
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+.training-problems-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px -8px rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.training-problems-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: #FEE2E2;
+  color: #DC2626;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.training-problems-card-text {
+  font-size: clamp(14px, 1.3vw, 15px);
+  color: #334155;
+  line-height: 1.75;
+  margin: 0;
+  flex: 1;
+  padding-top: 6px;
+}
+
+/* ---------- البانر السفلي الكحلي ---------- */
+.training-problems-cta {
+  position: relative;
+  background: linear-gradient(135deg, var(--navy) 0%, #081829 100%);
+  padding: 48px 40px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out) 0.3s, transform 0.7s var(--ease-out) 0.3s;
+  margin: 0 -24px;
+}
+.training-problems-cta.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* تموجات هندسية خافتة في الزاوية اليسرى */
+.training-problems-cta-waves {
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+  height: 280px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+.training-problems-cta-waves svg {
+  width: 100%;
+  height: 100%;
+}
+
+.training-problems-cta-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.training-problems-cta-text {
+  flex: 1;
+}
+
+.training-problems-cta-title {
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.3;
+  margin: 0 0 12px;
+  letter-spacing: -0.3px;
+}
+
+.training-problems-cta-desc {
+  font-size: clamp(14px, 1.2vw, 15px);
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.85;
+  margin: 0;
+  max-width: 620px;
+}
+
+.training-problems-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--gold);
+  color: var(--navy);
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px -6px rgba(242, 201, 76, 0.5);
+  transition: transform 0.35s var(--ease-spring), background 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+.training-problems-cta-btn svg {
+  transition: transform 0.3s var(--ease-spring);
+}
+.training-problems-cta-btn:hover {
+  background: var(--gold-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -6px rgba(242, 201, 76, 0.6);
+}
+.training-problems-cta-btn:hover svg {
+  transform: translateX(-4px); /* RTL */
+}
+
+/* ---------- ريسبونسف ---------- */
+@media (max-width: 900px) {
+  .training-problems {
+    padding: 60px 20px 0;
+  }
+  .training-problems-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .training-problems-head {
+    margin-bottom: 40px;
+  }
+  .training-problems-card {
+    padding: 20px;
+    gap: 14px;
+  }
+  .training-problems-cta {
+    padding: 36px 24px;
+    margin: 0 -20px;
+  }
+  .training-problems-cta-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 0 20px;
+  }
+  .training-problems-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .training-problems {
+    padding: 44px 16px 0;
+  }
+  .training-problems-title {
+    font-size: 24px;
+  }
+  .training-problems-sub {
+    font-size: 14px;
+  }
+  .training-problems-card {
+    padding: 18px;
+    gap: 12px;
+  }
+  .training-problems-card-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .training-problems-card-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  .training-problems-card-text {
+    font-size: 14px;
+    padding-top: 4px;
+  }
+  .training-problems-cta {
+    padding: 28px 20px;
+    margin: 0 -16px;
+  }
+  .training-problems-cta-title {
+    font-size: 20px;
+  }
+  .training-problems-cta-desc {
+    font-size: 13px;
+  }
+  .training-problems-cta-btn {
+    padding: 12px 22px;
+    font-size: 14px;
+  }
+  .training-problems-cta-waves {
+    width: 200px;
+    height: 200px;
+    opacity: 0.4;
+  }
+}
+
+/* ============================================================
    صفحات داخلية — placeholder للمحتوى قيد الإضافة
    ============================================================ */
 .page-content {
