@@ -8990,11 +8990,12 @@ a.contact-item:hover .contact-ic {
   position: relative;
   background: linear-gradient(135deg, var(--navy) 0%, #081829 100%);
   padding: 48px 40px;
+  border-radius: 24px;
+  margin-bottom: 64px;
   overflow: hidden;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.7s var(--ease-out) 0.3s, transform 0.7s var(--ease-out) 0.3s;
-  margin: 0 -24px;
 }
 .training-problems-cta.revealed {
   opacity: 1;
@@ -9024,13 +9025,11 @@ a.contact-item:hover .contact-ic {
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 0 24px;
 }
 
 .training-problems-cta-text {
   flex: 1;
+  min-width: 0;
 }
 
 .training-problems-cta-title {
@@ -9047,7 +9046,9 @@ a.contact-item:hover .contact-ic {
   color: rgba(255, 255, 255, 0.78);
   line-height: 1.85;
   margin: 0;
-  max-width: 620px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .training-problems-cta-btn {
@@ -9096,17 +9097,19 @@ a.contact-item:hover .contact-ic {
   }
   .training-problems-cta {
     padding: 36px 24px;
-    margin: 0 -20px;
+    margin-bottom: 48px;
   }
   .training-problems-cta-content {
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
-    padding: 0 20px;
   }
   .training-problems-cta-btn {
     width: 100%;
     justify-content: center;
+  }
+  .training-problems-cta-desc {
+    white-space: normal;
   }
 }
 
@@ -9138,7 +9141,7 @@ a.contact-item:hover .contact-ic {
   }
   .training-problems-cta {
     padding: 28px 20px;
-    margin: 0 -16px;
+    margin-bottom: 36px;
   }
   .training-problems-cta-title {
     font-size: 20px;
