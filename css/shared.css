@@ -7889,12 +7889,19 @@ a.contact-item:hover .contact-ic {
   box-shadow: 0 12px 30px -10px rgba(14, 35, 63, 0.12);
 }
 
+/* هيدر الكارت: الأيقونة + العنوان جنب بعض */
+.integration-compare-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .integration-compare-card-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -7946,8 +7953,9 @@ a.contact-item:hover .contact-ic {
 .integration-compare-cta {
   position: relative;
   background: linear-gradient(135deg, var(--navy) 0%, #081829 100%);
-  border-radius: 24px 24px 0 0;
+  border-radius: 24px;
   padding: 48px 40px;
+  margin-bottom: 64px;
   overflow: hidden;
   opacity: 0;
   transform: translateY(30px);
@@ -8004,6 +8012,9 @@ a.contact-item:hover .contact-ic {
   line-height: 1.85;
   margin: 0;
   max-width: 620px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .integration-compare-cta-btn {
@@ -8049,6 +8060,7 @@ a.contact-item:hover .contact-ic {
   }
   .integration-compare-cta {
     padding: 36px 24px;
+    margin-bottom: 48px;
   }
   .integration-compare-cta-content {
     flex-direction: column;
@@ -8058,6 +8070,10 @@ a.contact-item:hover .contact-ic {
   .integration-compare-cta-btn {
     width: 100%;
     justify-content: center;
+  }
+  /* على الموبايل: الدسكريبشن ممكن يبقى multi-line */
+  .integration-compare-cta-desc {
+    white-space: normal;
   }
 }
 
@@ -8079,8 +8095,8 @@ a.contact-item:hover .contact-ic {
     gap: 12px;
   }
   .integration-compare-card-icon {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
   }
   .integration-compare-card-icon svg {
     width: 24px;
@@ -8094,7 +8110,8 @@ a.contact-item:hover .contact-ic {
   }
   .integration-compare-cta {
     padding: 28px 20px;
-    border-radius: 20px 20px 0 0;
+    border-radius: 20px;
+    margin-bottom: 36px;
   }
   .integration-compare-cta-title {
     font-size: 20px;
