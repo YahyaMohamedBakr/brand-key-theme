@@ -1246,7 +1246,10 @@ function initShared() {
     { id: 'sectorsCommerceHead', cls: 'sectors-commerce-head' },
     { id: 'sectorsCommerceList', cls: 'sectors-commerce-list', children: '.commerce-card' },
     { id: 'integrationVisionVisual', cls: 'about-us-visual' },
-    { id: 'integrationVisionContent', cls: 'about-us-content' }
+    { id: 'integrationVisionContent', cls: 'about-us-content' },
+    { id: 'integrationCompareHead', cls: 'integration-compare-head' },
+    { id: 'integrationCompareGrid', cls: 'integration-compare-grid' },
+    { id: 'integrationCompareCta', cls: 'integration-compare-cta' }
   ];
 
   function revealAboutSection(el) {
