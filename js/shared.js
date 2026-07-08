@@ -1257,7 +1257,9 @@ function initShared() {
     { id: 'integrationServicesCta', cls: 'integration-services-cta' },
     { id: 'integrationDeliverablesHead', cls: 'integration-deliverables-head' },
     { id: 'integrationDeliverablesGrid', cls: 'integration-deliverables-grid' },
-    { id: 'integrationDeliverablesCta', cls: 'integration-deliverables-cta' }
+    { id: 'integrationDeliverablesCta', cls: 'integration-deliverables-cta' },
+    { id: 'trainingExploreHead', cls: 'about-explore-head' },
+    { id: 'trainingExploreGrid', cls: 'about-explore-cards', children: '.about-explore-card' }
   ];
 
   function revealAboutSection(el) {
