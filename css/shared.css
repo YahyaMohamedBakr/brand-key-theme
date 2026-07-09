@@ -10336,6 +10336,11 @@ a.contact-item:hover .contact-ic {
   margin: 0;
 }
 
+.contact-offices-heading-line {
+  margin: 0 0 18px;
+  display: block;
+}
+
 /* Grid: 2 كروت */
 .contact-offices-grid {
   display: grid;
