@@ -10669,6 +10669,231 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة الخدمة الواحدة — الهيرو (Breadcrumbs + Centered Banner + CTAs)
+   ============================================================ */
+.service-hero {
+  padding: calc(var(--header-h) + 24px) 24px 0;
+  background: var(--bg);
+}
+
+.service-hero-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* فتات الخبز — الصف النشط داكن وعريض */
+.service-hero-breadcrumbs {
+  margin-bottom: 20px;
+}
+
+.service-breadcrumb-active {
+  color: var(--navy);
+  font-weight: 800;
+}
+
+/* البانر الرئيسي — أطراف دائرية ناعمة + ظل خفيف */
+.service-hero-banner {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 24px 70px -24px rgba(14, 35, 63, 0.30);
+}
+
+/* صورة الخلفية (استوديو مونتاج داكن) */
+.service-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Overlay داكن — يضمن تباين عالي للنصوص البيضاء */
+.service-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 22, 26, 0.78) 0%, rgba(0, 0, 0, 0.85) 100%);
+  z-index: 1;
+}
+
+/* المحتوى المتمركز في المنتصف */
+.service-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 64px 48px;
+  max-width: 860px;
+  text-align: center;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.service-hero-content.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* العنوان الرئيسي — سطرين، أبيض، سميك وضخم */
+.service-hero-title {
+  font-size: clamp(30px, 4vw, 50px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.28;
+  letter-spacing: -0.5px;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.service-hero-title-line {
+  display: block;
+}
+
+/* النص الوصفي — رمادي فاتح / أبيض شفاف */
+.service-hero-desc {
+  font-size: clamp(15px, 1.5vw, 18px);
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.95;
+  margin: 0 0 40px;
+  font-weight: 400;
+}
+
+/* مجموعة الأزرار — متجاورين أفقيًا */
+.service-hero-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* القاعدة المشتركة للأزرار */
+.service-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 800;
+  border-radius: 999px;
+  transition: transform 0.35s var(--ease-spring), background 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.service-hero-btn-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+/* الزر الأساسي — أصفر فاقع، نص كحلي داكن */
+.service-hero-btn--primary {
+  background: var(--gold);
+  color: var(--navy);
+  box-shadow: 0 10px 28px rgba(242, 201, 76, 0.40);
+  position: relative;
+  overflow: hidden;
+}
+.service-hero-btn--primary::before {
+  content: '';
+  position: absolute;
+  top: 0; right: -120%;
+  width: 70%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-20deg);
+  transition: right 0.6s var(--ease-out);
+}
+.service-hero-btn--primary:hover {
+  background: var(--gold-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-gold);
+}
+.service-hero-btn--primary:hover::before { right: 130%; }
+.service-hero-btn--primary .service-hero-btn-icon {
+  transition: transform 0.4s var(--ease-spring);
+}
+.service-hero-btn--primary:hover .service-hero-btn-icon {
+  transform: translate(-4px, -4px) rotate(-15deg);
+}
+
+/* الزر الثانوي — شفاف، نص وأيقونة بيضاء */
+.service-hero-btn--ghost {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+}
+.service-hero-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+  transform: translateY(-3px);
+}
+.service-hero-btn--ghost .service-hero-btn-icon--down {
+  transition: transform 0.4s var(--ease-spring);
+}
+.service-hero-btn--ghost:hover .service-hero-btn-icon--down {
+  transform: translateY(4px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .service-hero {
+    padding: calc(var(--header-h) + 16px) 20px 0;
+  }
+  .service-hero-banner {
+    min-height: 460px;
+    border-radius: 24px;
+  }
+  .service-hero-content {
+    padding: 48px 32px;
+    max-width: 100%;
+  }
+  .service-hero-desc {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .service-hero {
+    padding: calc(var(--header-h) + 12px) 16px 0;
+  }
+  .service-hero-banner {
+    min-height: 420px;
+    border-radius: 20px;
+  }
+  .service-hero-content {
+    padding: 40px 22px;
+  }
+  .service-hero-title {
+    font-size: 26px;
+    margin-bottom: 18px;
+  }
+  .service-hero-desc {
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+  .service-hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 12px;
+  }
+  .service-hero-btn {
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+  .breadcrumbs {
+    font-size: 12px;
+  }
+}
+
+/* ============================================================
    صفحة المشروع — ملخص سريع (Bento Grid - about-explore style)
    ============================================================ */
 .project-summary {

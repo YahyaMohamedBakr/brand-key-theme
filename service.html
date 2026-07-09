@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>إنتاج المحتوى الإعلاني | Brand Key</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared.css" />
+</head>
+<body>
+
+  <!-- الهيدر (محمل بالـ JS) -->
+  <div id="header-include"></div>
+
+  <!-- المحتوى الخاص بالصفحة -->
+  <main class="page-content" id="pageContent">
+
+    <!-- ===================== هيرو صفحة الخدمة الواحدة ===================== -->
+    <section class="service-hero" id="serviceHero">
+
+      <!-- فتات الخبز (Breadcrumbs) -->
+      <div class="service-hero-breadcrumbs">
+        <div class="service-hero-container">
+          <nav class="breadcrumbs" aria-label="مسار التنقل">
+            <a href="services.html" class="breadcrumb-link">خدماتنا</a>
+            <span class="breadcrumb-sep">&gt;</span>
+            <span class="breadcrumb-current service-breadcrumb-active">إنتاج المحتوى الإعلاني</span>
+          </nav>
+        </div>
+      </div>
+
+      <!-- البانر الرئيسي -->
+      <div class="service-hero-container">
+        <div class="service-hero-banner" id="serviceHeroBanner">
+          <!-- صورة الخلفية + Overlay -->
+          <div class="service-hero-bg" style="background-image: url('icons/service-hero-bg.png');"></div>
+          <div class="service-hero-overlay"></div>
+
+          <!-- المحتوى المتمركز -->
+          <div class="service-hero-content" id="serviceHeroContent">
+
+            <!-- العنوان الرئيسي (سطرين) -->
+            <h1 class="service-hero-title">
+              <span class="service-hero-title-line">نكتب المحتوى الذي يبيع..</span>
+              <span class="service-hero-title-line">لا المحتوى الذي يُقرأ فقط</span>
+            </h1>
+
+            <!-- النص الوصفي الشارح -->
+            <p class="service-hero-desc">
+              في Brand Key، نؤمن أن المحتوى الإعلاني هو المحرك الأول لمنظومتك التسويقية. نصيغ لك رسائل إعلانية تدمج سيكولوجية البيع بالإبداع البصري لتخاطب جمهورك المستهدف في مصر والسعودية وتحقق أعلى معدلات التحويل (Conversion).
+            </p>
+
+            <!-- أزرار اتخاذ الإجراء -->
+            <div class="service-hero-cta">
+              <!-- الزر الأساسي (أصفر) -->
+              <a href="contact.html" class="service-hero-btn service-hero-btn--primary">
+                <span>ابدأ رحلتك معنا الآن!</span>
+                <img src="icons/start-icon.svg" alt="" class="service-hero-btn-icon" aria-hidden="true" />
+              </a>
+              <!-- الزر الثانوي (شفاف) -->
+              <a href="#serviceDetails" class="service-hero-btn service-hero-btn--ghost">
+                <img src="icons/arrow-down.svg" alt="" class="service-hero-btn-icon service-hero-btn-icon--down" aria-hidden="true" />
+                <span>استكشف المزيد من التفاصيل</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- سيكشن مؤقت لاستقبال السكرول من زر "استكشف المزيد" -->
+    <section class="service-details-placeholder" id="serviceDetails" style="min-height: 60vh;"></section>
+
+  </main>
+
+  <!-- الفوتر (محمل بالـ JS) -->
+  <div id="footer-include"></div>
+
+  <script src="js/includes.js"></script>
+  <script src="js/shared.js"></script>
+</body>
+</html>
