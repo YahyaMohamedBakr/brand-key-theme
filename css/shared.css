@@ -10277,6 +10277,228 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة تواصل معنا — سيكشن موقع مكاتبنا (Dark)
+   ============================================================ */
+.contact-offices {
+  position: relative;
+  background: linear-gradient(180deg, #0A192F 0%, #081829 100%);
+  padding: 80px 24px;
+  overflow: hidden;
+}
+
+/* شكل منحني خافت على اليسار */
+.contact-offices::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(242, 201, 76, 0.04);
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+.contact-offices-container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* الهيدر */
+.contact-offices-head {
+  text-align: right;
+  max-width: 680px;
+  margin: 0 0 48px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.contact-offices-head.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-offices-title {
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+
+.contact-offices-sub {
+  font-size: clamp(14px, 1.3vw, 16px);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* Grid: 2 كروت */
+.contact-offices-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out) 0.15s, transform 0.7s var(--ease-out) 0.15s;
+}
+.contact-offices-grid.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* الكارت */
+.contact-offices-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 32px 28px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: transform 0.35s var(--ease-spring), background 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
+}
+.contact-offices-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(242, 201, 76, 0.3);
+}
+
+/* أيقونة دبوس الخريطة */
+.contact-offices-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: rgba(14, 35, 63, 0.5);
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+/* محتوى الكارت */
+.contact-offices-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-offices-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.contact-offices-card-title {
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+}
+
+.contact-offices-card-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  background: rgba(242, 201, 76, 0.15);
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.contact-offices-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-offices-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+}
+.contact-offices-detail svg {
+  color: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* رابط الاتجاهات */
+.contact-offices-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s var(--ease-out);
+}
+.contact-offices-card-link svg {
+  transition: transform 0.3s var(--ease-spring);
+}
+.contact-offices-card-link:hover {
+  color: var(--gold-hover);
+}
+.contact-offices-card-link:hover svg {
+  transform: translateX(-3px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-offices {
+    padding: 60px 20px;
+  }
+  .contact-offices-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .contact-offices-head {
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-offices {
+    padding: 44px 16px;
+  }
+  .contact-offices-title {
+    font-size: 24px;
+  }
+  .contact-offices-sub {
+    font-size: 14px;
+  }
+  .contact-offices-card {
+    padding: 24px 20px;
+    gap: 16px;
+  }
+  .contact-offices-card-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .contact-offices-card-title {
+    font-size: 18px;
+  }
+  .contact-offices-detail {
+    font-size: 13px;
+  }
+}
+
+/* ============================================================
    صفحات داخلية — placeholder للمحتوى قيد الإضافة
    ============================================================ */
 .page-content {

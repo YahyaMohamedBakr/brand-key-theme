@@ -1290,7 +1290,9 @@ function initShared() {
     { id: 'consultingDeliverablesGrid', cls: 'integration-deliverables-grid' },
     { id: 'consultingDeliverablesCta', cls: 'integration-deliverables-cta' },
     { id: 'pricingGrid', cls: 'pricing-grid', children: '.pricing-card' },
-    { id: 'pricingCompareHead', cls: 'pricing-compare-head' }
+    { id: 'pricingCompareHead', cls: 'pricing-compare-head' },
+    { id: 'contactOfficesHead', cls: 'contact-offices-head' },
+    { id: 'contactOfficesGrid', cls: 'contact-offices-grid' }
   ];
 
   function revealAboutSection(el) {
