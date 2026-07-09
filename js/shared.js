@@ -1262,7 +1262,10 @@ function initShared() {
     { id: 'trainingExploreGrid', cls: 'about-explore-cards', children: '.about-explore-card' },
     { id: 'trainingProblemsHead', cls: 'training-problems-head' },
     { id: 'trainingProblemsGrid', cls: 'training-problems-grid' },
-    { id: 'trainingProblemsCta', cls: 'training-problems-cta' }
+    { id: 'trainingProblemsCta', cls: 'training-problems-cta' },
+    { id: 'trainingAudienceHead', cls: 'integration-services-head' },
+    { id: 'trainingAudienceGrid', cls: 'integration-services-grid' },
+    { id: 'trainingAudienceCta', cls: 'integration-services-cta' }
   ];
 
   function revealAboutSection(el) {

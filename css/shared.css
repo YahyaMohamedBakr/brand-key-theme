@@ -9162,6 +9162,40 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة تدريب الشركات — سيكشن لمن هذه البرامج التدريبية؟ (Audience Grid)
+   (بستخدم نفس كلاسات integration-services + override للـ grid)
+   ============================================================ */
+.training-audience {
+  /* نفس خلفية integration-services */
+}
+
+/* override: grid 2x2 بدل 3x2 */
+.training-audience-grid {
+  grid-template-columns: 1fr 1fr;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* الهيدر: العنوان بس بدون وصف - نقلل المسافة السفلية */
+.training-audience-head {
+  margin-bottom: 48px;
+}
+
+/* ---------- ريسبونسف ---------- */
+@media (max-width: 900px) {
+  .training-audience-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .training-audience-head {
+    margin-bottom: 36px;
+  }
+}
+
+/* ============================================================
    صفحات داخلية — placeholder للمحتوى قيد الإضافة
    ============================================================ */
 .page-content {
