@@ -1302,7 +1302,9 @@ function initShared() {
     { id: 'projectSolutionHead', cls: 'project-solution-head' },
     { id: 'projectSolutionGrid', cls: 'project-solution-grid' },
     { id: 'projectResultsHead', cls: 'project-results-head' },
-    { id: 'projectResultsStats', cls: 'project-results-stats' }
+    { id: 'projectResultsStats', cls: 'project-results-stats' },
+    { id: 'projectMomentsHead', cls: 'project-moments-head' },
+    { id: 'projectMomentsGrid', cls: 'project-moments-grid' }
   ];
 
   function revealAboutSection(el) {

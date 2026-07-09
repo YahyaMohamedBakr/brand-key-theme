@@ -11310,6 +11310,14 @@ a.contact-item:hover .contact-ic {
   }
 }
 
+/* خط أبيض للنتائج */
+.project-results-heading-line {
+  margin: 0 0 18px;
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
 /* ============================================================
    صفحة المشروع — سيكشن النتائج (Yellow Stats)
    ============================================================ */
@@ -11499,6 +11507,120 @@ a.contact-item:hover .contact-ic {
   .project-results-insight {
     padding: 14px 18px;
     font-size: 14px;
+  }
+}
+
+/* ============================================================
+   صفحة المشروع — سيكشن لحظات من الرحلة (Bento Gallery)
+   ============================================================ */
+.project-moments {
+  padding: 80px 24px;
+  background: #FAFBFC;
+}
+
+.project-moments-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* الهيدر */
+.project-moments-head {
+  text-align: right;
+  max-width: 680px;
+  margin: 0 0 48px;
+}
+
+.project-moments-title {
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+
+.project-moments-sub {
+  font-size: clamp(14px, 1.3vw, 16px);
+  color: #475569;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* Bento Grid - 4 أعمدة × 2 صفوف */
+.project-moments-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 200px 200px;
+  gap: 16px;
+}
+
+.project-moments-item {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.project-moments-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s var(--ease-spring);
+}
+
+.project-moments-item:hover img {
+  transform: scale(1.05);
+}
+
+/* الكارت الأول: ضخم - 2 عمود × 2 صف */
+.project-moments-item--1 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* الكارت الرابع: عريض أفقي - 2 عمود × 1 صف */
+.project-moments-item--4 {
+  grid-column: span 2;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .project-moments {
+    padding: 60px 20px;
+  }
+  .project-moments-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 180px 180px 180px;
+  }
+  .project-moments-item--1 {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  .project-moments-item--4 {
+    grid-column: span 2;
+  }
+  .project-moments-head {
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-moments {
+    padding: 44px 16px;
+  }
+  .project-moments-title {
+    font-size: 24px;
+  }
+  .project-moments-sub {
+    font-size: 14px;
+  }
+  .project-moments-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px 160px 160px 160px 160px;
+  }
+  .project-moments-item--1,
+  .project-moments-item--4 {
+    grid-column: span 1;
+    grid-row: span 1;
   }
 }
 
