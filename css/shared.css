@@ -10894,6 +10894,181 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة الخدمة — ماذا تتضمن الخدمة؟ (Dark Section + 6 كروت 3x2)
+   ============================================================ */
+.service-includes {
+  position: relative;
+  background: linear-gradient(180deg, #0A192F 0%, #0E233F 100%);
+  padding: 90px 24px 80px;
+  overflow: hidden;
+}
+
+.service-includes-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* الهيدر الممركز */
+.service-includes-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 56px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.service-includes-head.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-includes-title {
+  font-size: clamp(26px, 3.2vw, 34px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  margin: 0 0 16px;
+}
+
+.service-includes-heading-line {
+  margin: 0 auto 18px;
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.service-includes-sub {
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* الشبكة — 3 أعمدة × 2 صفوف */
+.service-includes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out) 0.15s, transform 0.7s var(--ease-out) 0.15s;
+}
+.service-includes-grid.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* الكارت — كحلي أفتح + حواف دائرية */
+.service-includes-card {
+  position: relative;
+  padding: 32px 28px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  text-align: right;
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-out), border-color 0.35s var(--ease-out), background 0.35s var(--ease-out);
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: transform, opacity;
+}
+.service-includes-card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s var(--ease-out), transform 0.8s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.35s var(--ease-out), background 0.35s var(--ease-out);
+}
+.service-includes-card[data-card="0"].revealed { transition-delay: 0ms; }
+.service-includes-card[data-card="1"].revealed { transition-delay: 80ms; }
+.service-includes-card[data-card="2"].revealed { transition-delay: 160ms; }
+.service-includes-card[data-card="3"].revealed { transition-delay: 240ms; }
+.service-includes-card[data-card="4"].revealed { transition-delay: 320ms; }
+.service-includes-card[data-card="5"].revealed { transition-delay: 400ms; }
+.service-includes-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(242, 201, 76, 0.5);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
+}
+
+/* الأيقونة — مربع كحلي غامق بحدود صفراء رفيعة، أعلى اليمين */
+.service-includes-card-icon {
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  border-radius: 14px;
+  margin-bottom: 22px;
+  transition: transform 0.4s var(--ease-spring), background 0.35s var(--ease-out);
+}
+.service-includes-card:hover .service-includes-card-icon {
+  transform: scale(1.08);
+  background: rgba(242, 201, 76, 0.12);
+}
+
+/* جسم الكارت */
+.service-includes-card-body {
+  text-align: right;
+}
+
+.service-includes-card-title {
+  font-size: clamp(16px, 1.5vw, 19px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.4;
+  margin: 0 0 12px;
+}
+
+.service-includes-card-desc {
+  font-size: clamp(13.5px, 1.2vw, 15px);
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .service-includes {
+    padding: 72px 20px 64px;
+  }
+  .service-includes-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .service-includes-head {
+    margin-bottom: 44px;
+  }
+}
+
+@media (max-width: 620px) {
+  .service-includes {
+    padding: 56px 16px 48px;
+  }
+  .service-includes-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .service-includes-card {
+    padding: 26px 22px;
+    border-radius: 14px;
+  }
+  .service-includes-card-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 18px;
+  }
+  .service-includes-title {
+    font-size: 23px;
+  }
+  .service-includes-sub {
+    font-size: 14px;
+  }
+}
+
+/* ============================================================
    صفحة المشروع — ملخص سريع (Bento Grid - about-explore style)
    ============================================================ */
 .project-summary {
