@@ -10669,7 +10669,7 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
-   صفحة المشروع — ملخص سريع (Bento Grid - same as about-explore)
+   صفحة المشروع — ملخص سريع (Bento Grid - about-explore style)
    ============================================================ */
 .project-summary {
   padding: 80px 24px;
@@ -10710,16 +10710,149 @@ a.contact-item:hover .contact-ic {
   margin: 0;
 }
 
-/* override: الكروت في project-summary بتكون أصغر في الـ num عشان النصوص أطول */
-.project-summary-grid .about-explore-card-num {
-  font-size: clamp(15px, 1.4vw, 19px);
-  line-height: 1.35;
+/* Bento Grid: 30% + 70% (صف أول) + 100% (صف تاني) */
+.project-summary-grid {
+  display: grid;
+  grid-template-columns: 0.3fr 0.7fr;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out) 0.15s, transform 0.7s var(--ease-out) 0.15s;
+}
+.project-summary-grid.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* الكارت - نفس روح about-explore */
+.project-summary-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;       /* محاذاة لليمين */
+  justify-content: center;
+  text-align: right;            /* محاذاة النص لليمين */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s var(--ease-out), transform 0.8s var(--ease-out), box-shadow 0.45s var(--ease-out);
+  will-change: transform, opacity;
+}
+.project-summary-card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.project-summary-card[data-card="0"].revealed { transition-delay: 0ms; }
+.project-summary-card[data-card="1"].revealed { transition-delay: 150ms; }
+.project-summary-card[data-card="2"].revealed { transition-delay: 300ms; }
+.project-summary-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(14, 35, 63, 0.3);
+}
+
+/* ألوان متدرجة (نفس about-explore) */
+.project-summary-card--1 { background: #153D72; }
+.project-summary-card--2 { background: #2B578F; }
+.project-summary-card--3 {
+  background: #5073A0;
+  grid-column: 1 / -1;          /* 100% عرض */
+}
+
+/* فيكتور زخرفي */
+.project-summary-card-vector {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 165%;
+  width: auto;
+  opacity: 0.5;
+  pointer-events: none;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* النص الكبير (فوق) */
+.project-summary-card-num {
+  font-size: clamp(16px, 1.5vw, 20px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+/* الـ label (تحت) */
+.project-summary-card-label {
+  font-size: clamp(13px, 1.2vw, 16px);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  position: relative;
+  z-index: 1;
+}
+
+/* كارت الأدوات - محتوى مخصص */
+.project-summary-card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.project-summary-card-content .project-summary-card-num {
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+/* أدوات */
+.project-summary-tools {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.project-summary-tool {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-summary-tool span {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.project-summary-tool img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 /* Responsive */
 @media (max-width: 900px) {
   .project-summary {
     padding: 60px 20px;
+  }
+  .project-summary-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-summary-card--3 {
+    grid-column: 1;
+  }
+  .project-summary-card-content {
+    flex-direction: column;
+    align-items: flex-end;
   }
   .project-summary-head {
     margin-bottom: 36px;
@@ -10735,6 +10868,22 @@ a.contact-item:hover .contact-ic {
   }
   .project-summary-sub {
     font-size: 14px;
+  }
+  .project-summary-card {
+    padding: 28px 20px;
+  }
+  .project-summary-card-num {
+    font-size: 15px;
+  }
+  .project-summary-tools {
+    gap: 16px;
+  }
+  .project-summary-tool span {
+    font-size: 13px;
+  }
+  .project-summary-tool img {
+    width: 22px;
+    height: 22px;
   }
 }
 

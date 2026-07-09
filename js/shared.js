@@ -1294,7 +1294,7 @@ function initShared() {
     { id: 'contactOfficesHead', cls: 'contact-offices-head' },
     { id: 'contactOfficesGrid', cls: 'contact-offices-grid' },
     { id: 'projectSummaryHead', cls: 'project-summary-head' },
-    { id: 'projectSummaryGrid', cls: 'about-explore-cards', children: '.about-explore-card' }
+    { id: 'projectSummaryGrid', cls: 'project-summary-grid' }
   ];
 
   function revealAboutSection(el) {
