@@ -9211,10 +9211,31 @@ a.contact-item:hover .contact-ic {
   aspect-ratio: 380 / 480; /* أعرض */
 }
 
+/* سيكشن Benefits في training: 6 كروت في صف أفقي (override deliverables 4) */
+.training-benefits-grid {
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+.training-benefits .integration-deliverables-card {
+  padding: 24px 16px;
+  gap: 14px;
+}
+.training-benefits .integration-deliverables-card-icon svg {
+  width: 30px;
+  height: 30px;
+}
+.training-benefits .integration-deliverables-card-title {
+  font-size: clamp(13px, 1.1vw, 15px);
+  line-height: 1.5;
+}
+
 /* ---------- ريسبونسف ---------- */
 @media (max-width: 1300px) {
   .training-audience-grid {
     grid-template-columns: 1fr 1fr;
+  }
+  .training-benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -9222,11 +9243,17 @@ a.contact-item:hover .contact-ic {
   .training-audience-grid {
     grid-template-columns: 1fr;
   }
+  .training-benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 600px) {
   .training-audience-head {
     margin-bottom: 36px;
+  }
+  .training-benefits-grid {
+    grid-template-columns: 1fr;
   }
 }
 

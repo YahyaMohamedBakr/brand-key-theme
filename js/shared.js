@@ -1272,7 +1272,10 @@ function initShared() {
     { id: 'trainingTeamHead', cls: 'about-team-head' },
     { id: 'trainingTeamSlider', cls: 'about-team-slider' },
     { id: 'trainingMethodHead', cls: 'how-head' },
-    { id: 'trainingMethodSteps', cls: 'how-steps' }
+    { id: 'trainingMethodSteps', cls: 'how-steps' },
+    { id: 'trainingBenefitsHead', cls: 'integration-deliverables-head' },
+    { id: 'trainingBenefitsGrid', cls: 'integration-deliverables-grid' },
+    { id: 'trainingBenefitsCta', cls: 'integration-deliverables-cta' }
   ];
 
   function revealAboutSection(el) {
