@@ -10733,9 +10733,9 @@ a.contact-item:hover .contact-ic {
   color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;       /* محاذاة لليمين */
+  align-items: flex-start;       /* محاذاة لليمين في RTL */
   justify-content: center;
-  text-align: right;            /* محاذاة النص لليمين */
+  text-align: right;             /* محاذاة النص لليمين */
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.7s var(--ease-out), transform 0.8s var(--ease-out), box-shadow 0.45s var(--ease-out);
@@ -10801,7 +10801,7 @@ a.contact-item:hover .contact-ic {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;       /* محاذاة لليمين */
+  align-items: flex-start;       /* محاذاة لليمين في RTL */
   gap: 12px;
   width: 100%;
 }
@@ -10821,13 +10821,14 @@ a.contact-item:hover .contact-ic {
   align-items: center;
   gap: 28px;
   flex-wrap: wrap;
-  justify-content: flex-end;   /* محاذاة لليمين */
+  justify-content: flex-start;  /* محاذاة لليمين في RTL */
 }
 
 .project-summary-tool {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  flex-direction: row-reverse;  /* الأيقونة على اليمين + الاسم على الشمال */
 }
 
 .project-summary-tool span {
