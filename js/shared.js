@@ -1281,7 +1281,9 @@ function initShared() {
     { id: 'consultingPainpointsCta', cls: 'training-problems-cta' },
     { id: 'consultingTypesHead', cls: 'training-programs-head' },
     { id: 'consultingTypesGrid', cls: 'training-programs-grid' },
-    { id: 'consultingTypesCta', cls: 'training-programs-cta' }
+    { id: 'consultingTypesCta', cls: 'training-programs-cta' },
+    { id: 'consultingMethodHead', cls: 'how-head' },
+    { id: 'consultingMethodSteps', cls: 'how-steps' }
   ];
 
   function revealAboutSection(el) {
