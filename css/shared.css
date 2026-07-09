@@ -11076,8 +11076,9 @@ a.contact-item:hover .contact-ic {
   position: relative;
   border-radius: 28px;
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 3.2;
   box-shadow: 0 16px 40px -12px rgba(14, 35, 63, 0.2);
+  align-self: center;
 }
 
 .project-success-img {
@@ -11130,6 +11131,172 @@ a.contact-item:hover .contact-ic {
   }
   .project-success-watermark {
     width: 20%;
+  }
+}
+
+/* ============================================================
+   صفحة المشروع — سيكشن الحل (3-Column Roadmap)
+   ============================================================ */
+.project-solution {
+  padding: 80px 24px;
+  background: #FAFBFC;
+}
+
+.project-solution-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* الهيدر */
+.project-solution-head {
+  text-align: right;
+  max-width: 680px;
+  margin: 0 0 48px;
+}
+
+.project-solution-title {
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+
+.project-solution-sub {
+  font-size: clamp(15px, 1.4vw, 17px);
+  color: var(--navy);
+  font-weight: 600;
+  line-height: 1.85;
+  margin: 18px 0 0;
+}
+
+/* Grid: 3 أعمدة */
+.project-solution-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* كل مرحلة */
+.project-solution-stage {
+  padding: 32px 28px;
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px -8px rgba(14, 35, 63, 0.06);
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-out);
+}
+.project-solution-stage:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px -8px rgba(14, 35, 63, 0.12);
+}
+
+/* رأس المرحلة */
+.project-solution-stage-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.project-solution-stage-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--navy);
+  color: var(--gold);
+  font-size: 18px;
+  font-weight: 900;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.project-solution-stage-title {
+  font-size: clamp(16px, 1.6vw, 19px);
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.3;
+  margin: 0 0 4px;
+}
+
+.project-solution-stage-duration {
+  font-size: 13px;
+  font-weight: 700;
+  color: #329BA8;
+}
+
+/* القائمة النقطية */
+.project-solution-stage-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-solution-stage-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  line-height: 1.6;
+  text-align: right;
+}
+
+.project-solution-bullet {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .project-solution {
+    padding: 60px 20px;
+  }
+  .project-solution-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .project-solution-head {
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-solution {
+    padding: 44px 16px;
+  }
+  .project-solution-title {
+    font-size: 24px;
+  }
+  .project-solution-sub {
+    font-size: 14px;
+  }
+  .project-solution-stage {
+    padding: 24px 20px;
+  }
+  .project-solution-stage-num {
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+  }
+  .project-solution-stage-title {
+    font-size: 16px;
+  }
+  .project-solution-stage-list li {
+    font-size: 13px;
   }
 }
 
