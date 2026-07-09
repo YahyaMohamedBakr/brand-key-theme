@@ -1278,7 +1278,10 @@ function initShared() {
     { id: 'trainingBenefitsCta', cls: 'integration-deliverables-cta' },
     { id: 'consultingPainpointsHead', cls: 'training-problems-head' },
     { id: 'consultingPainpointsGrid', cls: 'training-problems-grid' },
-    { id: 'consultingPainpointsCta', cls: 'training-problems-cta' }
+    { id: 'consultingPainpointsCta', cls: 'training-problems-cta' },
+    { id: 'consultingTypesHead', cls: 'training-programs-head' },
+    { id: 'consultingTypesGrid', cls: 'training-programs-grid' },
+    { id: 'consultingTypesCta', cls: 'training-programs-cta' }
   ];
 
   function revealAboutSection(el) {
