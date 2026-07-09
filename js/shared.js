@@ -1307,7 +1307,9 @@ function initShared() {
     { id: 'projectMomentsGrid', cls: 'project-moments-grid' },
     { id: 'otherProjectsHead', cls: 'other-projects-head' },
     { id: 'otherProjectsGrid', cls: 'other-projects-grid' },
-    { id: 'serviceHeroContent', cls: 'service-hero-content' }
+    { id: 'serviceHeroContent', cls: 'service-hero-content' },
+    { id: 'serviceWhyVisual', cls: 'about-us-visual' },
+    { id: 'serviceWhyContent', cls: 'about-us-content' }
   ];
 
   function revealAboutSection(el) {
