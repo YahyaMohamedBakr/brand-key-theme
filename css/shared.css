@@ -9696,7 +9696,7 @@ a.contact-item:hover .contact-ic {
   grid-template-columns: 1fr !important;
   gap: 10px !important;
 }
-.consulting-types .training-problems-card-feature {
+.consulting-types .training-programs-card-feature {
   font-size: 13px;
   color: rgba(255, 255, 255, 0.82);
 }
