@@ -10800,16 +10800,19 @@ a.contact-item:hover .contact-ic {
   position: relative;
   z-index: 1;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  flex-direction: column;
+  align-items: flex-end;       /* محاذاة لليمين */
+  gap: 12px;
   width: 100%;
-  flex-wrap: wrap;
 }
 
 .project-summary-card-content .project-summary-card-num {
   margin-bottom: 0;
-  white-space: nowrap;
+  text-align: right;
+}
+
+.project-summary-card-content .project-summary-card-label {
+  text-align: right;
 }
 
 /* أدوات */
@@ -10818,6 +10821,7 @@ a.contact-item:hover .contact-ic {
   align-items: center;
   gap: 28px;
   flex-wrap: wrap;
+  justify-content: flex-end;   /* محاذاة لليمين */
 }
 
 .project-summary-tool {
@@ -10851,7 +10855,6 @@ a.contact-item:hover .contact-ic {
     grid-column: 1;
   }
   .project-summary-card-content {
-    flex-direction: column;
     align-items: flex-end;
   }
   .project-summary-head {
