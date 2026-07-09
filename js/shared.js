@@ -1304,7 +1304,9 @@ function initShared() {
     { id: 'projectResultsHead', cls: 'project-results-head' },
     { id: 'projectResultsStats', cls: 'project-results-stats' },
     { id: 'projectMomentsHead', cls: 'project-moments-head' },
-    { id: 'projectMomentsGrid', cls: 'project-moments-grid' }
+    { id: 'projectMomentsGrid', cls: 'project-moments-grid' },
+    { id: 'otherProjectsHead', cls: 'other-projects-head' },
+    { id: 'otherProjectsGrid', cls: 'other-projects-grid' }
   ];
 
   function revealAboutSection(el) {

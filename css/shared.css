@@ -11625,6 +11625,124 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة المشروع — سيكشن مشاريع أخرى (Grid 6 كروت)
+   ============================================================ */
+.other-projects {
+  padding: 80px 24px;
+  background: var(--bg);
+}
+
+.other-projects-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.other-projects-head {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.other-projects-title {
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+
+.other-projects-head .project-heading-line {
+  margin: 0 auto 18px;
+}
+
+.other-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.other-projects-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-out);
+}
+.other-projects-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(14, 35, 63, 0.12);
+}
+
+.other-projects-card-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.other-projects-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s var(--ease-spring);
+}
+.other-projects-card:hover .other-projects-card-img img {
+  transform: scale(1.05);
+}
+
+.other-projects-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.other-projects-card-tag {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold-press);
+  background: rgba(242, 201, 76, 0.12);
+  padding: 4px 10px;
+  border-radius: 20px;
+  align-self: flex-start;
+}
+
+.other-projects-card-title {
+  font-size: clamp(16px, 1.5vw, 18px);
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.4;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .other-projects {
+    padding: 60px 20px;
+  }
+  .other-projects-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .other-projects-head {
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .other-projects {
+    padding: 44px 16px;
+  }
+  .other-projects-title {
+    font-size: 24px;
+  }
+  .other-projects-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ============================================================
    صفحات داخلية — placeholder للمحتوى قيد الإضافة
    ============================================================ */
 .page-content {
