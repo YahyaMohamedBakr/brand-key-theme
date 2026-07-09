@@ -9211,6 +9211,19 @@ a.contact-item:hover .contact-ic {
   overflow: hidden;
 }
 
+/* فيكتور الـ keyhole الكبير على الشمال full height */
+.training-programs-keyhole {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: auto;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+  object-fit: contain;
+}
+
 /* عناصر زخرفية خافتة في الخلفية */
 .training-programs::before {
   content: '';
@@ -9504,6 +9517,9 @@ a.contact-item:hover .contact-ic {
   .training-programs {
     padding: 60px 20px;
   }
+  .training-programs-keyhole {
+    opacity: 0.1;
+  }
   .training-programs-grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -9523,6 +9539,9 @@ a.contact-item:hover .contact-ic {
 @media (max-width: 600px) {
   .training-programs {
     padding: 44px 16px;
+  }
+  .training-programs-keyhole {
+    opacity: 0.06;
   }
   .training-programs-title {
     font-size: 24px;
