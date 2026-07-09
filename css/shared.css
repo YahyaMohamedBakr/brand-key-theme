@@ -9182,6 +9182,20 @@ a.contact-item:hover .contact-ic {
   margin-bottom: 48px;
 }
 
+/* سيكشن Method في training: 5 خطوات بدل 4 - تصغير المسافات */
+.training-method-steps .how-step {
+  margin-bottom: 20px;
+}
+.training-method-steps .how-step:last-child {
+  margin-bottom: 0;
+}
+.training-method-steps .how-step-title {
+  font-size: clamp(16px, 1.6vw, 18px);
+}
+.training-method-steps .how-step-desc {
+  font-size: clamp(13px, 1.2vw, 14px);
+}
+
 /* ---------- ريسبونسف ---------- */
 @media (max-width: 1300px) {
   .training-audience-grid {

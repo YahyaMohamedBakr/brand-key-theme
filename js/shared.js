@@ -1268,7 +1268,11 @@ function initShared() {
     { id: 'trainingAudienceCta', cls: 'integration-services-cta' },
     { id: 'trainingProgramsHead', cls: 'training-programs-head' },
     { id: 'trainingProgramsGrid', cls: 'training-programs-grid' },
-    { id: 'trainingProgramsCta', cls: 'training-programs-cta' }
+    { id: 'trainingProgramsCta', cls: 'training-programs-cta' },
+    { id: 'trainingTeamHead', cls: 'about-team-head' },
+    { id: 'trainingTeamSlider', cls: 'about-team-slider' },
+    { id: 'trainingMethodHead', cls: 'how-head' },
+    { id: 'trainingMethodSteps', cls: 'how-steps' }
   ];
 
   function revealAboutSection(el) {
@@ -1315,20 +1319,31 @@ function initShared() {
   }
 
   /* ============================================================
-     سلايدر العقول خلف المنظومة (about-team)
+     سلايدر العقول خلف المنظومة (about-team) + سلايدر تدريب الشركات
      - بيظهر 4 كروت على الديسكتوب (2 على التابلت، 1 على الموبايل)
      - لوب لا نهائي — لما تخلص بترجع من الأول
      - أسهم + نقاط + swipe + autoplay
+     - generic: بيشغل أي سلايدر بـ data-team-slider attribute
      ============================================================ */
-  var teamSlider = document.getElementById('aboutTeamSlider');
-  var teamTrack = document.getElementById('aboutTeamTrack');
-  var teamCards = Array.prototype.slice.call(document.querySelectorAll('.about-team-card'));
-  var teamPrev = document.getElementById('aboutTeamPrev');
-  var teamNext = document.getElementById('aboutTeamNext');
-  var teamDotsContainer = document.getElementById('aboutTeamDots');
-  var teamViewport = document.getElementById('aboutTeamViewport');
+  function setupTeamSlider(sliderId, visibleOverride) {
+    var teamSlider = document.getElementById(sliderId);
+    if (!teamSlider) return;
 
-  if (teamSlider && teamTrack && teamCards.length) {
+    var trackId = sliderId.replace('Slider', 'Track');
+    var prevId = sliderId.replace('Slider', 'Prev');
+    var nextId = sliderId.replace('Slider', 'Next');
+    var dotsId = sliderId.replace('Slider', 'Dots');
+    var viewportId = sliderId.replace('Slider', 'Viewport');
+
+    var teamTrack = document.getElementById(trackId);
+    var teamPrev = document.getElementById(prevId);
+    var teamNext = document.getElementById(nextId);
+    var teamDotsContainer = document.getElementById(dotsId);
+    var teamViewport = document.getElementById(viewportId);
+    var teamCards = teamTrack ? Array.prototype.slice.call(teamTrack.querySelectorAll('.about-team-card')) : [];
+
+    if (!teamTrack || !teamCards.length) return;
+
     var teamActive = 0;
     var teamTotal = teamCards.length;
     var teamAutoplayTimer = null;
@@ -1338,6 +1353,7 @@ function initShared() {
 
     // كم كارت يظهر في كل مرة حسب العرض
     function teamVisibleCount() {
+      if (visibleOverride) return visibleOverride;
       var w = window.innerWidth;
       if (w <= 600) return 1;
       if (w <= 900) return 2;
@@ -1397,8 +1413,10 @@ function initShared() {
 
     function teamStartAutoplay() {
       stopTeamAutoplay();
+      if (!teamSlider) return;
       teamAutoplayTimer = window.setInterval(function () {
         if (document.hidden) return;
+        if (!teamSlider) return;
         var rect = teamSlider.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) teamNextSlide();
       }, teamAutoplayDelay);
@@ -1417,12 +1435,14 @@ function initShared() {
     if (teamNext) teamNext.addEventListener('click', teamNextSlide);
 
     // لوحة المفاتيح
-    teamSlider.setAttribute('tabindex', '0');
-    teamSlider.addEventListener('keydown', function (e) {
-      // RTL: سهم اليمين = السابق، سهم الشمال = التالي
-      if (e.key === 'ArrowRight') { e.preventDefault(); teamPrevSlide(); }
-      else if (e.key === 'ArrowLeft') { e.preventDefault(); teamNextSlide(); }
-    });
+    if (teamSlider) {
+      teamSlider.setAttribute('tabindex', '0');
+      teamSlider.addEventListener('keydown', function (e) {
+        // RTL: سهم اليمين = السابق، سهم الشمال = التالي
+        if (e.key === 'ArrowRight') { e.preventDefault(); teamPrevSlide(); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); teamNextSlide(); }
+      });
+    }
 
     // swipe
     if (teamViewport) {
@@ -1448,10 +1468,12 @@ function initShared() {
     }
 
     // إيقاف الأوتوبلاي عند hover/focus
-    teamSlider.addEventListener('mouseenter', stopTeamAutoplay);
-    teamSlider.addEventListener('mouseleave', teamStartAutoplay);
-    teamSlider.addEventListener('focusin', stopTeamAutoplay);
-    teamSlider.addEventListener('focusout', teamStartAutoplay);
+    if (teamSlider) {
+      teamSlider.addEventListener('mouseenter', stopTeamAutoplay);
+      teamSlider.addEventListener('mouseleave', teamStartAutoplay);
+      teamSlider.addEventListener('focusin', stopTeamAutoplay);
+      teamSlider.addEventListener('focusout', teamStartAutoplay);
+    }
 
     // إعادة بناء النقاط وإعادة التحديث عند resize
     var teamResizeTimer = null;
@@ -1484,13 +1506,11 @@ function initShared() {
     } else {
       teamStartAutoplay();
     }
-
-    // وقّف الأوتوبلاي لما التبويب يتفقّل
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) stopTeamAutoplay();
-      else teamStartAutoplay();
-    });
   }
+
+  // شغّل السلايدرات
+  setupTeamSlider('aboutTeamSlider');
+  setupTeamSlider('trainingTeamSlider', 3); // training بـ 3 كروت دايماً
 
   /* ============================================================
      تفاعلات صفحة المدونة (blog-main)
