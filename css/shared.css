@@ -9171,8 +9171,8 @@ a.contact-item:hover .contact-ic {
 
 /* override: grid 2x2 بدل 3x2 */
 .training-audience-grid {
-  grid-template-columns: 1fr 1fr;
-  max-width: 920px;
+  grid-template-columns: 610px 610px;
+  max-width: none;
   margin-left: auto;
   margin-right: auto;
 }
@@ -9183,6 +9183,12 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ---------- ريسبونسف ---------- */
+@media (max-width: 1300px) {
+  .training-audience-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 900px) {
   .training-audience-grid {
     grid-template-columns: 1fr;
