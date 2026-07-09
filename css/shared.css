@@ -11000,6 +11000,14 @@ a.contact-item:hover .contact-ic {
   }
 }
 
+/* صفحة المشروع — heading-line مشترك لكل السيكشنز */
+.project-heading-line {
+  margin: 0 0 18px;
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
 /* ============================================================
    صفحة المشروع — سيكشن النجاح في التفاصيل (50/50)
    ============================================================ */
@@ -11035,6 +11043,7 @@ a.contact-item:hover .contact-ic {
   color: #475569;
   line-height: 1.9;
   margin: 18px 0 24px;
+  text-align: justify;
 }
 
 .project-success-list {
@@ -11069,6 +11078,7 @@ a.contact-item:hover .contact-ic {
   color: #475569;
   line-height: 1.9;
   margin: 0;
+  text-align: justify;
 }
 
 /* العمود الأيسر: الصورة */
@@ -11076,14 +11086,14 @@ a.contact-item:hover .contact-ic {
   position: relative;
   border-radius: 28px;
   overflow: hidden;
-  aspect-ratio: 4 / 3.2;
+  /* تم إزالة aspect-ratio - الصورة بتاخد ارتفاع طبيعي */
   box-shadow: 0 16px 40px -12px rgba(14, 35, 63, 0.2);
   align-self: center;
 }
 
 .project-success-img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   display: block;
 }
