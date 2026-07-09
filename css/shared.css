@@ -9734,6 +9734,78 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة الباقات — Toggle شهري/سنوي
+   ============================================================ */
+.pricing-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 48px;
+  background: #F1F5F9;
+  padding: 6px;
+  border-radius: 14px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.pricing-toggle-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-spring);
+  font-family: inherit;
+}
+
+.pricing-toggle-btn.active {
+  background: var(--navy);
+  color: #fff;
+  box-shadow: 0 4px 12px -4px rgba(14, 35, 63, 0.3);
+}
+
+.pricing-toggle-btn:not(.active):hover {
+  color: var(--navy);
+}
+
+.pricing-toggle-discount {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 600px) {
+  .pricing-toggle {
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    max-width: 280px;
+  }
+  .pricing-toggle-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+/* ============================================================
    صفحات داخلية — placeholder للمحتوى قيد الإضافة
    ============================================================ */
 .page-content {

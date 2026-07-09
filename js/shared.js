@@ -17,6 +17,8 @@ function initAll() {
   if (typeof initInnerHero === 'function') initInnerHero();
   // تهيئة سيكشن التجارة والمبيعات (Stacked Cards on Scroll)
   if (typeof initCommerceStack === 'function') initCommerceStack();
+  // تهيئة toggle الباقات (لو موجود)
+  if (typeof initPricingToggle === 'function') initPricingToggle();
 }
 
 // تشغيل تلقائي لما DOM يتحمل
@@ -1286,7 +1288,8 @@ function initShared() {
     { id: 'consultingMethodSteps', cls: 'how-steps' },
     { id: 'consultingDeliverablesHead', cls: 'integration-deliverables-head' },
     { id: 'consultingDeliverablesGrid', cls: 'integration-deliverables-grid' },
-    { id: 'consultingDeliverablesCta', cls: 'integration-deliverables-cta' }
+    { id: 'consultingDeliverablesCta', cls: 'integration-deliverables-cta' },
+    { id: 'pricingGrid', cls: 'pricing-grid', children: '.pricing-card' }
   ];
 
   function revealAboutSection(el) {
@@ -2137,4 +2140,40 @@ function setupCommerceSection(section, sectionIdx) {
     });
   }
   update();
+}
+
+/* ============================================================
+   صفحة الباقات — Toggle شهري/سنوي
+   ============================================================ */
+function initPricingToggle() {
+  'use strict';
+
+  var toggle = document.getElementById('pricingToggle');
+  if (!toggle) return;
+
+  var buttons = toggle.querySelectorAll('.pricing-toggle-btn');
+  var amounts = document.querySelectorAll('.pricing-card-amount');
+  var periods = document.querySelectorAll('.pricing-card-period');
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var period = btn.getAttribute('data-period');
+      
+      // تحديث الـ active
+      buttons.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      // تحديث الأسعار
+      amounts.forEach(function (el) {
+        var val = el.getAttribute('data-' + period);
+        if (val) el.textContent = val;
+      });
+
+      // تحديث الفترة
+      periods.forEach(function (el) {
+        var val = el.getAttribute('data-' + period);
+        if (val) el.textContent = val;
+      });
+    });
+  });
 }
