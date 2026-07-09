@@ -11656,8 +11656,8 @@ a.contact-item:hover .contact-ic {
 
 .other-projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
 }
 
 .other-projects-card {
@@ -11677,7 +11677,7 @@ a.contact-item:hover .contact-ic {
 
 .other-projects-card-img {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
 }
 .other-projects-card-img img {
@@ -11692,10 +11692,10 @@ a.contact-item:hover .contact-ic {
 }
 
 .other-projects-card-body {
-  padding: 20px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .other-projects-card-tag {
@@ -11709,11 +11709,41 @@ a.contact-item:hover .contact-ic {
 }
 
 .other-projects-card-title {
-  font-size: clamp(16px, 1.5vw, 18px);
+  font-size: clamp(18px, 1.7vw, 22px);
   font-weight: 800;
   color: var(--navy);
-  line-height: 1.4;
+  line-height: 1.35;
   margin: 0;
+}
+
+.other-projects-card-desc {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.other-projects-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.other-projects-card-tags span {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748B;
+  background: #F1F5F9;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.other-projects-sub {
+  font-size: clamp(14px, 1.3vw, 16px);
+  color: #475569;
+  line-height: 1.85;
+  margin: 0;
+  text-align: center;
 }
 
 @media (max-width: 900px) {
@@ -11721,8 +11751,8 @@ a.contact-item:hover .contact-ic {
     padding: 60px 20px;
   }
   .other-projects-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
   .other-projects-head {
     margin-bottom: 36px;
@@ -11737,8 +11767,10 @@ a.contact-item:hover .contact-ic {
     font-size: 24px;
   }
   .other-projects-grid {
-    grid-template-columns: 1fr;
     gap: 16px;
+  }
+  .other-projects-card-body {
+    padding: 20px;
   }
 }
 
