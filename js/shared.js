@@ -1296,7 +1296,9 @@ function initShared() {
     { id: 'projectSummaryHead', cls: 'project-summary-head' },
     { id: 'projectSummaryGrid', cls: 'project-summary-grid', children: '.project-summary-card' },
     { id: 'projectChallengeHead', cls: 'project-challenge-head' },
-    { id: 'projectChallengeGrid', cls: 'project-challenge-grid' }
+    { id: 'projectChallengeGrid', cls: 'project-challenge-grid' },
+    { id: 'projectSuccessText', cls: 'project-success-text' },
+    { id: 'projectSuccessVisual', cls: 'project-success-visual' }
   ];
 
   function revealAboutSection(el) {
