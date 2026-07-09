@@ -1265,7 +1265,10 @@ function initShared() {
     { id: 'trainingProblemsCta', cls: 'training-problems-cta' },
     { id: 'trainingAudienceHead', cls: 'integration-services-head' },
     { id: 'trainingAudienceGrid', cls: 'integration-services-grid' },
-    { id: 'trainingAudienceCta', cls: 'integration-services-cta' }
+    { id: 'trainingAudienceCta', cls: 'integration-services-cta' },
+    { id: 'trainingProgramsHead', cls: 'training-programs-head' },
+    { id: 'trainingProgramsGrid', cls: 'training-programs-grid' },
+    { id: 'trainingProgramsCta', cls: 'training-programs-cta' }
   ];
 
   function revealAboutSection(el) {
