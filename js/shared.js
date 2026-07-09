@@ -1283,7 +1283,10 @@ function initShared() {
     { id: 'consultingTypesGrid', cls: 'training-programs-grid' },
     { id: 'consultingTypesCta', cls: 'training-programs-cta' },
     { id: 'consultingMethodHead', cls: 'how-head' },
-    { id: 'consultingMethodSteps', cls: 'how-steps' }
+    { id: 'consultingMethodSteps', cls: 'how-steps' },
+    { id: 'consultingDeliverablesHead', cls: 'integration-deliverables-head' },
+    { id: 'consultingDeliverablesGrid', cls: 'integration-deliverables-grid' },
+    { id: 'consultingDeliverablesCta', cls: 'integration-deliverables-cta' }
   ];
 
   function revealAboutSection(el) {
