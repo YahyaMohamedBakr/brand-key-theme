@@ -11545,10 +11545,10 @@ a.contact-item:hover .contact-ic {
   margin: 0;
 }
 
-/* Bento Grid - 4 أعمدة × 2 صفوف */
+/* Bento Grid - 3 أعمدة × 2 صفوف (صورة كبيرة في النص) */
 .project-moments-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1.4fr 1fr;
   grid-template-rows: 200px 200px;
   gap: 16px;
 }
@@ -11571,15 +11571,15 @@ a.contact-item:hover .contact-ic {
   transform: scale(1.05);
 }
 
-/* الكارت الأول: ضخم - 2 عمود × 2 صف */
+/* الكارت الأول: ضخم في النص - 1 عمود × 2 صف */
 .project-moments-item--1 {
-  grid-column: span 2;
-  grid-row: span 2;
+  grid-column: 2;
+  grid-row: 1 / span 2;
 }
 
-/* الكارت الرابع: عريض أفقي - 2 عمود × 1 صف */
+/* الباقي مربعات عادية */
 .project-moments-item--4 {
-  grid-column: span 2;
+  grid-column: span 1;
 }
 
 /* Responsive */
@@ -11592,11 +11592,11 @@ a.contact-item:hover .contact-ic {
     grid-template-rows: 180px 180px 180px;
   }
   .project-moments-item--1 {
-    grid-column: span 2;
+    grid-column: 1 / span 2;
     grid-row: span 1;
   }
   .project-moments-item--4 {
-    grid-column: span 2;
+    grid-column: span 1;
   }
   .project-moments-head {
     margin-bottom: 36px;
