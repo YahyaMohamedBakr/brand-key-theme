@@ -9642,6 +9642,16 @@ a.contact-item:hover .contact-ic {
   }
 }
 
+/* سيكشن Pain Points في consulting: نفس بنية training-problems بس بأيقونات صفراء */
+.consulting-painpoints .training-problems-card:hover {
+  border-color: rgba(242, 201, 76, 0.3);
+  box-shadow: 0 12px 28px -8px rgba(242, 201, 76, 0.12);
+}
+.consulting-painpoints-icon {
+  background: rgba(242, 201, 76, 0.15) !important;
+  color: var(--gold-press) !important;
+}
+
 /* ============================================================
    صفحات داخلية — placeholder للمحتوى قيد الإضافة
    ============================================================ */

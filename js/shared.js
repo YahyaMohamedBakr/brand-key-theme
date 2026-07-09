@@ -1275,7 +1275,10 @@ function initShared() {
     { id: 'trainingMethodSteps', cls: 'how-steps' },
     { id: 'trainingBenefitsHead', cls: 'integration-deliverables-head' },
     { id: 'trainingBenefitsGrid', cls: 'integration-deliverables-grid' },
-    { id: 'trainingBenefitsCta', cls: 'integration-deliverables-cta' }
+    { id: 'trainingBenefitsCta', cls: 'integration-deliverables-cta' },
+    { id: 'consultingPainpointsHead', cls: 'training-problems-head' },
+    { id: 'consultingPainpointsGrid', cls: 'training-problems-grid' },
+    { id: 'consultingPainpointsCta', cls: 'training-problems-cta' }
   ];
 
   function revealAboutSection(el) {
