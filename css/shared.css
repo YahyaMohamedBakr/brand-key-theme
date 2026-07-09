@@ -9793,6 +9793,7 @@ a.contact-item:hover .contact-ic {
   white-space: nowrap;
   box-shadow: 0 2px 8px -2px rgba(242, 201, 76, 0.5);
   z-index: 2;
+  transform: rotate(-6deg);
 }
 
 @media (max-width: 600px) {
@@ -9807,6 +9808,163 @@ a.contact-item:hover .contact-ic {
     justify-content: center;
     padding: 10px 20px;
     font-size: 14px;
+  }
+}
+
+/* ============================================================
+   صفحة الباقات — جدول المقارنة التفصيلية
+   ============================================================ */
+.pricing-compare {
+  padding: 80px 24px;
+  background: var(--bg);
+}
+
+.pricing-compare-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.pricing-compare-head {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 48px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.pricing-compare-head.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pricing-compare-title {
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+
+.pricing-compare-sub {
+  font-size: clamp(14px, 1.3vw, 16px);
+  color: #475569;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* الجدول */
+.pricing-compare-table-wrap {
+  overflow-x: auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px -8px rgba(14, 35, 63, 0.12);
+  -webkit-overflow-scrolling: touch;
+}
+
+.pricing-compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.pricing-compare-table thead tr {
+  background: var(--navy);
+}
+
+.pricing-compare-table th {
+  padding: 18px 16px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.pricing-compare-table th.col-feature {
+  text-align: right;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.pricing-compare-table th.col-featured {
+  color: var(--gold);
+}
+
+.pricing-compare-table td {
+  padding: 14px 16px;
+  text-align: center;
+  font-size: 14px;
+  color: #334155;
+  border-bottom: 1px solid #E2E8F0;
+  font-weight: 500;
+}
+
+.pricing-compare-table td.col-feature {
+  text-align: right;
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 14px;
+}
+
+/* عمود النمو المميز */
+.pricing-compare-table td.col-featured {
+  background: rgba(242, 201, 76, 0.08);
+  color: var(--gold-press);
+  font-weight: 700;
+}
+
+.pricing-compare-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* علامات الصح والخطأ */
+.pricing-compare-table .check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: #DCFCE7;
+  color: #16A34A;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.pricing-compare-table .cross {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: #F1F5F9;
+  color: #94A3B8;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .pricing-compare {
+    padding: 60px 16px;
+  }
+  .pricing-compare-head {
+    margin-bottom: 32px;
+  }
+  .pricing-compare-title {
+    font-size: 24px;
+  }
+  .pricing-compare-table th,
+  .pricing-compare-table td {
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+  .pricing-compare-table th {
+    font-size: 14px;
+  }
+  .pricing-compare-table td.col-feature {
+    font-size: 13px;
   }
 }
 

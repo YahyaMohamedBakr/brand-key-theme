@@ -1289,7 +1289,8 @@ function initShared() {
     { id: 'consultingDeliverablesHead', cls: 'integration-deliverables-head' },
     { id: 'consultingDeliverablesGrid', cls: 'integration-deliverables-grid' },
     { id: 'consultingDeliverablesCta', cls: 'integration-deliverables-cta' },
-    { id: 'pricingGrid', cls: 'pricing-grid', children: '.pricing-card' }
+    { id: 'pricingGrid', cls: 'pricing-grid', children: '.pricing-card' },
+    { id: 'pricingCompareHead', cls: 'pricing-compare-head' }
   ];
 
   function revealAboutSection(el) {
