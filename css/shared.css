@@ -10669,6 +10669,201 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة المشروع — ملخص سريع (Bento Grid)
+   ============================================================ */
+.project-summary {
+  padding: 80px 24px;
+  background: var(--bg);
+}
+
+.project-summary-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* الهيدر */
+.project-summary-head {
+  text-align: right;
+  max-width: 680px;
+  margin: 0 0 48px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.project-summary-head.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-summary-title {
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+
+.project-summary-sub {
+  font-size: clamp(14px, 1.3vw, 16px);
+  color: #475569;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* Bento Grid */
+.project-summary-grid {
+  display: grid;
+  grid-template-columns: 0.3fr 0.7fr;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out) 0.15s, transform 0.7s var(--ease-out) 0.15s;
+}
+.project-summary-grid.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* الكارت */
+.project-summary-card {
+  position: relative;
+  padding: 32px 28px;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  transition: transform 0.35s var(--ease-spring);
+}
+.project-summary-card:hover {
+  transform: translateY(-3px);
+}
+
+/* شريط زخرفي على اليسار (Notch/Ribbon) */
+.project-summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--gold);
+  border-radius: 20px 0 0 20px;
+}
+
+/* كارت العميل (كحلي داكن) */
+.project-summary-card--client {
+  background: linear-gradient(135deg, #0A192F 0%, #142B4D 100%);
+  color: #fff;
+}
+
+/* كارت الخدمات (كحلي متوسط) */
+.project-summary-card--services {
+  background: linear-gradient(135deg, #1A3556 0%, #2A4768 100%);
+  color: #fff;
+}
+
+/* كارت الأدوات (أزرق رمادي فاتح) */
+.project-summary-card--tools {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #334155 0%, #475569 100%);
+  color: #fff;
+}
+
+/* محتوى الكارت */
+.project-summary-card-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.project-summary-card-value {
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* أدوات */
+.project-summary-tools {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.project-summary-tool {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.project-summary-tool-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.project-summary-tool span {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .project-summary {
+    padding: 60px 20px;
+  }
+  .project-summary-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-summary-card--tools {
+    grid-column: 1;
+  }
+  .project-summary-head {
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-summary {
+    padding: 44px 16px;
+  }
+  .project-summary-title {
+    font-size: 24px;
+  }
+  .project-summary-sub {
+    font-size: 14px;
+  }
+  .project-summary-card {
+    padding: 24px 20px;
+  }
+  .project-summary-card-value {
+    font-size: 16px;
+  }
+  .project-summary-tools {
+    gap: 20px;
+  }
+  .project-summary-tool-icon {
+    width: 38px;
+    height: 38px;
+  }
+  .project-summary-tool span {
+    font-size: 13px;
+  }
+}
+
+/* ============================================================
    صفحات داخلية — placeholder للمحتوى قيد الإضافة
    ============================================================ */
 .page-content {

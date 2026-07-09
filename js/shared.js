@@ -1292,7 +1292,9 @@ function initShared() {
     { id: 'pricingGrid', cls: 'pricing-grid', children: '.pricing-card' },
     { id: 'pricingCompareHead', cls: 'pricing-compare-head' },
     { id: 'contactOfficesHead', cls: 'contact-offices-head' },
-    { id: 'contactOfficesGrid', cls: 'contact-offices-grid' }
+    { id: 'contactOfficesGrid', cls: 'contact-offices-grid' },
+    { id: 'projectSummaryHead', cls: 'project-summary-head' },
+    { id: 'projectSummaryGrid', cls: 'project-summary-grid' }
   ];
 
   function revealAboutSection(el) {
