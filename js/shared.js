@@ -1326,7 +1326,11 @@ function initShared() {
     { id: 'sectorGrowthVisual', cls: 'about-why-visual' },
     { id: 'sectorSolutionsHead', cls: 'service-includes-head' },
     { id: 'sectorSolutionsGrid', cls: 'service-includes-grid', children: '.service-includes-card' },
-    { id: 'sectorSolutionsCta', cls: 'service-includes-cta' }
+    { id: 'sectorSolutionsCta', cls: 'service-includes-cta' },
+    { id: 'sectorProjectsHead', cls: 'service-projects-head' },
+    { id: 'sectorProjectsGrid', cls: 'service-projects-grid' },
+    { id: 'sectorSimilarHead', cls: 'sectors-grid-head' },
+    { id: 'sectorSimilarCards', cls: 'sectors-grid-cards', children: '.sector-flip-card' }
   ];
 
   function revealAboutSection(el) {
