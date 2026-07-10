@@ -1325,7 +1325,8 @@ function initShared() {
     { id: 'sectorGrowthContent', cls: 'about-why-content' },
     { id: 'sectorGrowthVisual', cls: 'about-why-visual' },
     { id: 'sectorSolutionsHead', cls: 'service-includes-head' },
-    { id: 'sectorSolutionsGrid', cls: 'service-includes-grid', children: '.service-includes-card' }
+    { id: 'sectorSolutionsGrid', cls: 'service-includes-grid', children: '.service-includes-card' },
+    { id: 'sectorSolutionsCta', cls: 'service-includes-cta' }
   ];
 
   function revealAboutSection(el) {
