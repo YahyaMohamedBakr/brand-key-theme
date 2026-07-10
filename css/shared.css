@@ -12736,6 +12736,254 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة المقالة الواحدة — الهيرو (Overlapping Card)
+   ============================================================ */
+.article-hero {
+  padding: calc(var(--header-h) + 24px) 0 0;
+  background: var(--bg);
+}
+
+.article-hero-container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* فتات الخبز — خارج حاوية الصورة */
+.article-hero-breadcrumbs {
+  margin-bottom: 24px;
+}
+
+.article-breadcrumb-active {
+  color: var(--navy);
+  font-weight: 800;
+}
+
+/* حاوية البانر + الكارت المتداخل */
+.article-hero-banner-wrap {
+  position: relative;
+}
+
+/* البانر الرئيسي — صورة بانورامية عريضة */
+.article-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 24px 70px -24px rgba(14, 35, 63, 0.30);
+}
+
+/* صورة الخلفية */
+.article-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Overlay خفيف لتهدئة الألوان */
+.article-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.45) 100%);
+  z-index: 1;
+}
+
+/* كارت محتوى المقالة المتداخل — يطفو في منتصف الجزء السفلي من البانر */
+.article-hero-card {
+  position: relative;
+  z-index: 2;
+  margin-top: -120px;
+  margin-bottom: 28px;
+  background: #fff;
+  border-radius: 24px;
+  padding: 48px 56px;
+  box-shadow: 0 24px 60px -16px rgba(14, 35, 63, 0.18);
+  max-width: 900px;
+  margin-right: auto;
+  margin-left: auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.article-hero-card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* العنوان الرئيسي — كحلي داكن، سميك وضخم، سطرين */
+.article-hero-title {
+  font-size: clamp(26px, 3.5vw, 42px);
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+  margin: 0 0 18px;
+}
+
+/* المقتطف / الوصف الفرعي — رمادي داكن */
+.article-hero-desc {
+  font-size: clamp(15px, 1.5vw, 18px);
+  color: #475569;
+  line-height: 1.9;
+  margin: 0;
+  max-width: 720px;
+}
+
+/* شريط البيانات الوصفية ومشاركة المقال */
+.article-hero-meta-bar {
+  padding: 0 24px;
+  max-width: var(--container);
+  margin: 0 auto 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* البيانات الوصفية (يمين) */
+.article-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.article-hero-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748B;
+}
+.article-hero-meta-item svg {
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+/* أزرار مشاركة المقال (يسار) */
+.article-hero-share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.article-hero-share-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-left: 4px;
+}
+
+.article-hero-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: #fff;
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.3s var(--ease-out), opacity 0.3s var(--ease-out);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+.article-hero-share-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  opacity: 0.92;
+}
+
+.article-hero-share-btn--copy {
+  background: #64748B;
+}
+.article-hero-share-btn--fb {
+  background: #1877F2;
+}
+.article-hero-share-btn--tw {
+  background: #1DA1F2;
+}
+.article-hero-share-btn--in {
+  background: #0A66C2;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .article-hero {
+    padding: calc(var(--header-h) + 16px) 0 0;
+  }
+  .article-hero-banner {
+    height: 360px;
+    border-radius: 24px;
+  }
+  .article-hero-card {
+    margin-top: -100px;
+    padding: 40px 32px;
+    border-radius: 20px;
+  }
+  .article-hero-meta-bar {
+    gap: 16px;
+  }
+  .article-hero-meta {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .article-hero {
+    padding: calc(var(--header-h) + 12px) 0 0;
+  }
+  .article-hero-container,
+  .article-hero-meta-bar {
+    padding: 0 16px;
+  }
+  .article-hero-breadcrumbs {
+    padding: 0 16px;
+  }
+  .article-hero-banner {
+    height: 280px;
+    border-radius: 20px;
+  }
+  .article-hero-card {
+    margin-top: -80px;
+    padding: 32px 22px;
+    border-radius: 16px;
+  }
+  .article-hero-title {
+    font-size: 23px;
+    margin-bottom: 14px;
+  }
+  .article-hero-desc {
+    font-size: 14px;
+  }
+  .article-hero-meta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .article-hero-meta {
+    gap: 14px;
+  }
+  .article-hero-meta-item {
+    font-size: 13px;
+  }
+  .article-hero-share-label {
+    font-size: 13px;
+  }
+  .article-hero-share-btn {
+    width: 34px;
+    height: 34px;
+  }
+  .breadcrumbs {
+    font-size: 12px;
+  }
+}
+
+/* ============================================================
    صفحات داخلية — placeholder للمحتوى قيد الإضافة
    ============================================================ */
 .page-content {

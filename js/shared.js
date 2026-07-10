@@ -1330,7 +1330,8 @@ function initShared() {
     { id: 'sectorProjectsHead', cls: 'service-projects-head' },
     { id: 'sectorProjectsGrid', cls: 'service-projects-grid' },
     { id: 'sectorSimilarHead', cls: 'sectors-grid-head' },
-    { id: 'sectorSimilarCards', cls: 'sectors-grid-cards', children: '.sector-flip-card' }
+    { id: 'sectorSimilarCards', cls: 'sectors-grid-cards', children: '.sector-flip-card' },
+    { id: 'articleHeroCard', cls: 'article-hero-card' }
   ];
 
   function revealAboutSection(el) {
