@@ -4006,6 +4006,14 @@ body.nav-open { overflow: hidden; }
   transform: translateX(-4px);
 }
 
+/* غلاف رابط يجعل الكارت كله قابلاً للضغط */
+.blog-card-link-wrap {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
 
 /* ============================================================
    الفوتر

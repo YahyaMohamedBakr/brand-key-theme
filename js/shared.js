@@ -1335,7 +1335,9 @@ function initShared() {
     { id: 'articleCallout', cls: 'article-callout' },
     { id: 'articleColors', cls: 'article-colors' },
     { id: 'articleChecklist', cls: 'article-checklist' },
-    { id: 'articleConclusion', cls: 'article-conclusion' }
+    { id: 'articleConclusion', cls: 'article-conclusion' },
+    { id: 'articleRelatedHead', cls: 'blog-head' },
+    { id: 'articleRelatedGrid', cls: 'blog-grid', children: '.blog-card' }
   ];
 
   function revealAboutSection(el) {
