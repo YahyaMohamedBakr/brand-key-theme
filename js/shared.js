@@ -1311,7 +1311,10 @@ function initShared() {
     { id: 'serviceWhyVisual', cls: 'about-us-visual' },
     { id: 'serviceWhyContent', cls: 'about-us-content' },
     { id: 'serviceIncludesHead', cls: 'service-includes-head' },
-    { id: 'serviceIncludesGrid', cls: 'service-includes-grid', children: '.service-includes-card' }
+    { id: 'serviceIncludesGrid', cls: 'service-includes-grid', children: '.service-includes-card' },
+    { id: 'serviceIncludesCta', cls: 'service-includes-cta' },
+    { id: 'serviceConnectContent', cls: 'about-why-content' },
+    { id: 'serviceConnectVisual', cls: 'about-why-visual' }
   ];
 
   function revealAboutSection(el) {
