@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>القطاع الطبي | Brand Key</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared.css?v=20250710d" />
+</head>
+<body>
+
+  <!-- الهيدر (محمل بالـ JS) -->
+  <div id="header-include"></div>
+
+  <!-- المحتوى الخاص بالصفحة -->
+  <main class="page-content" id="pageContent">
+
+    <!-- ===================== هيرو صفحة القطاع الواحد (Hybrid: Content + Stats Grid) ===================== -->
+    <section class="sector-hero" id="sectorHero">
+
+      <!-- فتات الخبز (Breadcrumbs) -->
+      <div class="sector-hero-breadcrumbs">
+        <div class="sector-hero-container">
+          <nav class="breadcrumbs" aria-label="مسار التنقل">
+            <a href="sectors.html" class="breadcrumb-link">حلول القطاعات</a>
+            <span class="breadcrumb-sep">&gt;</span>
+            <span class="breadcrumb-current sector-breadcrumb-active">القطاع الطبي</span>
+          </nav>
+        </div>
+      </div>
+
+      <!-- البانر الرئيسي -->
+      <div class="sector-hero-container">
+        <div class="sector-hero-banner" id="sectorHeroBanner">
+          <!-- صورة الخلفية + Overlay -->
+          <div class="sector-hero-bg" style="background-image: url('icons/sector-medical-bg.png');"></div>
+          <div class="sector-hero-overlay"></div>
+
+          <!-- المحتوى: عمودين (نص + إحصائيات) -->
+          <div class="sector-hero-content" id="sectorHeroContent">
+
+            <!-- الكتلة النصية + الأزرار (يمين في RTL) -->
+            <div class="sector-hero-text">
+              <h1 class="sector-hero-title">القطاع الطبي</h1>
+              <p class="sector-hero-desc">
+                نساعد العيادات، المراكز الطبية، والمستشفيات على بناء حضور رقمي يزرع الثقة، يسهل الحجوزات، ويجذب المرضى بطريقة أخلاقية واحترافية.
+              </p>
+
+              <!-- أزرار اتخاذ الإجراء -->
+              <div class="sector-hero-cta">
+                <!-- الزر الأساسي (أصفر) -->
+                <a href="contact.html" class="sector-hero-btn sector-hero-btn--primary">
+                  <span>ابدأ رحلتك معنا الآن!</span>
+                  <img src="icons/start-icon.svg" alt="" class="sector-hero-btn-icon" aria-hidden="true" />
+                </a>
+                <!-- الزر الثانوي (شفاف) -->
+                <a href="#sectorDetails" class="sector-hero-btn sector-hero-btn--ghost">
+                  <img src="icons/arrow-down.svg" alt="" class="sector-hero-btn-icon sector-hero-btn-icon--down" aria-hidden="true" />
+                  <span>استكشف المزيد من الحلول</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- شبكة الإحصائيات (2x2 - Glassmorphism) -->
+            <div class="sector-hero-stats">
+              <div class="sector-hero-stat-card" data-stat="0">
+                <div class="sector-hero-stat-num">98%</div>
+                <div class="sector-hero-stat-label">معدل رضا المرضى</div>
+              </div>
+              <div class="sector-hero-stat-card" data-stat="1">
+                <div class="sector-hero-stat-num">12K+</div>
+                <div class="sector-hero-stat-label">مريض جديد شهرياً</div>
+              </div>
+              <div class="sector-hero-stat-card" data-stat="2">
+                <div class="sector-hero-stat-num">350%</div>
+                <div class="sector-hero-stat-label">زيادة في الحجوزات</div>
+              </div>
+              <div class="sector-hero-stat-card" data-stat="3">
+                <div class="sector-hero-stat-num">+40</div>
+                <div class="sector-hero-stat-label">عيادة ومركز طبي</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- سيكشن مؤقت لاستقبال السكرول من زر "استكشف المزيد" -->
+    <section class="sector-details-placeholder" id="sectorDetails" style="min-height: 40vh;"></section>
+
+  </main>
+
+  <!-- الفوتر (محمل بالـ JS) -->
+  <div id="footer-include"></div>
+
+  <script src="js/includes.js"></script>
+  <script src="js/shared.js"></script>
+</body>
+</html>

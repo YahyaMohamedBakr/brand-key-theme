@@ -1318,7 +1318,8 @@ function initShared() {
     { id: 'serviceJourneyHead', cls: 'how-head' },
     { id: 'serviceJourneySteps', cls: 'how-steps' },
     { id: 'serviceProjectsHead', cls: 'service-projects-head' },
-    { id: 'serviceProjectsGrid', cls: 'service-projects-grid' }
+    { id: 'serviceProjectsGrid', cls: 'service-projects-grid' },
+    { id: 'sectorHeroContent', cls: 'sector-hero-content' }
   ];
 
   function revealAboutSection(el) {

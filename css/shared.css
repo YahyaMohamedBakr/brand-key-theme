@@ -10894,6 +10894,301 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة القطاع الواحد — الهيرو الهجين (Content + Stats Grid 2x2)
+   ============================================================ */
+.sector-hero {
+  padding: calc(var(--header-h) + 24px) 24px 0;
+  background: var(--bg);
+}
+
+.sector-hero-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* فتات الخبز — الصف النشط داكن وعريض */
+.sector-hero-breadcrumbs {
+  margin-bottom: 20px;
+}
+
+.sector-breadcrumb-active {
+  color: var(--navy);
+  font-weight: 800;
+}
+
+/* البانر الرئيسي — أطراف دائرية ناعمة + ظل خفيف */
+.sector-hero-banner {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 24px 70px -24px rgba(14, 35, 63, 0.30);
+}
+
+/* صورة الخلفية */
+.sector-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Overlay داكن تدرجي — يتكثف في الأطراف */
+.sector-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(7, 22, 26, 0.82) 0%, rgba(10, 25, 47, 0.75) 50%, rgba(14, 35, 63, 0.68) 100%);
+  z-index: 1;
+}
+
+/* المحتوى: عمودين (نص 55% + إحصائيات 45%) */
+.sector-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 56px 48px;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 40px;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.sector-hero-content.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* الكتلة النصية (يمين في RTL) */
+.sector-hero-text {
+  text-align: right;
+}
+
+.sector-hero-title {
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin: 0 0 20px;
+}
+
+.sector-hero-desc {
+  font-size: clamp(15px, 1.5vw, 18px);
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.95;
+  margin: 0 0 36px;
+  font-weight: 400;
+  max-width: 540px;
+}
+
+/* مجموعة الأزرار */
+.sector-hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* القاعدة المشتركة للأزرار */
+.sector-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 800;
+  border-radius: 999px;
+  transition: transform 0.35s var(--ease-spring), background 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.sector-hero-btn-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+/* الزر الأساسي — أصفر فاقع، نص كحلي داكن */
+.sector-hero-btn--primary {
+  background: var(--gold);
+  color: var(--navy);
+  box-shadow: 0 10px 28px rgba(242, 201, 76, 0.40);
+  position: relative;
+  overflow: hidden;
+}
+.sector-hero-btn--primary::before {
+  content: '';
+  position: absolute;
+  top: 0; right: -120%;
+  width: 70%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-20deg);
+  transition: right 0.6s var(--ease-out);
+}
+.sector-hero-btn--primary:hover {
+  background: var(--gold-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-gold);
+}
+.sector-hero-btn--primary:hover::before { right: 130%; }
+.sector-hero-btn--primary .sector-hero-btn-icon {
+  transition: transform 0.4s var(--ease-spring);
+}
+.sector-hero-btn--primary:hover .sector-hero-btn-icon {
+  transform: translate(-4px, -4px) rotate(-15deg);
+}
+
+/* الزر الثانوي — شفاف، نص وأيقونة بيضاء */
+.sector-hero-btn--ghost {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+}
+.sector-hero-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+  transform: translateY(-3px);
+}
+.sector-hero-btn--ghost .sector-hero-btn-icon--down {
+  transition: transform 0.4s var(--ease-spring);
+}
+.sector-hero-btn--ghost:hover .sector-hero-btn-icon--down {
+  transform: translateY(4px);
+}
+
+/* شبكة الإحصائيات (2x2) — Glassmorphism */
+.sector-hero-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.sector-hero-stat-card {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 24px 20px;
+  text-align: center;
+  transition: transform 0.4s var(--ease-spring), background 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
+  opacity: 0;
+  transform: translateY(20px);
+}
+.sector-hero-content.revealed .sector-hero-stat-card {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out), background 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
+}
+.sector-hero-content.revealed .sector-hero-stat-card[data-stat="0"] { transition-delay: 200ms; }
+.sector-hero-content.revealed .sector-hero-stat-card[data-stat="1"] { transition-delay: 300ms; }
+.sector-hero-content.revealed .sector-hero-stat-card[data-stat="2"] { transition-delay: 400ms; }
+.sector-hero-content.revealed .sector-hero-stat-card[data-stat="3"] { transition-delay: 500ms; }
+
+.sector-hero-stat-card:hover {
+  transform: translateY(-4px);
+  background: rgba(0, 0, 0, 0.45);
+  border-color: rgba(242, 201, 76, 0.4);
+}
+
+.sector-hero-stat-num {
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1.1;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.sector-hero-stat-label {
+  font-size: clamp(12.5px, 1.1vw, 14px);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .sector-hero {
+    padding: calc(var(--header-h) + 16px) 20px 0;
+  }
+  .sector-hero-banner {
+    min-height: 480px;
+    border-radius: 24px;
+  }
+  .sector-hero-content {
+    padding: 44px 32px;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .sector-hero-text {
+    text-align: center;
+  }
+  .sector-hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .sector-hero-cta {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .sector-hero {
+    padding: calc(var(--header-h) + 12px) 16px 0;
+  }
+  .sector-hero-banner {
+    min-height: auto;
+    border-radius: 20px;
+  }
+  .sector-hero-content {
+    padding: 36px 22px;
+    gap: 28px;
+  }
+  .sector-hero-title {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  .sector-hero-desc {
+    font-size: 14px;
+    margin-bottom: 26px;
+  }
+  .sector-hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 12px;
+  }
+  .sector-hero-btn {
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+  .sector-hero-stats {
+    gap: 12px;
+  }
+  .sector-hero-stat-card {
+    padding: 18px 14px;
+    border-radius: 14px;
+  }
+  .sector-hero-stat-num {
+    font-size: 24px;
+  }
+  .sector-hero-stat-label {
+    font-size: 12px;
+  }
+  .breadcrumbs {
+    font-size: 12px;
+  }
+}
+
+/* ============================================================
    صفحة الخدمة — ماذا تتضمن الخدمة؟ (White Section + 6 كروت 3x2)
    ============================================================ */
 .service-includes {
