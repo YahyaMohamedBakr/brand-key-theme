@@ -1314,7 +1314,9 @@ function initShared() {
     { id: 'serviceIncludesGrid', cls: 'service-includes-grid', children: '.service-includes-card' },
     { id: 'serviceIncludesCta', cls: 'service-includes-cta' },
     { id: 'serviceConnectContent', cls: 'about-why-content' },
-    { id: 'serviceConnectVisual', cls: 'about-why-visual' }
+    { id: 'serviceConnectVisual', cls: 'about-why-visual' },
+    { id: 'serviceJourneyHead', cls: 'how-head' },
+    { id: 'serviceJourneySteps', cls: 'how-steps' }
   ];
 
   function revealAboutSection(el) {
