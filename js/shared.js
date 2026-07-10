@@ -1316,7 +1316,9 @@ function initShared() {
     { id: 'serviceConnectContent', cls: 'about-why-content' },
     { id: 'serviceConnectVisual', cls: 'about-why-visual' },
     { id: 'serviceJourneyHead', cls: 'how-head' },
-    { id: 'serviceJourneySteps', cls: 'how-steps' }
+    { id: 'serviceJourneySteps', cls: 'how-steps' },
+    { id: 'serviceProjectsHead', cls: 'service-projects-head' },
+    { id: 'serviceProjectsGrid', cls: 'service-projects-grid' }
   ];
 
   function revealAboutSection(el) {

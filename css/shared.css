@@ -12230,6 +12230,217 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
+   صفحة الخدمة — أهم مشاريع الخدمة (عنوان يمين + عرض الكل شمال + 2 كروت)
+   ============================================================ */
+.service-projects {
+  padding: 80px 24px;
+  background: var(--bg);
+}
+
+.service-projects-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* الهيدر: نص يمين + رابط عرض الكل شمال */
+.service-projects-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 48px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.service-projects-head.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-projects-head-text {
+  text-align: right;
+  flex: 1;
+  min-width: 0;
+}
+
+.service-projects-title {
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+
+.service-projects-heading-line {
+  margin: 0 0 18px;
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.service-projects-sub {
+  font-size: clamp(14px, 1.3vw, 16px);
+  color: #475569;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* رابط عرض جميع المشاريع — شمال */
+.service-projects-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  padding-top: 8px;
+  white-space: nowrap;
+  transition: color 0.3s var(--ease-out);
+}
+.service-projects-view-all:hover {
+  color: var(--gold-press);
+}
+.service-projects-view-all-icon {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.4s var(--ease-spring);
+}
+.service-projects-view-all:hover .service-projects-view-all-icon {
+  transform: translateX(-5px);
+}
+
+/* الشبكة — 2 كروت */
+.service-projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out) 0.15s, transform 0.7s var(--ease-out) 0.15s;
+}
+.service-projects-grid.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* الكارت */
+.service-projects-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 2px 8px -2px rgba(14, 35, 63, 0.05);
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-out), border-color 0.35s var(--ease-out);
+}
+.service-projects-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 20px 40px -12px rgba(14, 35, 63, 0.15);
+}
+
+.service-projects-card-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #F1F5F9;
+}
+.service-projects-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s var(--ease-out);
+}
+.service-projects-card:hover .service-projects-card-img img {
+  transform: scale(1.05);
+}
+
+.service-projects-card-body {
+  padding: 24px 26px;
+}
+
+.service-projects-card-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold-press);
+  background: #FFF8E6;
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.service-projects-card-title {
+  font-size: clamp(17px, 1.6vw, 20px);
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.4;
+  margin: 0 0 12px;
+}
+
+.service-projects-card-desc {
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.85;
+  margin: 0 0 16px;
+}
+
+.service-projects-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.service-projects-card-tags span {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748B;
+  background: #F1F5F9;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .service-projects {
+    padding: 60px 20px;
+  }
+  .service-projects-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .service-projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .service-projects {
+    padding: 44px 16px;
+  }
+  .service-projects-title {
+    font-size: 24px;
+  }
+  .service-projects-grid {
+    gap: 16px;
+  }
+  .service-projects-card-body {
+    padding: 20px;
+  }
+  .service-projects-view-all {
+    font-size: 14px;
+  }
+}
+
+/* ============================================================
    صفحات داخلية — placeholder للمحتوى قيد الإضافة
    ============================================================ */
 .page-content {
