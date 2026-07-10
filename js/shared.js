@@ -1323,7 +1323,9 @@ function initShared() {
     { id: 'sectorTrustVisual', cls: 'about-us-visual' },
     { id: 'sectorTrustContent', cls: 'about-us-content' },
     { id: 'sectorGrowthContent', cls: 'about-why-content' },
-    { id: 'sectorGrowthVisual', cls: 'about-why-visual' }
+    { id: 'sectorGrowthVisual', cls: 'about-why-visual' },
+    { id: 'sectorSolutionsHead', cls: 'service-includes-head' },
+    { id: 'sectorSolutionsGrid', cls: 'service-includes-grid', children: '.service-includes-card' }
   ];
 
   function revealAboutSection(el) {
