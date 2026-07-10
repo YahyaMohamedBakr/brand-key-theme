@@ -1319,7 +1319,11 @@ function initShared() {
     { id: 'serviceJourneySteps', cls: 'how-steps' },
     { id: 'serviceProjectsHead', cls: 'service-projects-head' },
     { id: 'serviceProjectsGrid', cls: 'service-projects-grid' },
-    { id: 'sectorHeroContent', cls: 'sector-hero-content' }
+    { id: 'sectorHeroContent', cls: 'sector-hero-content' },
+    { id: 'sectorTrustVisual', cls: 'about-us-visual' },
+    { id: 'sectorTrustContent', cls: 'about-us-content' },
+    { id: 'sectorGrowthContent', cls: 'about-why-content' },
+    { id: 'sectorGrowthVisual', cls: 'about-why-visual' }
   ];
 
   function revealAboutSection(el) {
