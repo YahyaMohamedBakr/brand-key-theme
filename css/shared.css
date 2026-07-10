@@ -10894,11 +10894,11 @@ a.contact-item:hover .contact-ic {
 }
 
 /* ============================================================
-   صفحة الخدمة — ماذا تتضمن الخدمة؟ (Dark Section + 6 كروت 3x2)
+   صفحة الخدمة — ماذا تتضمن الخدمة؟ (White Section + 6 كروت 3x2)
    ============================================================ */
 .service-includes {
   position: relative;
-  background: linear-gradient(180deg, #0A192F 0%, #0E233F 100%);
+  background: var(--bg);
   padding: 90px 24px 80px;
   overflow: hidden;
 }
@@ -10925,7 +10925,7 @@ a.contact-item:hover .contact-ic {
 .service-includes-title {
   font-size: clamp(26px, 3.2vw, 34px);
   font-weight: 900;
-  color: #fff;
+  color: var(--navy);
   line-height: 1.25;
   letter-spacing: -0.5px;
   margin: 0 0 16px;
@@ -10940,7 +10940,7 @@ a.contact-item:hover .contact-ic {
 
 .service-includes-sub {
   font-size: clamp(15px, 1.4vw, 18px);
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--muted);
   line-height: 1.85;
   margin: 0;
 }
@@ -10959,14 +10959,15 @@ a.contact-item:hover .contact-ic {
   transform: translateY(0);
 }
 
-/* الكارت — كحلي أفتح + حواف دائرية */
+/* الكارت — أبيض بحدود فاتحة + حواف دائرية */
 .service-includes-card {
   position: relative;
   padding: 32px 28px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #fff;
+  border: 1px solid #E5E7EB;
   border-radius: 18px;
   text-align: right;
+  box-shadow: 0 2px 8px -2px rgba(14, 35, 63, 0.05);
   transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-out), border-color 0.35s var(--ease-out), background 0.35s var(--ease-out);
   opacity: 0;
   transform: translateY(40px);
@@ -10985,9 +10986,9 @@ a.contact-item:hover .contact-ic {
 .service-includes-card[data-card="5"].revealed { transition-delay: 400ms; }
 .service-includes-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(242, 201, 76, 0.5);
-  background: rgba(255, 255, 255, 0.07);
-  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
+  border-color: var(--gold);
+  background: #fff;
+  box-shadow: 0 20px 40px -12px rgba(14, 35, 63, 0.15);
 }
 
 /* الأيقونة — مربع كحلي غامق بحدود صفراء رفيعة، أعلى اليمين */
@@ -10997,7 +10998,7 @@ a.contact-item:hover .contact-ic {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.35);
+  background: var(--navy);
   border: 1.5px solid var(--gold);
   color: var(--gold);
   border-radius: 14px;
@@ -11006,7 +11007,7 @@ a.contact-item:hover .contact-ic {
 }
 .service-includes-card:hover .service-includes-card-icon {
   transform: scale(1.08);
-  background: rgba(242, 201, 76, 0.12);
+  background: #0A192F;
 }
 
 /* جسم الكارت */
@@ -11017,14 +11018,14 @@ a.contact-item:hover .contact-ic {
 .service-includes-card-title {
   font-size: clamp(16px, 1.5vw, 19px);
   font-weight: 800;
-  color: #fff;
+  color: var(--navy);
   line-height: 1.4;
   margin: 0 0 12px;
 }
 
 .service-includes-card-desc {
   font-size: clamp(13.5px, 1.2vw, 15px);
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--muted);
   line-height: 1.85;
   margin: 0;
 }
