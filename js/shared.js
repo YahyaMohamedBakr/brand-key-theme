@@ -1331,7 +1331,11 @@ function initShared() {
     { id: 'sectorProjectsGrid', cls: 'service-projects-grid' },
     { id: 'sectorSimilarHead', cls: 'sectors-grid-head' },
     { id: 'sectorSimilarCards', cls: 'sectors-grid-cards', children: '.sector-flip-card' },
-    { id: 'articleHeroCard', cls: 'article-hero-card' }
+    { id: 'articleHeroCard', cls: 'article-hero-card' },
+    { id: 'articleCallout', cls: 'article-callout' },
+    { id: 'articleColors', cls: 'article-colors' },
+    { id: 'articleChecklist', cls: 'article-checklist' },
+    { id: 'articleConclusion', cls: 'article-conclusion' }
   ];
 
   function revealAboutSection(el) {
