@@ -1359,7 +1359,7 @@ body.nav-open { overflow: hidden; }
 }
 
 .services-title {
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -1825,7 +1825,7 @@ body.nav-open { overflow: hidden; }
 }
 
 .sectors-title {
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -2063,7 +2063,7 @@ body.nav-open { overflow: hidden; }
 }
 
 .cta2-title {
-  font-size: clamp(28px, 4vw, 42px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: #fff;
   margin-bottom: 14px;
@@ -2925,9 +2925,9 @@ body.nav-open { overflow: hidden; }
 
 .how-heading-line {
   display: block;
-  height: 8px;
-  width: auto;
-  max-width: 120px;
+  height: 15px;
+  width: 143px;
+  max-width: 143px;
   margin: 0 auto 18px;
 }
 
@@ -3589,7 +3589,7 @@ body.nav-open { overflow: hidden; }
 }
 
 .faq-title {
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -4020,7 +4020,7 @@ body.nav-open { overflow: hidden; }
    ============================================================ */
 .site-footer {
   flex-shrink: 0;
-  background: var(--navy);
+  background: #060e19;
   color: #fff;
   margin-top: auto; /* يضمن الفوتر في الآخر */
   position: relative;
@@ -4786,7 +4786,7 @@ a.contact-item:hover .contact-ic {
   transform: translateY(0);
 }
 .about-explore-title {
-  font-size: clamp(30px, 4vw, 44px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -5264,7 +5264,7 @@ a.contact-item:hover .contact-ic {
   transform: translateY(0);
 }
 .about-team-title {
-  font-size: clamp(30px, 4vw, 44px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   margin-bottom: 14px;
@@ -11226,7 +11226,7 @@ a.contact-item:hover .contact-ic {
 }
 
 .service-includes-title {
-  font-size: clamp(26px, 3.2vw, 34px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 900;
   color: var(--navy);
   line-height: 1.25;
