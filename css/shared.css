@@ -4056,11 +4056,13 @@ body.nav-open { overflow: hidden; }
 
 /* ---------- قسم النشرة البريدية ---------- */
 .footer-newsletter {
-  background: #142B47; /* كحلي أفتح */
-  padding: 44px 0;
+  padding: 44px 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 .footer-newsletter .footer-container {
+  background: #071322;
+  border-radius: 20px;
+  padding: 36px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -4105,7 +4107,7 @@ body.nav-open { overflow: hidden; }
 }
 .newsletter-form input {
   width: 100%;
-  background: #1E2D45;
+  background: #1e2837;
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: #fff;
   font-family: inherit;
@@ -4118,7 +4120,7 @@ body.nav-open { overflow: hidden; }
 .newsletter-form input::placeholder { color: #6B7E94; }
 .newsletter-form input:focus {
   border-color: var(--gold);
-  background: #243654;
+  background: #283448;
 }
 .newsletter-btn {
   display: inline-flex;
@@ -4510,7 +4512,8 @@ a.contact-item:hover .contact-ic {
   }
   /* عمود "عن براند كي" (الآن هو الأول يمين) يفضل في flow طبيعي */
   .footer-col--about { grid-column: auto; }
-  .footer-newsletter { padding: 32px 0; }
+  .footer-newsletter { padding: 32px 24px; }
+  .footer-newsletter .footer-container { padding: 28px 28px; }
   .footer-main { padding: 44px 0 36px; }
 }
 
@@ -4769,8 +4772,8 @@ a.contact-item:hover .contact-ic {
     grid-template-columns: 1fr;
     gap: 28px;
   }
-  .footer-newsletter { padding: 28px 0; }
-  .footer-newsletter .footer-container { flex-direction: column; align-items: flex-start; }
+  .footer-newsletter { padding: 28px 16px; }
+  .footer-newsletter .footer-container { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
   .newsletter-form { width: 100%; max-width: none; flex-wrap: wrap; }
   .newsletter-title { font-size: 19px; }
   .newsletter-sub { font-size: 13px; }
