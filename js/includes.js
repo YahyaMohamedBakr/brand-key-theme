@@ -187,17 +187,12 @@ var FOOTER_HTML = `<footer class="site-footer" id="siteFooter">
 
           <!-- العمود 1 (يمين): عن براند كي -->
           <div class="footer-col footer-col--about" data-col="0">
-            <h4 class="footer-heading">عن براند كي</h4>
             <a href="#" class="footer-logo" aria-label="Brand Key">
               <img src="icons/logo-light.svg" alt="Brand Key" class="footer-logo-img" />
             </a>
             <p class="footer-desc">
               شركة متخصصة في التسويق الرقمي وخدمات التكنولوجيا، أسست في عام 2011. نسعى دائماً لتقديم حلول مبتكرة تساعد عملائنا على النمو والنجاح.
             </p>
-            <a href="contact.html" class="footer-cta">
-              <span>اتصل بنا</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8H14M14 8L9 3M14 8L9 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
             <div class="footer-social">
               <a href="#" class="social-link" aria-label="Facebook">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M10.5 17V9.5H13L13.5 6.5H10.5V4.6C10.5 3.7 10.7 3.1 12 3.1H13.5V0.5C13.2 0.5 12.3 0.4 11.2 0.4C8.9 0.4 7.3 1.9 7.3 4.3V6.5H4.5V9.5H7.3V17H10.5Z" fill="currentColor"/></svg>
@@ -260,12 +255,12 @@ var FOOTER_HTML = `<footer class="site-footer" id="siteFooter">
                 </a>
               </li>
               <li>
-                <span class="contact-item contact-item--static">
+                <a href="https://maps.google.com/?q=القاهرة+شارع+التحرير" target="_blank" rel="noopener" class="contact-item">
                   <span class="contact-ic">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1C5.24 1 3 3.24 3 6C3 9.5 8 15 8 15C8 15 13 9.5 13 6C13 3.24 10.76 1 8 1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="8" cy="6" r="1.8" stroke="currentColor" stroke-width="1.4"/></svg>
                   </span>
                   <span>القاهرة | مصر، شارع التحرير</span>
-                </span>
+                </a>
               </li>
             </ul>
           </div>
