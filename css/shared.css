@@ -7982,7 +7982,7 @@ a.contact-item:hover .contact-ic {
 /* ---------- البانر السفلي الكحلي ---------- */
 .integration-compare-cta {
   position: relative;
-  background: linear-gradient(135deg, var(--navy) 0%, #081829 100%);
+  background: var(--navy);
   border-radius: 24px;
   padding: 48px 40px;
   margin-bottom: 64px;
@@ -8634,7 +8634,7 @@ a.contact-item:hover .contact-ic {
    ============================================================ */
 .integration-deliverables {
   position: relative;
-  background: linear-gradient(180deg, #0A192F 0%, #081829 100%);
+  background: var(--navy);
   padding: 80px 24px;
   overflow: hidden;
 }
@@ -9018,7 +9018,7 @@ a.contact-item:hover .contact-ic {
 /* ---------- البانر السفلي الكحلي ---------- */
 .training-problems-cta {
   position: relative;
-  background: linear-gradient(135deg, var(--navy) 0%, #081829 100%);
+  background: var(--navy);
   padding: 48px 40px;
   border-radius: 24px;
   max-width: 1240px;
@@ -9292,7 +9292,7 @@ a.contact-item:hover .contact-ic {
    ============================================================ */
 .training-programs {
   position: relative;
-  background: linear-gradient(180deg, #0A192F 0%, #081829 100%);
+  background: var(--navy);
   padding: 80px 24px;
   overflow: hidden;
 }
@@ -10311,7 +10311,7 @@ a.contact-item:hover .contact-ic {
    ============================================================ */
 .contact-offices {
   position: relative;
-  background: linear-gradient(180deg, #0A192F 0%, #081829 100%);
+  background: var(--navy);
   padding: 80px 24px;
   overflow: hidden;
 }
