@@ -686,12 +686,13 @@ body.nav-open { overflow: hidden; }
 }
 
 /* ---------- المفتاح في النوتش (جوه الفريم، relative للفريم) ---------- */
+/* الحجم بـ clamp عشان يصغر ويكبر مع الشاشة زي الفريم */
 .inner-hero-key {
   position: absolute;
-  top: -22px;
-  left: 8%;
-  width: 90px;
-  height: 90px;
+  top: clamp(-18px, -1.8vw, -12px);
+  left: 7%;
+  width: clamp(56px, 7vw, 90px);
+  height: clamp(56px, 7vw, 90px);
   z-index: 10;
   animation: keyPulse 3s var(--ease-in-out) infinite;
 }
@@ -882,7 +883,7 @@ body.nav-open { overflow: hidden; }
   .inner-hero-frame { width: 92%; }
   .inner-hero-content { gap: 18px; }
   .inner-hero-title { font-size: 24px; }
-  .inner-hero-key { top: -16px; width: 60px; height: 60px; left: 6%; }
+  .inner-hero-key { left: 6%; }
   .inner-hero-scroll, .inner-hero-follow { display: none; }
 }
 
@@ -917,12 +918,9 @@ body.nav-open { overflow: hidden; }
     -webkit-mask: url('../icons/inner-hero-hole-mobile-rgba.png') no-repeat center / contain;
     mask: url('../icons/inner-hero-hole-mobile-rgba.png') no-repeat center / contain;
   }
-  /* المفتاح فوق الفريم — relative للفريم */
+  /* المفتاح فوق الفريم — relative للفريم (الحجم بـ clamp من الأساسي) */
   .inner-hero-key {
-    width: 60px;
-    height: 60px;
     left: 8%;
-    top: -16px;
     z-index: 10;
   }
   /* المحتوى جوه الفريم، متوسط عمودياً (inset:0 + flex center من الأساسي) */
