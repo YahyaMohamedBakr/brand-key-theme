@@ -6767,7 +6767,7 @@ a.contact-item:hover .contact-ic {
 .services-content-key {
     position: absolute;
     top: -5%;
-    left: 17%;
+    left: 8%;
     width: 22%;
     height: auto;
     aspect-ratio: 107 / 110;
@@ -6891,7 +6891,7 @@ a.contact-item:hover .contact-ic {
   .services-content-row-title { font-size: 20px; }
   .services-content-bullets li { font-size: 14px; }
   .services-content-frame { max-width: 320px; }
-  .services-content-key { width: 36px; height: 36px; top: -10px; }
+  .services-content-key { top: -10px; }
   .services-content-cta-primary { width: 100%; justify-content: center; font-size: 15px; padding: 14px 24px; }
   .services-content-cta-secondary { font-size: 14px; }
 }
