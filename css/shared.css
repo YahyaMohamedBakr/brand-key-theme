@@ -486,7 +486,14 @@ body.nav-open { overflow: hidden; }
   justify-content: center;
   background: #FFF8E6;
   border-radius: 9px;
-  transition: background 0.35s var(--ease-out), transform 0.45s var(--ease-spring);
+  color: var(--gold);
+  transition: background 0.35s var(--ease-out), transform 0.45s var(--ease-spring), color 0.35s var(--ease-out);
+}
+.nav-link-icon svg {
+  width: 20px;
+  height: auto;
+  display: block;
+  transition: transform 0.45s var(--ease-spring);
 }
 .nav-link-icon img {
   width: 20px;
@@ -517,8 +524,10 @@ body.nav-open { overflow: hidden; }
 }
 .nav-link:hover .nav-link-icon {
   background: var(--gold);
+  color: var(--navy);
   transform: rotate(-8deg);
 }
+.nav-link:hover .nav-link-icon svg,
 .nav-link:hover .nav-link-icon img {
   transform: scale(1.12);
 }
@@ -4331,9 +4340,9 @@ a.contact-item:hover .contact-ic {
   transition: background 0.35s var(--ease-out), color 0.35s var(--ease-out), transform 0.4s var(--ease-spring), border-color 0.35s var(--ease-out);
 }
 .social-link:hover {
-  background: var(--navy);
-  color: var(--gold);
-  border-color: var(--navy);
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
   transform: translateY(-3px) scale(1.05);
 }
 .social-link:active { transform: translateY(-1px) scale(0.98); }
