@@ -624,28 +624,42 @@ body.nav-open { overflow: hidden; }
   min-height: 627px;
 }
 
-/* ---------- الفريم (CSS keyhole — SVG mask قابل للتسيع) ---------- */
-/* شكل: مستطيل بزوايا دائرية + نوتش/قوس مقعّر في الزاوية اليسرى العليا */
+/* ---------- الفريم (شكل كحلي بـ mask من Subtract.png) ---------- */
 .inner-hero-frame {
   position: relative;
   width: min(1133px, 82%);
   aspect-ratio: 1100 / 504;
   z-index: 1;
-  background: var(--navy);
-  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none'><path d='M 0.082 0 L 0.918 0 Q 1 0 1 0.082 L 1 0.918 Q 1 1 0.918 1 L 0.082 1 Q 0 1 0 0.918 L 0 0.357 A 0.082 0.357 0 0 1 0.082 0 Z' fill='black'/></svg>");
-  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none'><path d='M 0.082 0 L 0.918 0 Q 1 0 1 0.082 L 1 0.918 Q 1 1 0.918 1 L 0.082 1 Q 0 1 0 0.918 L 0 0.357 A 0.082 0.357 0 0 1 0.082 0 Z' fill='black'/></svg>");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
 }
 
-/* الفريم: خلفية navy — دلوقتي الفريم نفسه هو الخلفية (مش محتاجة fill منفصل) */
+/* الفريم: خلفية navy بـ mask = شكل الفريم (البرواز نفسه) */
 .inner-hero-frame-fill {
-  display: none;
+  position: absolute;
+  inset: 0;
+  background: var(--navy);
+  z-index: 0;
+  -webkit-mask: url('../icons/inner-hero-frame.png') no-repeat center / contain;
+  mask: url('../icons/inner-hero-frame.png') no-repeat center / contain;
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
 }
 
-/* الصورة داخل الفريم — نفس الـ mask */
+/* border أبيض حول الفريم */
+.inner-hero-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: var(--navy);
+  -webkit-mask: url('../icons/inner-hero-frame.png') no-repeat center / contain;
+  mask: url('../icons/inner-hero-frame.png') no-repeat center / contain;
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
+  filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff);
+  pointer-events: none;
+}
+
+/* الصورة داخل الفريم — div بـ background-image + mask = الثقب (RGBA) */
 .inner-hero-frame-photo {
   position: absolute;
   inset: 0;
@@ -653,26 +667,22 @@ body.nav-open { overflow: hidden; }
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none'><path d='M 0.082 0 L 0.918 0 Q 1 0 1 0.082 L 1 0.918 Q 1 1 0.918 1 L 0.082 1 Q 0 1 0 0.918 L 0 0.357 A 0.082 0.357 0 0 1 0.082 0 Z' fill='black'/></svg>");
-  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none'><path d='M 0.082 0 L 0.918 0 Q 1 0 1 0.082 L 1 0.918 Q 1 1 0.918 1 L 0.082 1 Q 0 1 0 0.918 L 0 0.357 A 0.082 0.357 0 0 1 0.082 0 Z' fill='black'/></svg>");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
+  -webkit-mask: url('../icons/inner-hero-hole-rgba.png') no-repeat center / contain;
+  mask: url('../icons/inner-hero-hole-rgba.png') no-repeat center / contain;
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
 }
 
-/* أوفرلاي فوق الصورة — نفس الـ mask */
+/* أوفرلاي أسود فوق الصورة — نفس الـ hole mask */
 .inner-hero-frame-overlay {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: linear-gradient(135deg, rgba(14, 35, 63, 0.72) 0%, rgba(14, 35, 63, 0.55) 100%);
-  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none'><path d='M 0.082 0 L 0.918 0 Q 1 0 1 0.082 L 1 0.918 Q 1 1 0.918 1 L 0.082 1 Q 0 1 0 0.918 L 0 0.357 A 0.082 0.357 0 0 1 0.082 0 Z' fill='black'/></svg>");
-  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none'><path d='M 0.082 0 L 0.918 0 Q 1 0 1 0.082 L 1 0.918 Q 1 1 0.918 1 L 0.082 1 Q 0 1 0 0.918 L 0 0.357 A 0.082 0.357 0 0 1 0.082 0 Z' fill='black'/></svg>");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-mask: url('../icons/inner-hero-hole-rgba.png') no-repeat center / contain;
+  mask: url('../icons/inner-hero-hole-rgba.png') no-repeat center / contain;
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
 }
 
 /* ---------- المفتاح في النوتش ---------- */
@@ -883,17 +893,34 @@ body.nav-open { overflow: hidden; }
     flex-direction: column;
     justify-content: flex-start;
   }
-  /* الفريم الموبايل: عمودي، في النص — نفس الـ SVG mask بيتسع تلقائياً */
+  /* الفريم الموبايل: عمودي، في النص */
   .inner-hero-frame {
     width: 88%;
     aspect-ratio: 310 / 586;
     max-width: 340px;
     margin: 30px auto 0;
   }
+  /* الموبايل: فريم مختلف */
+  .inner-hero-frame-fill {
+    -webkit-mask: url('../icons/inner-hero-frame-mobile.png') no-repeat center / contain;
+    mask: url('../icons/inner-hero-frame-mobile.png') no-repeat center / contain;
+  }
+  .inner-hero-frame::before {
+    -webkit-mask: url('../icons/inner-hero-frame-mobile.png') no-repeat center / contain;
+    mask: url('../icons/inner-hero-frame-mobile.png') no-repeat center / contain;
+  }
+  .inner-hero-frame-photo {
+    -webkit-mask: url('../icons/inner-hero-hole-mobile-rgba.png') no-repeat center / contain;
+    mask: url('../icons/inner-hero-hole-mobile-rgba.png') no-repeat center / contain;
+  }
+  .inner-hero-frame-overlay {
+    -webkit-mask: url('../icons/inner-hero-hole-mobile-rgba.png') no-repeat center / contain;
+    mask: url('../icons/inner-hero-hole-mobile-rgba.png') no-repeat center / contain;
+  }
   /* المفتاح فوق الفريم */
   .inner-hero-key {
-    width: 60px;
-    height: 60px;
+    width: 95px;
+    height: 154px;
     left: 14%;
     transform: none;
     top: calc(var(--header-h) + 10px);
