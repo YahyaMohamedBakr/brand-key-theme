@@ -690,7 +690,7 @@ body.nav-open { overflow: hidden; }
 .inner-hero-key {
   position: absolute;
   top: clamp(9px, -14vw, 68px);
-  left: 7%;
+  left: 1%;
   width: clamp(87px, 7vw, 90px);
   height: clamp(87px, 7vw, 90px);
   z-index: 10;
