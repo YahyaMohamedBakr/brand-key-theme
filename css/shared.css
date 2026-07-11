@@ -4056,8 +4056,7 @@ body.nav-open { overflow: hidden; }
 
 /* ---------- قسم النشرة البريدية ---------- */
 .footer-newsletter {
-  padding: 44px 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 44px 24px 24px;
 }
 .footer-newsletter .footer-container {
   background: #071322;
@@ -4341,7 +4340,7 @@ a.contact-item:hover .contact-ic {
 
 /* ---------- الشريط السفلي ---------- */
 .footer-bottom {
-  padding: 18px 0;
+  padding: 0 0 18px;
 }
 .footer-bottom-inner {
   display: flex;
