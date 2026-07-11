@@ -2931,6 +2931,28 @@ body.nav-open { overflow: hidden; }
   margin: 0 auto 18px;
 }
 
+/* خطوط المفتاح الموحدة لكل السيكشنات (بديل الـ bar+dot القديم) */
+/* المتمركزة */
+.integration-timeline-heading-line,
+.integration-services-heading-line,
+.integration-deliverables-heading-line,
+.training-problems-heading-line {
+  display: block;
+  height: 15px;
+  width: 143px;
+  max-width: 143px;
+  margin: 0 auto 18px;
+}
+/* المحاذاة لليمين */
+.integration-compare-heading-line,
+.training-programs-heading-line {
+  display: block;
+  height: 15px;
+  width: 143px;
+  max-width: 143px;
+  margin: 0 0 18px;
+}
+
 .how-desc {
   font-size: clamp(14px, 1.2vw, 16px);
   color: var(--muted);
