@@ -804,7 +804,7 @@ body.nav-open { overflow: hidden; }
 
 /* ---------- يمين: قم بالتمرير لرؤية المزيد ---------- */
 .inner-hero-scroll {
-  position: absolute;
+  position: fixed;
   top: 50%;
   right: 23px;
   transform: translateY(-50%);
@@ -836,7 +836,7 @@ body.nav-open { overflow: hidden; }
 
 /* ---------- شمال: تابعنا + سوشيال ---------- */
 .inner-hero-follow {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 80px;
   transform: translateY(-50%);
